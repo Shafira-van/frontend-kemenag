@@ -1,0 +1,339 @@
+/* ==========================
+   🎨 DASAR
+========================== */
+.row {
+  margin: 2vw;
+}
+.news-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* ==========================
+   🔍 FILTER AREA
+========================== */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 25px;
+
+}
+
+.filter-container select,
+.search-input {
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.search-input {
+  width: 250px;
+}
+
+/* ==========================
+   📰 GRID BERITA
+========================== */
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ==========================
+   🗞️ NEWS CARD
+========================== */
+.news-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.news-content {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-category {
+  color: #fff;
+  background-color: #136a2b;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.news-date {
+  font-size: 12px;
+  color: #777;
+  margin: 5px 0;
+  padding-left: 0;
+}
+
+.news-views {
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.news-description {
+  font-size: 14px;
+  padding-left: 0;
+  color: #555;
+  margin-bottom: auto;
+  text-align: justify;
+}
+
+.read-more {
+  color: #136a2b;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   📄 PAGINATION
+========================== */
+.pagination {
+  text-align: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  background: #eee;
+  border: none;
+  margin: 0 5px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination button:hover,
+.pagination button.active {
+  background: #136a2b;
+  color: #fff;
+}
+
+/* ==========================
+   🧭 SIDEBAR LAYOUT
+========================== */
+.news-page-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.news-main {
+  flex: 1;
+  min-width: 700px;
+}
+
+.news-main .news-sidebar {
+  flex: 0 0 300px;
+  min-width: 280px;
+}
+
+.news-main .col-md-4 {
+  margin-top: 2vw;
+}
+
+/* ==========================
+   📱 RESPONSIVE STYLES
+========================== */
+
+/* --- 📱 HP (≤ 576px) --- */
+@media (max-width: 576px) {
+  .news-main{
+    width: 100vw;
+    margin: 0;
+    /* width: 100vw; */
+  }
+  .news-list-container {
+    margin-top: 2vw;
+    width: 100vw;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  
+
+  .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input,
+  .filter-container select {
+    width: 100%;
+  }
+
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+
+  .news-page-layout {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .news-main {
+    min-width: 100%;
+  }
+
+  .news-sidebar {
+    order: -1;
+    width: 100%;
+  }
+
+  .news-image {
+    height: 180px;
+  }
+
+  .pagination {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    scrollbar-width: thin; /* Firefox */
+    -ms-overflow-style: none; /* IE dan Edge */
+  }
+
+  .pagination::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .pagination::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+
+  .pagination button {
+    
+    flex: 0 0 auto; /* agar tidak membungkus ke baris baru */
+    margin-right: 6px;
+  }
+}
+
+/* --- 📲 TABLET (577px–992px) --- */
+@media (min-width: 577px) and (max-width: 992px) {
+  .news-list-container {
+    padding: 30px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .filter-container {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .news-list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .news-page-layout {
+    flex-direction: column;
+  }
+
+  .news-sidebar {
+    order: -1;
+    width: 100%;
+  }
+
+  .news-main {
+    min-width: 100%;
+  }
+}
+
+/* --- 💻 LAPTOP & DESKTOP (≥ 993px) --- */
+@media (min-width: 993px) {
+  .news-list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+
+  .news-page-layout {
+    flex-direction: row;
+  }
+
+  .news-sidebar {
+    order: 0;
+  }
+
+  .news-main {
+    min-width: 700px;
+  }
+
+    .news-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+}

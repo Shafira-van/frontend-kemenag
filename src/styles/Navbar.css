@@ -1,0 +1,55 @@
+.navbar {
+  padding: 0.6rem 0rem;
+  z-index: 9999;
+  width: 100vw;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.2);
+  justify-content: space-around;
+}
+
+.navbar .container{
+  margin: 0rem;
+}
+.logo {
+  max-height: 40px;
+  margin-right: 10px;
+}
+
+.brand-text {
+  line-height: 1.1;
+}
+
+.brand-text .fw-bold {
+  font-size: 16px;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.nav-link {
+  font-size: 14px;
+  margin-left: 15px;
+  color: #1a1a1a !important;
+}
+
+.nav-link:hover,
+.dropdown-item:hover {
+  color: #198754 !important;
+  /* hijau bootstrap */
+}
+
+/* Dropdown */
+.dropdown-menu {
+  font-size: 16px;
+}
+
+/* Mobile Styling */
+@media (max-width: 992px) {
+  .nav-link {
+    margin-left: 0;
+    padding: 8px 0;
+  }
+}

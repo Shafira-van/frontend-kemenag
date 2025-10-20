@@ -1,0 +1,98 @@
+
+
+.contact h2 {
+  margin-top: 2vw;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.contact-info,
+.contact-form {
+  background: #fff;
+  border-radius: 10px;
+}
+
+.contact .row {
+  height: 100%;
+  margin-bottom: 1vw;
+  margin: 0;
+
+}
+
+.info-block h6 {
+  margin-bottom: 0.3rem;
+}
+
+.info-block p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+
+.contact .form-label {
+  text-align: left !important;
+}
+
+.contact-info p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.contact-form textarea {
+  height: 200px;
+}
+
+.contact-info i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.map iframe {
+  border-radius: 10px;
+  width: 99%;
+}
+
+.social h5 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.social a {
+  color: #2e7d32;
+  transition: transform 0.3s ease;
+}
+
+.social a:hover {
+  transform: scale(1.2);
+  color: #256428;
+}
+
+.social-icon i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover i {
+  transform: scale(1.2);
+  color: #198754;
+  /* bisa disesuaikan dengan hoverColor prop */
+}
+
+.contact-footer-bottom p {
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  background-color: #136a2b;
+  margin-bottom: 0;
+}
+.contact .col-md-4 {
+  margin-top: 2vw;
+}
+
+@media (max-width: 768px) {
+  .contact h2{
+    margin-top: 2rem;
+  }
+
+}

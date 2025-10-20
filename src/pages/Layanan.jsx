@@ -1,0 +1,101 @@
+import React, { useState, useEffect } from "react";
+import "../styles/Layanan.css";
+import placeholderImg from "../assets/react.svg";
+import Footer from "../components/Footer";
+import { API_URL } from "../config";
+
+const Layanan = () => {
+  const [layananData, setLayananData] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    fetch(`${API_URL}/layanan`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLayananData(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setSelected(data[0]); // tampil otomatis layanan pertama
+        }
+      })
+      .catch((err) => console.error("Gagal memuat data layanan:", err));
+  }, []);
+
+  return (
+    <>
+      <section className="layanan container">
+
+          <div className="text-center mb-2">
+            <h2 className="section-title">Layanan Kami</h2>
+            <p className="text-muted">
+              Pilih salah satu layanan untuk melihat detail
+            </p>
+          </div>
+
+          <div className="row">
+            {/* Sidebar daftar layanan */}
+            <div className="col-md-4 layanan-list-container">
+              <div className="list-group layanan-scroll">
+                {layananData.map((item) => (
+                  <button
+                    key={item.id}
+                    className={`list-group-item list-group-item-action ${
+                      selected?.id === item.id ? "active" : ""
+                    }`}
+                    onClick={() => setSelected(item)}
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Detail layanan */}
+            <div className="col-md-8">
+              {selected ? (
+                <div className="card shadow-lg p-4 border-success">
+                  <h4 className="fw-bold text-success mb-2">
+                    {selected.title}
+                  </h4>
+                  <p className="text-muted">{selected.desc}</p>
+
+                  {selected.procedure && (
+                    <>
+                      <h6 className="fw-bold text-success mt-3">Prosedur</h6>
+                      <div
+                        className="text-muted"
+                        dangerouslySetInnerHTML={{
+                          __html: selected.procedure,
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {selected.requirements && (
+                    <>
+                      <h6 className="fw-bold text-success mt-3">Persyaratan</h6>
+                      <div
+                        className="text-muted"
+                        dangerouslySetInnerHTML={{
+                          __html: selected.requirements,
+                        }}
+                      />
+                    </>
+                  )}
+                </div>
+              ) : (
+                <div className="d-flex flex-column align-items-center text-center p-5 card shadow-sm">
+                  <p className="text-muted">
+                    Silakan pilih layanan dari daftar di sebelah kiri.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+};
+
+export default Layanan;

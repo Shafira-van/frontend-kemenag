@@ -1,0 +1,131 @@
+.menu-section {
+  background-color: #fff;
+  margin-top: 0 ;
+}
+
+.menu-section .container{
+  margin-top: 0 !important;
+}
+
+.menu-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+  height: 6rem;
+  padding: 0.8rem;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  background: #f0fdf4;
+  border-color: #2e7d32;
+}
+
+.menu-card i {
+  font-size: 2rem;
+  flex-shrink: 0;
+  /* biar ikon tidak mengecil */
+}
+
+.menu-card h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+}
+
+.icon-green {
+  color: #2e7d32;
+}
+
+
+.menu-card p {
+  font-size: 14px;
+  color: #555;
+  padding-left: 0;
+}
+
+.popular-date{
+  padding: 0px;
+}
+@media (max-width: 992px) {
+  .menu-section .container {
+      margin-top: 0;
+    }
+.menu-section .row {
+    justify-content: center;
+
+  }
+
+ .menu-section .row .col-5 {
+    margin: 0rem 0rem;
+    padding: 0rem 0.4rem;
+
+  }
+
+    .menu-section.row .menu-card {
+    width: auto;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0rem 0.6rem;
+  }
+
+    .menu-section.menu-card i {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    /* biar ikon tidak mengecil */
+  }
+
+  .menu-card h5 {
+    font-size: 14px;
+  }
+
+  .menu-card p {
+    font-size: 12px;
+
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-section .container {
+      margin-top: 0;
+    }
+  .menu-section .row{
+    justify-content: center; 
+    margin: 0;
+  }
+     .menu-section .row .col-5{
+      margin: 0.3rem 0.2rem;
+      padding: 0rem 0.2rem;
+  
+    }
+    .menu-section .row .menu-card {
+      width: auto;
+      height: fit-content;
+      align-items: center;
+      border-radius: 6px;
+      padding:0.3rem 0.6rem;
+    }
+
+    .menu-section .container{
+      margin: 0;
+    }
+  .menu-card i {
+      font-size: 1rem;
+      flex-shrink: 0;
+      /* biar ikon tidak mengecil */
+    }
+  
+    .menu-card h5 {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+
+        .menu-card p {
+          display: none;
+        }
+
+}
+

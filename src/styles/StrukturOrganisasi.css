@@ -1,0 +1,87 @@
+/* StrukturOrganisasi.css */
+.struktur-organisasi .col-md-8 {
+  margin-top: 4rem;
+}
+
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #0b8043;
+  text-align: center;
+  position: relative;
+}
+
+.sub-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 40px 0 20px;
+  text-align: center;
+}
+
+.struktur-item {
+  /* margin-bottom: 50px; */
+  text-align: center;
+}
+
+.struktur-img {
+  width: 100%;
+  max-width: 950px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.struktur-img:hover {
+  transform: scale(1.02);
+}
+
+.struktur-organisasi .col-md-4 {
+  margin-top: 4vw;
+}
+/* Sidebar */
+.sidebar {
+  padding-left: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 992px) {
+
+  .struktur-item {
+    margin-bottom: 10px;
+  }
+
+  .col-md-4 {
+    padding-top: 0px;
+    margin: 0;
+  }
+
+  .col-md-8,
+  .col-md-4 {
+    width: 100%;
+  }
+
+  .sidebar {
+    padding-left: 0;
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .sub-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .col-md-4 {
+    padding-top: 0px;
+    margin: 0;
+  }
+}

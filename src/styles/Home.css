@@ -1,0 +1,130 @@
+.hero {
+  display: flex;
+  margin-top: 2rem !important;
+}
+
+.agama img {
+  min-height: 140px;
+  margin-bottom: 20px;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.hero .col-md-6 {
+  padding: 0 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text .hero-text h1 {
+  font-size: 38px;
+  /* judul lebih kecil */
+}
+
+.hero-text p {
+  font-size: 20px;
+  /* deskripsi lebih kecil */
+}
+
+.hero-text .btn {
+  font-size: 18px;
+  /* deskripsi lebih kecil */
+}
+
+.agama img {
+  margin-top: 20px;
+  height: 160px;
+  width: 300px;
+}
+
+/* =====================
+  Responsive Section
+   ===================== */
+@media (max-width: 929px) {
+  .hero {
+    margin-top: 8rem;
+    width: 98vw;
+    margin: 0;
+  }
+
+  .hero-text h1 {
+    font-size: 1.4rem;
+    margin-top: 4rem;
+    /* judul lebih kecil */
+  }
+
+  .hero-text p {
+    font-size: 0.8rem;
+    /* deskripsi lebih kecil */
+  }
+
+  .hero img {
+    max-width: 320px;
+    /* gambar lebih kecil */
+    margin: 1rem;
+    /* jarak atas biar gak nempel teks */
+  }
+
+  .hero-text .btn {
+    font-size: 12px;
+    /* deskripsi lebih kecil */
+  }
+
+  .hero .col-md-6{
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-top: 5rem !important;
+  }
+
+  .agama img {
+    min-height: 140px;
+    margin-bottom: 14px;
+    /* supaya tinggi tidak berubah saat transisi */
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+    margin-top: 0;
+  }
+
+  .hero-text p {
+    font-size: 0.8rem;
+  }
+
+  .hero .btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .hero img {
+    max-width: 200px;
+    margin-top: 0;
+    /* gambar kecil biar pas di HP */
+  }
+}
+
+.contact-wrapper {
+  margin-top: 5rem;
+  background-color: #f8f9fa;
+}
+
+.contact-home {
+  padding-bottom: 3rem;
+}

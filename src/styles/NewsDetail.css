@@ -1,0 +1,146 @@
+/* Container utama */
+.news-detail-card {
+  padding: 0 2rem;
+  margin-top: 6rem;
+}
+
+/* Card artikel berita */
+.news-detail-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* Gambar berita */
+.news-detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Konten berita */
+.news-detail-content {
+  padding: 1.8rem 2rem;
+}
+
+.news-detail-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #007c3b;
+  /* Warna Kemenag */
+}
+
+/* Badge kategori */
+.news-category-badge {
+  display: inline-block;
+  background-color: #007c3b;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Tanggal berita */
+.news-detail-date {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* Body berita */
+.news-detail-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Tombol kembali */
+.news-back-wrapper {
+  margin-top: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #007c3b;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #00592a;
+  text-decoration: underline;
+}
+
+/* Loading text */
+.loading {
+  font-size: 1.2rem;
+  padding: 3rem;
+  color: #007c3b;
+}
+
+/* Responsive untuk tablet */
+@media (max-width: 992px) {
+  .news-detail-card {
+    padding: 1.5rem;
+  }
+
+  .news-detail-title {
+    font-size: 1.8rem;
+  }
+
+  .news-detail-body {
+    font-size: 0.95rem;
+  }
+
+  .news-detail-image {
+    max-height: 300px;
+  }
+}
+
+/* Responsive untuk HP */
+@media (max-width: 768px) {
+  .news-detail-card {
+    padding: 1rem;
+  }
+
+  .news-detail-title {
+    font-size: 1.5rem;
+  }
+
+  .news-detail-body {
+    font-size: 0.9rem;
+  }
+
+  .news-detail-image {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-detail-title {
+    font-size: 1.3rem;
+  }
+
+  .news-detail-body {
+    font-size: 0.85rem;
+  }
+
+  .news-category-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .back-link {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,28 @@
+.contact-box {
+  background: #fff;
+  transition: 0.3s ease;
+  height: 100%;
+  /* samakan tinggi */
+  display: flex;
+  /* supaya konten rata */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-box h6 {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.contact-box p {
+  font-size: 0.95rem;
+  color: #555;
+}

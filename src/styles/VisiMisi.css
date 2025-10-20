@@ -1,0 +1,76 @@
+
+.visi-misi {
+  padding: 60px 20px;
+  margin: 0vw 2vw;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #0b8043;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #0b8043;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.visi,
+.misi, .tugas-pokok {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.visi h3,
+.misi h3, .tugas-pokok h3 {
+  font-size: 1.5rem;
+  color: #0b8043;
+  margin-bottom: 15px;
+}
+
+.visi p {
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.misi  ul,.tugas-pokok ul {
+  padding-left: 20px;
+}
+
+.misi li,.tugas-pokok li, .tugas-pokok p {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Responsif */
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .visi h3,
+  .misi h3,.tugas-pokok h3 {
+    font-size: 1.3rem;
+  }
+
+  .visi p,
+  .misi li,.tugas-pokok p li {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,51 @@
+.container{
+  margin-top: 20px;
+}
+
+.container-pegawai .section-title{
+  font-size: 1.2rem;
+  /* text-align: left; */
+}
+
+/* .container-pegawai .section-title::after{
+  margin: 8px 25px;
+  padding: 0;
+} */
+
+
+
+.infografis-highlight-section{
+  margin: 0;
+}
+.shadow-sm {
+  transition: transform 0.3s ease-in-out;
+}
+
+.shadow-sm:hover {
+  transform: translateY(-5px);
+}
+
+.icon-green {
+  color: #2e7d32;
+  transition: color 0.3s ease;
+  font-size: 4rem
+}
+
+.infografis-asn .icon-green {
+  color: #2e7d32;
+}
+
+.small-card {
+  font-size: 0.85rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.small-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+  .infografis-asn .col-md-6 {
+    margin-bottom: 1rem;
+  }
+}
