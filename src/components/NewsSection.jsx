@@ -27,32 +27,29 @@ const NewsSection = ({ categoryFilter }) => {
       try {
         // 🔹 Tentukan URL API berdasarkan props
         const url = categoryFilter
-          ? `${API_URL}/berita/category/${encodeURIComponent(categoryFilter.trim())}`
-          : `${API_URL}/berita`;
+          ? `${API_URL}/berita/category/${encodeURIComponent(
+              categoryFilter.trim(),
+            )}?page=1&limit=12`
+          : `${API_URL}/berita/popular/list`;
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Gagal memuat berita");
 
-        const data = await res.json();
+        const result = await res.json();
+
+        // 🔹 Controller baru bisa kembalikan array langsung (popular) atau objek { data: [] }
+        const data = Array.isArray(result) ? result : result.data || [];
 
         if (Array.isArray(data)) {
-          // 🔹 Urutkan berdasarkan tanggal terbaru
-          const sortedByDate = [...data].sort(
-            (a, b) => new Date(b.date) - new Date(a.date),
-          );
-
-          // 🔹 Ambil berita utama (yang paling baru)
-          const mainNews = sortedByDate[0];
-
-          // 🔹 Urutkan berdasarkan view untuk berita populer (kecuali berita utama)
-          const sortedByView = [...data]
-            .sort((a, b) => b.view - a.view)
-            .filter((item) => item.id !== mainNews?.id);
-
-          // 🔹 Ambil maksimal 12 berita populer
-          const limitedData = sortedByView.slice(0, 12);
-
-          setNewsData(limitedData);
+          // Jika bukan popular (berdasarkan category)
+          if (categoryFilter) {
+            // Urutkan berdasarkan view
+            const sortedByView = [...data].sort((a, b) => b.view - a.view);
+            setNewsData(sortedByView.slice(0, 12));
+          } else {
+            // Jika popular, langsung gunakan dari backend
+            setNewsData(data.slice(0, 12));
+          }
         }
       } catch (error) {
         console.error("Error memuat data berita:", error);
@@ -63,7 +60,7 @@ const NewsSection = ({ categoryFilter }) => {
   }, [categoryFilter]);
 
   if (!newsData || newsData.length === 0) {
-    return null; // atau bisa return <></>
+    return null; // atau tampilkan loader
   }
 
   const totalPages = Math.ceil(newsData.length / newsPerPage);
@@ -95,7 +92,7 @@ const NewsSection = ({ categoryFilter }) => {
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="section-title text-dark fw-bold mb-0">
-          Berita Terpopuler
+          {categoryFilter ? categoryFilter : "Berita Terpopuler"}
         </h2>
         <a
           href="/berita"
@@ -117,7 +114,7 @@ const NewsSection = ({ categoryFilter }) => {
             >
               <div className="news-img-container">
                 <img
-                  src={`${API_UPLOADS}/${news.image}`}
+                  src={`${API_UPLOADS}/uploads/berita/${news.image}`}
                   alt={news.title}
                   className="news-img-clean"
                 />

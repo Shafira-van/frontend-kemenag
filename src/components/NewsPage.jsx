@@ -5,23 +5,25 @@ import { useNavigate } from "react-router-dom";
 
 const NewsPage = ({ categoryFilter }) => {
   const [newsList, setNewsList] = useState([]);
-  const navigate = useNavigate(); // ✅ untuk navigasi ke halaman detail
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        // 🔹 Tentukan URL API berdasarkan kategori
+        // 🔹 Tentukan endpoint berdasarkan apakah ada kategori atau tidak
         const url = categoryFilter
-          ? `${API_URL}/berita/category/${encodeURIComponent(categoryFilter)}`
-          : `${API_URL}/berita`;
+          ? `${API_URL}/berita/category/${encodeURIComponent(categoryFilter)}?page=1&limit=6`
+          : `${API_URL}/berita?page=1&limit=6`;
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Gagal memuat berita");
 
-        const data = await res.json();
+        const result = await res.json();
+
+        // 🔹 Controller baru mengembalikan data di dalam result.data
+        const data = result.data || [];
 
         if (Array.isArray(data)) {
-          // 🔹 Urutkan berdasarkan tanggal terbaru
           const sorted = data.sort(
             (a, b) => new Date(b.date) - new Date(a.date),
           );
@@ -33,13 +35,13 @@ const NewsPage = ({ categoryFilter }) => {
     };
 
     fetchNews();
-  }, [categoryFilter]); // depend on categoryFilter agar update otomatis
+  }, [categoryFilter]);
 
   if (!newsList || newsList.length === 0) {
-    return null; // atau bisa return <></>
+    return null; // bisa juga tampilkan loading indicator
   }
 
-  // 🔹 Berita utama (paling baru)
+  // 🔹 Berita utama = berita terbaru
   const mainNews = newsList[0];
 
   const handleClick = () => {
@@ -52,10 +54,10 @@ const NewsPage = ({ categoryFilter }) => {
       <div
         className="main-news mb-4"
         onClick={handleClick}
-        style={{ cursor: "pointer" }} // agar terasa bisa diklik
+        style={{ cursor: "pointer" }}
       >
         <img
-          src={`${API_UPLOADS}/${mainNews.image}`}
+          src={`${API_UPLOADS}/uploads/berita/${mainNews.image}`}
           alt={mainNews.title}
           className="main-news-image"
         />

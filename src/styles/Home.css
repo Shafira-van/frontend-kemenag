@@ -1,6 +1,6 @@
 .hero {
   display: flex;
-  margin-top: 2rem !important;
+  margin-top: 6rem !important;
 }
 
 .agama img {
@@ -113,8 +113,9 @@
     font-size: 0.8rem;
   }
 
-  .hero img {
-    max-width: 200px;
+  .hero .agama-img {
+    max-width: 240px;
+    height: 20px;
     margin-top: 0;
     /* gambar kecil biar pas di HP */
   }

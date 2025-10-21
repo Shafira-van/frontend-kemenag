@@ -1,9 +1,10 @@
 .menu-section {
   background-color: #fff;
-  margin-top: 0 ;
+  margin-top: 0;
+  margin: 2rem 0rem;
 }
 
-.menu-section .container{
+.menu-section .container {
   margin-top: 0 !important;
 }
 
@@ -15,7 +16,9 @@
   color: inherit;
   transition: all 0.3s ease-in-out;
   height: 6rem;
+  width: auto;
   padding: 0.8rem;
+  margin: 0.7rem 0rem;
 }
 
 .menu-card:hover {
@@ -47,85 +50,97 @@
   padding-left: 0;
 }
 
-.popular-date{
+.popular-date {
   padding: 0px;
 }
-@media (max-width: 992px) {
+
+@media (max-width: 1092px) {
   .menu-section .container {
-      margin-top: 0;
-    }
-.menu-section .row {
+    margin-top: 0;
+  }
+
+  .menu-section .row {
     justify-content: center;
 
   }
 
- .menu-section .row .col-5 {
-    margin: 0rem 0rem;
-    padding: 0rem 0.4rem;
+  .menu-section .row .col-5 a {
+    margin: 0.6rem 0rem;
+    padding: 0.8rem 0.6rem;
 
   }
 
-    .menu-section.row .menu-card {
+  .menu-section.row .menu-card {
     width: auto;
     align-items: center;
     border-radius: 8px;
     padding: 0rem 0.6rem;
   }
 
-    .menu-section.menu-card i {
+  .menu-section.menu-card i {
     font-size: 1.4rem;
     flex-shrink: 0;
     /* biar ikon tidak mengecil */
   }
 
   .menu-card h5 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .menu-card p {
-    font-size: 12px;
+    font-size: 13px;
 
   }
 }
 
 @media (max-width: 767px) {
-  .menu-section .container {
-      margin-top: 0;
-    }
-  .menu-section .row{
-    justify-content: center; 
+  .menu-section {
+    margin-top: 0.8rem;
+    align-items: center;
+  }
+
+  .menu-section .row {
+    justify-content: center;
     margin: 0;
   }
-     .menu-section .row .col-5{
-      margin: 0.3rem 0.2rem;
-      padding: 0rem 0.2rem;
-  
-    }
-    .menu-section .row .menu-card {
-      width: auto;
-      height: fit-content;
-      align-items: center;
-      border-radius: 6px;
-      padding:0.3rem 0.6rem;
-    }
 
-    .menu-section .container{
-      margin: 0;
-    }
+  .menu-section .row .col-5 a {
+    padding: 0.4rem 0;
+    margin: 0.4rem 0;
+  }
+
+  .menu-section .row .col-5 {
+
+    margin: 0rem 0.2rem;
+  }
+
+  .menu-section .row .menu-card {
+    padding-right: 0.6rem;
+    width: 36vw;
+    height: fit-content;
+    align-items: center;
+    border-radius: 6px;
+    padding: 0rem 0;
+  }
+
+  .menu-section .container {
+    margin: 0;
+  }
+
   .menu-card i {
-      font-size: 1rem;
-      flex-shrink: 0;
-      /* biar ikon tidak mengecil */
-    }
-  
-    .menu-card h5 {
-      font-size: 0.8rem;
-      margin-bottom: 0;
-    }
+    font-size: 6vw;
+    padding-left: 0.6rem;
+    flex-shrink: 0;
+    /* biar ikon tidak mengecil */
+  }
 
-        .menu-card p {
-          display: none;
-        }
+  .menu-card h5 {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  .menu-card p {
+    display: none;
+  }
 
 }
-
