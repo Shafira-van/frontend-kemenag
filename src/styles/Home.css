@@ -25,6 +25,12 @@
   text-align: center;
 }
 
+.hero .col-md-6 .img-fluid{
+  padding: 0 50px;
+  justify-content: center;
+  height: 400px;
+}
+
 .hero-text .hero-text h1 {
   font-size: 38px;
   /* judul lebih kecil */

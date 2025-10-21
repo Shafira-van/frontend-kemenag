@@ -8,7 +8,7 @@ import NewsLatest from "../components/NewsLatest";
 import MenuSection from "../components/MenuSection";
 import InfoBoard from "../components/InfoBoard";
 import InfografisCarousel from "../components/InfografisCarousel";
-import heroImg from "../assets/image.png";
+import heroImg from "../assets/becaksiantar.png";
 import islam from "../assets/islam.png";
 import kristen from "../assets/kristen.png";
 import hindu from "../assets/hindu.png";
