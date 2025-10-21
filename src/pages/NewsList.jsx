@@ -4,8 +4,8 @@ import "../styles/NewsList.css";
 import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
 import Footer from "../components/Footer";
-import { API_URL, API_UPLOAD } from "../config";
-import NewsSection from "../components/NewsSection"
+import { API_URL, API_UPLOADS } from "../config";
+import NewsSection from "../components/NewsSection";
 
 const stripHTML = (html) => {
   const div = document.createElement("div");
@@ -21,71 +21,64 @@ const NewsList = () => {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const itemsPerPage = 6;
 
+  // 🔄 Ambil data berita dari backend (pagination)
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch(`${API_URL}/berita`);
-        if (!res.ok) throw new Error("Gagal mengambil data");
+        setLoading(true);
+        const res = await fetch(
+          `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`,
+        );
+        if (!res.ok) throw new Error("Gagal mengambil data berita");
         const data = await res.json();
-        setNewsData(data);
-        setFilteredData(data);
-      } catch (error) {
-        console.error("Error:", error);
+
+        const berita = data.data || [];
+        setNewsData(berita);
+        setFilteredData(berita);
+        setTotalPages(Math.ceil(data.total / itemsPerPage));
+      } catch (err) {
+        console.error("Error:", err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchNews();
-  }, []);
+  }, [currentPage]);
 
-  // 🔍 Filter berita
+  // 🔍 Filter berita di sisi frontend
   useEffect(() => {
     let filtered = [...newsData];
 
-    if (searchTerm) {
+    if (searchTerm)
       filtered = filtered.filter((news) =>
         news.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-    }
 
-    if (category) {
+    if (category)
       filtered = filtered.filter((news) => news.category === category);
-    }
 
-    if (month) {
+    if (month)
       filtered = filtered.filter(
         (news) => new Date(news.date).getMonth() + 1 === parseInt(month),
       );
-    }
 
-    if (year) {
+    if (year)
       filtered = filtered.filter(
         (news) => new Date(news.date).getFullYear() === parseInt(year),
       );
-    }
 
     setFilteredData(filtered);
-    setCurrentPage(1);
   }, [searchTerm, category, month, year, newsData]);
-
-  // 📄 Pagination
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = filteredData.slice(
-    startIndex,
-    startIndex + itemsPerPage,
-  );
 
   if (loading) {
     return <p className="loading text-center">Sedang memuat berita...</p>;
   }
 
-  // Ambil daftar kategori unik
   const categories = [
     ...new Set(newsData.map((n) => n.category).filter(Boolean)),
   ];
@@ -112,6 +105,7 @@ const NewsList = () => {
             >
               <option value="">Semua Kategori</option>
               {categories.map((cat, i) => (
+                
                 <option key={i} value={cat}>
                   {cat}
                 </option>
@@ -139,42 +133,46 @@ const NewsList = () => {
 
           {/* 📰 Daftar Berita */}
           <div className="news-list">
-            {currentItems.map((news) => (
-              <div key={news.id} className="news-card">
-                <img
-                  src={`${API_UPLOAD}/${news.image}`}
-                  alt={news.title}
-                  className="news-image"
-                />
-                <div className="news-content">
-                  <p className="news-category">{news.category}</p>
-                  <h3 className="news-title">{news.title}</h3>
+            {filteredData.length === 0 ? (
+              <p className="text-center">Tidak ada berita ditemukan.</p>
+            ) : (
+              filteredData.map((news) => (
+                <div key={news.id} className="news-card">
+                  <img
+                    src={`${API_UPLOADS}/uploads/berita/${news.image}`}
+                    alt={news.title}
+                    className="news-image"
+                  />
+                  <div className="news-content">
+                    <p className="news-category">{news.category}</p>
+                    <h3 className="news-title">{news.title}</h3>
 
-                  <div className="news-meta">
-                    <p className="news-date">
-                      {new Date(news.date).toLocaleDateString("id-ID", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
+                    <div className="news-meta">
+                      <p className="news-date">
+                        {new Date(news.date).toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </p>
+                      <span className="news-views">
+                        <i className="bi bi-eye"></i> {news.view || 0}
+                      </span>
+                    </div>
+
+                    <p className="news-description">
+                      {stripHTML(news.content).length > 150
+                        ? stripHTML(news.content).substring(0, 150) + "..."
+                        : stripHTML(news.content)}
                     </p>
-                    <span className="news-views">
-                      <i className="bi bi-eye"></i> {news.view || 0}
-                    </span>
+
+                    <Link to={`/berita/${news.id}`} className="read-more">
+                      Baca Selengkapnya →
+                    </Link>
                   </div>
-
-                  <p className="news-description">
-                    {stripHTML(news.content).length > 150
-                      ? stripHTML(news.content).substring(0, 150) + "..."
-                      : stripHTML(news.content)}
-                  </p>
-
-                  <Link to={`/berita/${news.id}`} className="read-more">
-                    Baca Selengkapnya →
-                  </Link>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           {/* 📄 Pagination */}
@@ -191,8 +189,10 @@ const NewsList = () => {
               ))}
             </div>
           )}
+
           <NewsSection />
         </div>
+
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />

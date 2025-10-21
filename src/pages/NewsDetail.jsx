@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/NewsDetail.css";
-import { API_URL, API_UPLOAD } from "../config";
+import { API_URL, API_UPLOADS } from "../config";
 import Footer from "../components/Footer";
 import NewsSection from "../components/NewsSection";
 import NewsLatest from "../components/NewsLatest";
@@ -44,7 +44,7 @@ const NewsDetail = () => {
         <div className="col-md-8">
           <article className="news-detail-container">
             <img
-              src={`${API_UPLOAD}/${item.image}`}
+              src={`${API_UPLOADS}/${item.image}`}
               alt={item.title}
               className="news-detail-image"
             />

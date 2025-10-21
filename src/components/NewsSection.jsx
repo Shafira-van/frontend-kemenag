@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/NewsSection.css";
-import { API_URL, API_UPLOAD } from "../config";
+import { API_URL, API_UPLOADS } from "../config";
 import { FaEye } from "react-icons/fa";
 
 const NewsSection = ({ categoryFilter }) => {
@@ -117,7 +117,7 @@ const NewsSection = ({ categoryFilter }) => {
             >
               <div className="news-img-container">
                 <img
-                  src={`${API_UPLOAD}/${news.image}`}
+                  src={`${API_UPLOADS}/${news.image}`}
                   alt={news.title}
                   className="news-img-clean"
                 />

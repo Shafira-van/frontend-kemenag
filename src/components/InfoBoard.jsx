@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FileText } from "lucide-react";
 import "../styles/InfoBoard.css";
+import { API_URL, API_UPLOADS} from "../config";
 
 function InfoBoard({limit = 5}) {
   const [infoItems, setInfoItems] = useState([]);
@@ -9,7 +10,7 @@ function InfoBoard({limit = 5}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/informasi");
+        const res = await fetch(`${API_URL}/informasi`);
         const data = await res.json();
 
         // 🔹 Urutkan berdasarkan tanggal terbaru, ambil 5 teratas
@@ -57,7 +58,7 @@ function InfoBoard({limit = 5}) {
           {infoItems.map((item, i) => (
             <li key={i} className="papan-item">
               <a
-                href={`http://localhost:3000/${item.file_path}`}
+                href={`${API_UPLOADS}/${item.file_path}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="info-link"

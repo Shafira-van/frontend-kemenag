@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/NewsPage.css";
-import { API_URL, API_UPLOAD } from "../config";
+import { API_URL, API_UPLOADS } from "../config";
 import { useNavigate } from "react-router-dom";
 
 const NewsPage = ({ categoryFilter }) => {
@@ -55,7 +55,7 @@ const NewsPage = ({ categoryFilter }) => {
         style={{ cursor: "pointer" }} // agar terasa bisa diklik
       >
         <img
-          src={`${API_UPLOAD}/${mainNews.image}`}
+          src={`${API_UPLOADS}/${mainNews.image}`}
           alt={mainNews.title}
           className="main-news-image"
         />
