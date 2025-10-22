@@ -28,11 +28,11 @@ function Home() {
         <div className="hero-content row align-items-center">
           <div className="col-lg-7 hero-text">
             <h1 className="animate-slide">
-              Kementerian Agama Kota Pematangsiantar
+              Wujudkan Umat yang Taat dan Berakhlak Mulia
             </h1>
             <p className="animate-fade">
-              Wujudkan umat yang taat, berakhlak mulia, dan pelayanan yang
-              cepat, transparan, serta terpercaya.
+              Pelayanan yang cepat, transparan, serta terpercaya di lingkungan Kementerian
+              Agama Kota Pematangsiantar.
             </p>
             <Link to="/sejarah">
               <button className="btn btn-success btn-lg animate-fade">
