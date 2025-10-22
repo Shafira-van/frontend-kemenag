@@ -2,33 +2,50 @@
    HERO SECTION
 =========================== */
 .hero {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #edf7f0 0%, #ffffff 100%);
+  /* Efek transisi gambar background */
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 16px;
-  margin: 4rem 1rem 1rem 1rem!important;
+  margin: 4rem 1rem 1rem 1rem !important;
   padding: 3rem 1rem;
+  padding-bottom: 0;
   max-width: 98vw;
+  min-height: 480px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: background-image 1s ease-in-out, transform 0.3s ease;
+  overflow: hidden;
 }
 
-.hero:hover {
-  transform: scale(1.002);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+.hero::before {
+  /* Overlay gradient lembut agar teks tetap terbaca */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(237, 247, 240, 0.8) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  z-index: 0;
 }
 
 /* Hero Text Centered */
 .hero-text {
+  position: relative;
+  z-index: 1;
   flex: 1;
   text-align: center;
   animation: fadeInUp 1.2s ease-in-out;
 }
 
 .hero-text h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #16693b;
   margin-bottom: 0.8rem;
@@ -36,8 +53,8 @@
 }
 
 .hero-text p {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.6rem;
+  color: #333;
   margin-bottom: 1.2rem;
 }
 
@@ -46,8 +63,8 @@
   margin-top: 1rem;
   color: #fff;
   border: none;
-  padding: 0.5rem 1.4rem;
-  font-size: 0.9rem;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.2rem;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
 }
@@ -57,55 +74,17 @@
   transform: translateY(-2px);
 }
 
-/* ===========================
-   AGAMA SLIDER (rumah ibadah)
-=========================== */
-.agama {
-  margin-top: 1.2rem;
-  text-align: center;
+/* Hilangkan gambar di kanan */
+.hero .col-md-6:last-child {
+  display: none;
 }
 
-/* Ukuran gambar konsisten agar tinggi tidak berubah */
-.agama-img {
-  width: auto;
-  height: 200px;
-  /* tinggi tetap */
-  object-fit: contain;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.fade-out {
-  opacity: 0;
-  transform: scale(0.96);
-}
-
-/* ===========================
-   HERO IMAGE (kanan)
-=========================== */
-.hero .col-md-6 {
-  text-align: center;
-}
-
-.hero .img-fluid {
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  animation: float 5s ease-in-out infinite;
-}
-
-/* ===========================
-   RESPONSIVE DESIGN
-=========================== */
+/* RESPONSIVE */
 @media (max-width: 992px) {
   .hero {
     flex-direction: column-reverse;
     text-align: center;
-    padding: 1.2rem;
+    padding: 2rem 1rem;
   }
 
   .hero-text h1 {
@@ -115,19 +94,12 @@
   .hero-text p {
     font-size: 0.9rem;
   }
-
-  .agama-img {
-    height: 130px;
-    /* tetap konsisten tapi lebih kecil */
-  }
-
-  .hero .img-fluid {
-    max-width: 280px;
-  }
 }
 
 @media (max-width: 480px) {
   .hero {
+    max-width: 98vw;
+      min-height: 40px;
     margin: 1.5rem 0;
     border-radius: 0;
   }
@@ -143,38 +115,5 @@
   .hero .btn {
     font-size: 0.8rem;
     padding: 0.4rem 1rem;
-  }
-
-  .agama-img {
-    height: 110px;
-  }
-}
-
-/* ===========================
-   ANIMASI
-=========================== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-
-  100% {
-    transform: translateY(0);
   }
 }
