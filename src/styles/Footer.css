@@ -11,6 +11,11 @@
   padding-bottom: 10px;
 }
 
+.footer-top td{
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 /* Judul setiap kolom */
 .footer h5 {
   font-size: 1.2rem;
@@ -105,12 +110,14 @@
     font-size: 1rem;
   }
 
+    .footer-top td {
+      font-size: 0.9rem;
+    }
+
   .footer p,
   .footer-contact li {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
-
-
 
   .footer-contact ul {
     text-align: start;
@@ -140,7 +147,7 @@
   }
 
   .footer-bottom p {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     margin-bottom: 2px;
   }
 }
@@ -155,8 +162,12 @@
     font-size: 1.15rem;
   }
 
+    .footer-top td {
+      font-size: 0.95rem;
+    }
+
   .footer p,
-  .footer-contact li {
+  .footer-contact li{
     font-size: 0.95rem;
   }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Contact.css";
 import SocialMedia from "../components/JadwalSholat";
 import Footer from "../components/Footer";
+import { API_URL, API_UPLOADS } from "../config";
 import NewsLatest from "../components/NewsLatest";
 
 const Contact = () => {
@@ -20,7 +21,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/api/pengaduan", {
+      const res = await fetch(`${API_URL}/pengaduan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, email, pesan }),

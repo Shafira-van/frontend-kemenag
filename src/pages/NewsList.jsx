@@ -26,31 +26,55 @@ const NewsList = () => {
 
   const itemsPerPage = 6;
 
-  // 🔄 Ambil data berita dari backend (pagination)
+  // ✅ Daftar kategori manual (karena backend pakai endpoint terpisah)
+  const categories = [
+    "Bimas Islam",
+    "Sekretariat Jenderal",
+    "Bimas Kristen",
+    "Pendidikan",
+    "Penyelenggara Katolik",
+    "Penyelenggara Buddha",
+  ];
+
+  // ✅ Ambil berita dari backend (bisa berdasarkan kategori atau umum)
   useEffect(() => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const res = await fetch(
-          `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`,
-        );
+
+        // Kalau kategori dipilih, ambil berdasarkan kategori
+        let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
+        if (category) {
+          url = `${API_URL}/berita/category/${category.toLowerCase()}`;
+        }
+
+        const res = await fetch(url);
         if (!res.ok) throw new Error("Gagal mengambil data berita");
         const data = await res.json();
 
-        const berita = data.data || [];
+        // Backend bisa kirim array langsung atau {data: [...]}
+        const berita = Array.isArray(data) ? data : data.data || [];
+
         setNewsData(berita);
         setFilteredData(berita);
-        setTotalPages(Math.ceil(data.total / itemsPerPage));
+
+        // Hanya hitung total page kalau fetch umum
+        if (!category && data.total) {
+          setTotalPages(Math.ceil(data.total / itemsPerPage));
+        } else {
+          setTotalPages(1);
+        }
       } catch (err) {
         console.error("Error:", err);
       } finally {
         setLoading(false);
       }
     };
-    fetchNews();
-  }, [currentPage]);
 
-  // 🔍 Filter berita di sisi frontend
+    fetchNews();
+  }, [currentPage, category]);
+
+  // ✅ Filter tambahan (search, bulan, tahun)
   useEffect(() => {
     let filtered = [...newsData];
 
@@ -58,9 +82,6 @@ const NewsList = () => {
       filtered = filtered.filter((news) =>
         news.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-
-    if (category)
-      filtered = filtered.filter((news) => news.category === category);
 
     if (month)
       filtered = filtered.filter(
@@ -73,15 +94,11 @@ const NewsList = () => {
       );
 
     setFilteredData(filtered);
-  }, [searchTerm, category, month, year, newsData]);
+  }, [searchTerm, month, year, newsData]);
 
   if (loading) {
     return <p className="loading text-center">Sedang memuat berita...</p>;
   }
-
-  const categories = [
-    ...new Set(newsData.map((n) => n.category).filter(Boolean)),
-  ];
 
   return (
     <>
@@ -105,7 +122,6 @@ const NewsList = () => {
             >
               <option value="">Semua Kategori</option>
               {categories.map((cat, i) => (
-                
                 <option key={i} value={cat}>
                   {cat}
                 </option>
@@ -176,7 +192,7 @@ const NewsList = () => {
           </div>
 
           {/* 📄 Pagination */}
-          {totalPages > 1 && (
+          {totalPages > 1 && !category && (
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
