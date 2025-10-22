@@ -26,7 +26,6 @@ const NewsList = () => {
 
   const itemsPerPage = 6;
 
-  // ✅ Daftar kategori manual (karena backend pakai endpoint terpisah)
   const categories = [
     "Bimas Islam",
     "Sekretariat Jenderal",
@@ -36,13 +35,10 @@ const NewsList = () => {
     "Penyelenggara Buddha",
   ];
 
-  // ✅ Ambil berita dari backend (bisa berdasarkan kategori atau umum)
   useEffect(() => {
     const fetchNews = async () => {
       try {
         setLoading(true);
-
-        // Kalau kategori dipilih, ambil berdasarkan kategori
         let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
         if (category) {
           url = `${API_URL}/berita/category/${category.toLowerCase()}`;
@@ -52,13 +48,10 @@ const NewsList = () => {
         if (!res.ok) throw new Error("Gagal mengambil data berita");
         const data = await res.json();
 
-        // Backend bisa kirim array langsung atau {data: [...]}
         const berita = Array.isArray(data) ? data : data.data || [];
-
         setNewsData(berita);
         setFilteredData(berita);
 
-        // Hanya hitung total page kalau fetch umum
         if (!category && data.total) {
           setTotalPages(Math.ceil(data.total / itemsPerPage));
         } else {
@@ -70,43 +63,52 @@ const NewsList = () => {
         setLoading(false);
       }
     };
-
     fetchNews();
   }, [currentPage, category]);
 
-  // ✅ Filter tambahan (search, bulan, tahun)
   useEffect(() => {
     let filtered = [...newsData];
-
     if (searchTerm)
-      filtered = filtered.filter((news) =>
-        news.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      filtered = filtered.filter((n) =>
+        n.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-
     if (month)
       filtered = filtered.filter(
-        (news) => new Date(news.date).getMonth() + 1 === parseInt(month),
+        (n) => new Date(n.date).getMonth() + 1 === parseInt(month),
       );
-
     if (year)
       filtered = filtered.filter(
-        (news) => new Date(news.date).getFullYear() === parseInt(year),
+        (n) => new Date(n.date).getFullYear() === parseInt(year),
       );
-
     setFilteredData(filtered);
   }, [searchTerm, month, year, newsData]);
 
-  if (loading) {
-    return <p className="loading text-center">Sedang memuat berita...</p>;
-  }
+  // ============================
+  // 🦴 SKELETON COMPONENT DALAM FILE INI
+  // ============================
+  const NewsSkeleton = () => (
+    <div className="news-card skeleton-card">
+      <div className="skeleton skeleton-img"></div>
+      <div className="news-content">
+        <div className="skeleton skeleton-title"></div>
+        <div className="skeleton skeleton-line"></div>
+        <div className="skeleton skeleton-line short"></div>
+        <div className="skeleton skeleton-line short"></div>
+      </div>
+    </div>
+  );
 
+  // ============================
+  // 📰 HALAMAN BERITA
+  // ============================
   return (
     <>
       <div className="row news-main news-list-container">
+        {/* Kolom kiri: daftar berita */}
         <div className="col-md-8">
           <h2 className="section-title text-center">Daftar Berita</h2>
 
-          {/* 🔍 Filter dan Pencarian */}
+          {/* Filter & pencarian */}
           <div className="filter-container">
             <input
               type="text"
@@ -116,40 +118,46 @@ const NewsList = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
 
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">Semua Kategori</option>
-              {categories.map((cat, i) => (
-                <option key={i} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+            <div className="findBy">
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="">Semua Kategori</option>
+                {categories.map((cat, i) => (
+                  <option key={i} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
 
-            <select value={month} onChange={(e) => setMonth(e.target.value)}>
-              <option value="">Bulan</option>
-              {[...Array(12)].map((_, i) => (
-                <option key={i + 1} value={i + 1}>
-                  {new Date(0, i).toLocaleString("id-ID", { month: "long" })}
-                </option>
-              ))}
-            </select>
+              <select value={month} onChange={(e) => setMonth(e.target.value)}>
+                <option value="">Bulan</option>
+                {[...Array(12)].map((_, i) => (
+                  <option key={i + 1} value={i + 1}>
+                    {new Date(0, i).toLocaleString("id-ID", { month: "long" })}
+                  </option>
+                ))}
+              </select>
 
-            <select value={year} onChange={(e) => setYear(e.target.value)}>
-              <option value="">Tahun</option>
-              {[2023, 2024, 2025].map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
+              <select value={year} onChange={(e) => setYear(e.target.value)}>
+                <option value="">Tahun</option>
+                {[2023, 2024, 2025].map((y) => (
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          {/* 📰 Daftar Berita */}
+          {/* Daftar berita / skeleton */}
           <div className="news-list">
-            {filteredData.length === 0 ? (
+            {loading ? (
+              Array(6)
+                .fill()
+                .map((_, i) => <NewsSkeleton key={i} />)
+            ) : filteredData.length === 0 ? (
               <p className="text-center">Tidak ada berita ditemukan.</p>
             ) : (
               filteredData.map((news) => (
@@ -162,7 +170,6 @@ const NewsList = () => {
                   <div className="news-content">
                     <p className="news-category">{news.category}</p>
                     <h3 className="news-title">{news.title}</h3>
-
                     <div className="news-meta">
                       <p className="news-date">
                         {new Date(news.date).toLocaleDateString("id-ID", {
@@ -175,13 +182,11 @@ const NewsList = () => {
                         <i className="bi bi-eye"></i> {news.view || 0}
                       </span>
                     </div>
-
                     <p className="news-description">
                       {stripHTML(news.content).length > 150
                         ? stripHTML(news.content).substring(0, 150) + "..."
                         : stripHTML(news.content)}
                     </p>
-
                     <Link to={`/berita/${news.id}`} className="read-more">
                       Baca Selengkapnya →
                     </Link>
@@ -191,8 +196,7 @@ const NewsList = () => {
             )}
           </div>
 
-          {/* 📄 Pagination */}
-          {totalPages > 1 && !category && (
+          {!category && totalPages > 1 && (
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
@@ -209,6 +213,7 @@ const NewsList = () => {
           <NewsSection />
         </div>
 
+        {/* Kolom kanan: berita terkini & info */}
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />

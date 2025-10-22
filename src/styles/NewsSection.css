@@ -141,12 +141,16 @@
   }
 
   .d-flex a {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .fw-semibold {
-    font-size: 12px;
+    font-size: 14px;
+    text-align: justify;
+    padding: 0;
   }
+
+
 
   .btn-nav {
     font-size: 0.6rem;

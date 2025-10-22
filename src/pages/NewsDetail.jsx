@@ -44,7 +44,7 @@ const NewsDetail = () => {
         <div className="col-md-8">
           <article className="news-detail-container">
             <img
-              src={`${API_UPLOADS}/${item.image}`}
+              src={`${API_UPLOADS}/uploads/berita/${item.image}`}
               alt={item.title}
               className="news-detail-image"
             />
@@ -55,12 +55,13 @@ const NewsDetail = () => {
               {/* ✅ Kategori berita */}
               {item.category && (
                 <span className="news-category-badge">
-                  {item.category.toUpperCase()}
+                  {item.category}
                 </span>
-              )}
+              )
+              }
 
               <p className="news-detail-date">
-                🗓️{" "}
+                <i class="bi bi-calendar"></i>{" "}
                 {new Date(item.date).toLocaleDateString("id-ID", {
                   day: "numeric",
                   month: "long",

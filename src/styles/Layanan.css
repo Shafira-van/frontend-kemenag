@@ -28,7 +28,7 @@
 .layanan-scroll {
   max-height: 500px;
   overflow-y: auto;
-  border-radius: 10px;
+  border-radius: 0px;
   background: #fff;
   border: 1px solid #e0e0e0;
 }
@@ -76,6 +76,69 @@
 
 .card h4 {
   font-weight: 600;
+}
+
+/* ===========================
+   Skeleton Loading Styles
+=========================== */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* Bentuk Skeleton */
+.skeleton-list {
+  height: 40px;
+  width: 100%;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  height: 16px;
+  width: 90%;
+  margin-bottom: 8px;
+}
+
+.skeleton.w-75 {
+  width: 75%;
+}
+
+/* Transisi halus dari skeleton ke data */
+.card,
+.list-group-item {
+  transition: all 0.3s ease;
 }
 
 /* RESPONSIVE DESIGN */

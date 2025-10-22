@@ -71,6 +71,102 @@
   transform: scale(1.2);
 }
 
+/* ===========================
+   🦴 SKELETON LOADING
+=========================== */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 124, 59, 0.08);
+  border-radius: 6px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* Layout skeleton mengikuti struktur aslinya */
+.skeleton-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 124, 59, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 26px;
+  margin: 0 auto 10px;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.skeleton-line {
+  width: 90%;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.skeleton-line.short {
+  width: 70%;
+}
+
+.skeleton-social {
+  width: 50%;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.skeleton-side {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Transisi fade-in halus saat data muncul */
+.card-kua {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 992px) {

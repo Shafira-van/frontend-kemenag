@@ -21,50 +21,65 @@ const NewsSection = ({ categoryFilter }) => {
     return () => window.removeEventListener("resize", updateNewsPerPage);
   }, []);
 
-  // 🔹 Fetch berita dari backend
+  // 🧭 Pemetaan singkatan → nama panjang
+  const mapCategoryName = (filter) => {
+    if (!filter) return "";
+    const map = {
+      Sekjend: "Sekretariat Jenderal",
+      PAKIS: "Bidang Pendidikan Agama dan Keagamaan Islam",
+    };
+    return map[filter] || filter;
+  };
+
+  // 🔹 Fetch berita berdasarkan kategori (singkatan/nama)
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        // 🔹 Tentukan URL API berdasarkan props
-        const url = categoryFilter
-          ? `${API_URL}/berita/category/${encodeURIComponent(
-              categoryFilter.trim(),
-            )}?page=1&limit=12`
-          : `${API_URL}/berita/popular/list`;
+        let filter = mapCategoryName(categoryFilter?.trim());
+        if (!filter) {
+          // Jika tidak ada filter → berita populer
+          const res = await fetch(`${API_URL}/berita/popular/list`);
+          const data = await res.json();
+          const berita = Array.isArray(data) ? data : data.data || [];
+          setNewsData(berita.slice(0, 12));
+          return;
+        }
+
+        // 🔹 Coba fetch berita berdasarkan nama kategori
+        const url = `${API_URL}/berita/category/${encodeURIComponent(filter)}?page=1&limit=12`;
 
         const res = await fetch(url);
-        if (!res.ok) throw new Error("Gagal memuat berita");
-
         const result = await res.json();
 
-        // 🔹 Controller baru bisa kembalikan array langsung (popular) atau objek { data: [] }
-        const data = Array.isArray(result) ? result : result.data || [];
+        let data = Array.isArray(result) ? result : result.data || [];
 
-        if (Array.isArray(data)) {
-          // Jika bukan popular (berdasarkan category)
-          if (categoryFilter) {
-            // Urutkan berdasarkan view
-            const sortedByView = [...data].sort((a, b) => b.view - a.view);
-            setNewsData(sortedByView.slice(0, 12));
-          } else {
-            // Jika popular, langsung gunakan dari backend
-            setNewsData(data.slice(0, 12));
-          }
+        // 🔸 Jika tidak ada hasil, coba fallback ke singkatan
+        if (data.length === 0 && filter !== categoryFilter) {
+          console.log("🔄 Coba fallback ke:", categoryFilter);
+          const altUrl = `${API_URL}/berita/category/${encodeURIComponent(categoryFilter)}?page=1&limit=12`;
+          const altRes = await fetch(altUrl);
+          const altResult = await altRes.json();
+          data = Array.isArray(altResult) ? altResult : altResult.data || [];
         }
+
+        // 🔹 Urutkan berdasarkan view
+        const sorted = [...data].sort((a, b) => b.view - a.view);
+        setNewsData(sorted.slice(0, 12));
       } catch (error) {
-        console.error("Error memuat data berita:", error);
+        console.error("Error memuat berita:", error);
       }
     };
 
     fetchNews();
   }, [categoryFilter]);
 
+  // 🚫 Jika belum ada berita, jangan tampilkan apa pun
   if (!newsData || newsData.length === 0) {
-    return null; // atau tampilkan loader
+    return null;
   }
 
+  // 🔹 Pagination
   const totalPages = Math.ceil(newsData.length / newsPerPage);
-
   const changePage = (next) => {
     setFade(true);
     setTimeout(() => {
@@ -81,9 +96,6 @@ const NewsSection = ({ categoryFilter }) => {
     }, 300);
   };
 
-  const handleNext = () => changePage(true);
-  const handlePrev = () => changePage(false);
-
   const startIndex = currentPage * newsPerPage;
   const currentNews = newsData.slice(startIndex, startIndex + newsPerPage);
 
@@ -92,7 +104,7 @@ const NewsSection = ({ categoryFilter }) => {
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="section-title text-dark fw-bold mb-0">
-          {categoryFilter ? categoryFilter : "Berita Terpopuler"}
+          {mapCategoryName(categoryFilter) || "Berita Terpopuler"}
         </h2>
         <a
           href="/berita"
@@ -141,16 +153,16 @@ const NewsSection = ({ categoryFilter }) => {
         ))}
       </div>
 
-      {/* Tombol Navigasi */}
+      {/* Navigasi */}
       {totalPages > 1 && (
         <div className="d-flex justify-content-center align-items-center gap-2 mb-3">
-          <button className="btn-nav" onClick={handlePrev}>
+          <button className="btn-nav" onClick={() => changePage(false)}>
             <i className="bi bi-chevron-left"></i>
           </button>
           <div className="text-muted small">
             {currentPage + 1} / {totalPages}
           </div>
-          <button className="btn-nav" onClick={handleNext}>
+          <button className="btn-nav" onClick={() => changePage(true)}>
             <i className="bi bi-chevron-right"></i>
           </button>
         </div>

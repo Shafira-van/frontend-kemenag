@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -11,48 +11,41 @@ import InfografisCarousel from "../components/InfografisCarousel";
 import InfografisASN from "../components/Infografis";
 import { Link } from "react-router-dom";
 
-// Gambar-gambar tempat ibadah (bisa kamu ganti sendiri)
-import islam from "../assets/islam.png";
-import kristen from "../assets/kristen.png";
-import hindu from "../assets/hindu.png";
-import buddha from "../assets/buddha.png";
-import katolik from "../assets/katolik.png";
+// Gambar ketua organisasi
+import ketua from "../assets/ketua.png";
 
 function Home() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  // Array gambar tempat ibadah (pastikan file-nya ada)
-  const backgroundImages = [islam, kristen, buddha, katolik, hindu];
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
-    }, 4000); // ganti setiap 4 detik
-    return () => clearInterval(interval);
-  }, [backgroundImages.length]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
       <Navbar />
 
-      <div
-        className="hero row align-items-center"
-        style={{
-          backgroundImage: `url(${backgroundImages[currentImage]})`,
-        }}
-      >
-        <div className="hero-text">
-          <h1>Wujudkan Umat yang Taat dan Berakhlak Mulia</h1>
-          <p>
-            Pelayanan yang cepat, transparan, dan terpercaya di lingkungan Kota
-            Pematangsiantar.
-          </p>
+      {/* HERO SECTION */}
+      <section className="hero-clean container-fluid">
+        <div className="hero-content row align-items-center">
+          <div className="col-lg-7 hero-text">
+            <h1 className="animate-slide">
+              Kementerian Agama Kota Pematangsiantar
+            </h1>
+            <p className="animate-fade">
+              Wujudkan umat yang taat, berakhlak mulia, dan pelayanan yang
+              cepat, transparan, serta terpercaya.
+            </p>
+            <Link to="/sejarah">
+              <button className="btn btn-success btn-lg animate-fade">
+                Selengkapnya
+              </button>
+            </Link>
+          </div>
 
-          <Link to="/sejarah">
-            <button className="btn btn-success btn-lg">Selengkapnya</button>
-          </Link>
+          <div className="col-lg-5 hero-image animate-zoom">
+            <img src={ketua} alt="Ketua Kementerian Agama" />
+          </div>
         </div>
-      </div>
+      </section>
 
       <div className="row">
         <div className="col-md-8">
