@@ -72,18 +72,6 @@ const Layanan = () => {
                 <h4 className="fw-bold text-success mb-2">{selected.title}</h4>
                 <p className="text-muted">{selected.desc}</p>
 
-                {selected.procedure && (
-                  <>
-                    <h6 className="fw-bold text-success mt-3">Prosedur</h6>
-                    <div
-                      className="text-muted"
-                      dangerouslySetInnerHTML={{
-                        __html: selected.procedure,
-                      }}
-                    />
-                  </>
-                )}
-
                 {selected.requirements && (
                   <>
                     <h6 className="fw-bold text-success mt-3">Persyaratan</h6>
@@ -91,6 +79,17 @@ const Layanan = () => {
                       className="text-muted"
                       dangerouslySetInnerHTML={{
                         __html: selected.requirements,
+                      }}
+                    />
+                  </>
+                )}
+                {selected.procedure && (
+                  <>
+                    <h6 className="fw-bold text-success mt-3">Prosedur</h6>
+                    <div
+                      className="text-muted"
+                      dangerouslySetInnerHTML={{
+                        __html: selected.procedure,
                       }}
                     />
                   </>

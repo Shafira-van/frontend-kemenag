@@ -43,6 +43,10 @@ function Home() {
 
           <div className="col-lg-5 hero-image animate-zoom">
             <img src={ketua} alt="Ketua Kementerian Agama" />
+            <div className="hero-label text-muted">
+            <p>Dr. H. Al Ahyu, M.A.</p>
+            <p>Kepala Kantor</p></div>
+            
           </div>
         </div>
       </section>

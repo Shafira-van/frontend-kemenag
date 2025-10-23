@@ -69,6 +69,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  
+}
+
+.hero-label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background:#198754;
+  padding: 4px 6px;
+  border-radius: 10px;
+  position: absolute;
+  top: 90%;
+  width: 83%;
+  line-height: 1.4;
+}
+
+.hero-label p{
+  padding: 0;
+  margin: 0;
+  color: #fff !important;
+  font-weight: 500;
+  
 }
 
 .hero-image img {
@@ -76,6 +100,7 @@
   max-width: 420px;
   height: auto;
   border-radius: 0;
+  margin-bottom: 12px;
   /* Hapus card atau border */
   box-shadow: none;
   /* Tidak ada background bayangan */
@@ -145,6 +170,19 @@
     padding: 2rem 1rem;
   }
 
+    .hero-label {
+      width: 60%;
+    }
+  
+    .hero-label p {
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.5;
+  
+    }
+        .hero-text {
+          text-align: left;
+        }
   .hero-text h1 {
     font-size: 2rem;
   }
@@ -163,6 +201,21 @@
   .hero-clean {
     border-radius: 0;
     min-height: 400px;
+  }
+
+    .hero-label {
+      width: 60%;
+    }
+  
+    .hero-label p {
+      font-weight: 500;
+      font-size: 0.9rem;
+      line-height: 1.2;
+  
+    }
+
+  .hero-text{
+    text-align: center;
   }
 
   .hero-text h1 {
