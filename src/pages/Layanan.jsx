@@ -9,17 +9,20 @@ const Layanan = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_URL}/layanan`)
-      .then((res) => res.json())
-      .then((data) => {
-        setLayananData(data);
-        if (Array.isArray(data) && data.length > 0) {
-          setSelected(data[0]);
-        }
-      })
-      .catch((err) => console.error("Gagal memuat data layanan:", err))
-      .finally(() => setLoading(false));
-  }, []);
+  fetch(`${API_URL}/layanan?limit=0`)
+    .then((res) => res.json())
+    .then((data) => {
+      const layananArray = Array.isArray(data) ? data : data.data; // 🔧 ambil array di dalam "data"
+      setLayananData(layananArray || []);
+
+      if (Array.isArray(layananArray) && layananArray.length > 0) {
+        setSelected(layananArray[0]);
+      }
+    })
+    .catch((err) => console.error("Gagal memuat data layanan:", err))
+    .finally(() => setLoading(false));
+}, []);
+
 
   return (
     <>
