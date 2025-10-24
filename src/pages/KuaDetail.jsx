@@ -86,7 +86,6 @@ const KuaDetail = () => {
         <div className="container col-md-8 mt-10">
           <div className="card-kua shadow p-4">
             <h2 className="card-title mb-4">{kua.name}</h2>
-
             {kua.img && (
               <img
                 src={`${API_UPLOADS}/${kua.img}`}
@@ -94,9 +93,8 @@ const KuaDetail = () => {
                 className="img-fluid mb-3 rounded shadow"
               />
             )}
-
+            <div dangerouslySetInnerHTML={{ __html: kua.desc }}></div>
             <p>
-              {kua.desc}
               <br />
               <strong>Alamat:</strong> {kua.address}
               <br />

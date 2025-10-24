@@ -79,7 +79,7 @@ const Layanan = () => {
                   <>
                     <h6 className="fw-bold text-success mt-3">Persyaratan</h6>
                     <div
-                      className="text-muted"
+                      className="layanan-content"
                       dangerouslySetInnerHTML={{
                         __html: selected.requirements,
                       }}
@@ -90,7 +90,7 @@ const Layanan = () => {
                   <>
                     <h6 className="fw-bold text-success mt-3">Prosedur</h6>
                     <div
-                      className="text-muted"
+                      className="layanan-content"
                       dangerouslySetInnerHTML={{
                         __html: selected.procedure,
                       }}
