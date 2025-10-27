@@ -127,8 +127,9 @@
   }
 
   .news-section .col-sm-6 {
-    height: 18rem;
+    height: 16rem;
     margin-top: 0;
+    margin-bottom: 4rem;
   }
 
   .news-body-clean small {
@@ -149,8 +150,6 @@
     text-align: justify;
     padding: 0;
   }
-
-
 
   .btn-nav {
     font-size: 0.6rem;
