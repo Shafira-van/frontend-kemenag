@@ -7,6 +7,9 @@ import Footer from "../components/Footer";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsSection from "../components/NewsSection";
 
+/* ============================================================
+   🧹 Utility Function: Hapus tag HTML dari string
+============================================================ */
 const stripHTML = (html) => {
   const div = document.createElement("div");
   div.innerHTML = html;
@@ -14,6 +17,9 @@ const stripHTML = (html) => {
 };
 
 const NewsList = () => {
+  /* ============================================================
+     🧩 State Management
+  ============================================================ */
   const [newsData, setNewsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,14 +41,20 @@ const NewsList = () => {
     "Penyelenggara Buddha",
   ];
 
+  /* ============================================================
+     📡 Fetch Data Berita dari API
+  ============================================================ */
   useEffect(() => {
     const fetchNews = async () => {
       try {
         setLoading(true);
+
         let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
         if (category) {
-          url = `${API_URL}/berita/category/${category.toLowerCase()}`;
+          url = `${API_URL}/berita/category/${category.toLowerCase()}?page=${currentPage}&limit=${itemsPerPage}`;
         }
+        if (month) url += `&month=${month}`;
+        if (year) url += `&year=${year}`;
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Gagal mengambil data berita");
@@ -63,29 +75,51 @@ const NewsList = () => {
         setLoading(false);
       }
     };
-    fetchNews();
-  }, [currentPage, category]);
 
+    fetchNews();
+  }, [currentPage, category, month, year]); // 🟢 tambahkan month dan year di sini
+
+  /* ============================================================
+     🔄 Reset Halaman saat Bulan / Tahun Berubah
+  ============================================================ */
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [month, year]);
+
+  /* ============================================================
+     ⬆️ Auto Scroll ke Atas tiap ganti halaman/filter
+  ============================================================ */
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage, category, month, year]);
+
+  /* ============================================================
+     🔍 Filter Berita berdasarkan Pencarian, Bulan, Tahun
+  ============================================================ */
   useEffect(() => {
     let filtered = [...newsData];
+
     if (searchTerm)
       filtered = filtered.filter((n) =>
         n.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
+
     if (month)
       filtered = filtered.filter(
         (n) => new Date(n.date).getMonth() + 1 === parseInt(month),
       );
+
     if (year)
       filtered = filtered.filter(
         (n) => new Date(n.date).getFullYear() === parseInt(year),
       );
+
     setFilteredData(filtered);
   }, [searchTerm, month, year, newsData]);
 
-  // ============================
-  // 🦴 SKELETON COMPONENT DALAM FILE INI
-  // ============================
+  /* ============================================================
+     💀 Skeleton Loader (Saat Data Belum Muncul)
+  ============================================================ */
   const NewsSkeleton = () => (
     <div className="news-card skeleton-card">
       <div className="skeleton skeleton-img"></div>
@@ -98,17 +132,17 @@ const NewsList = () => {
     </div>
   );
 
-  // ============================
-  // 📰 HALAMAN BERITA
-  // ============================
+  /* ============================================================
+     📰 Tampilan Utama Daftar Berita
+  ============================================================ */
   return (
     <>
       <div className="row news-main news-list-container">
-        {/* Kolom kiri: daftar berita */}
+        {/* ================= KIRI: Daftar Berita ================= */}
         <div className="col-md-8">
           <h2 className="section-title text-center">Daftar Berita</h2>
 
-          {/* Filter & pencarian */}
+          {/* 🔎 Filter & Pencarian */}
           <div className="filter-container">
             <input
               type="text"
@@ -119,9 +153,13 @@ const NewsList = () => {
             />
 
             <div className="findBy">
+              {/* Kategori */}
               <select
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setCurrentPage(1);
+                }}
               >
                 <option value="">Semua Kategori</option>
                 {categories.map((cat, i) => (
@@ -131,16 +169,32 @@ const NewsList = () => {
                 ))}
               </select>
 
-              <select value={month} onChange={(e) => setMonth(e.target.value)}>
+              {/* Bulan */}
+              <select
+                value={month}
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                  setCurrentPage(1);
+                }}
+              >
                 <option value="">Bulan</option>
                 {[...Array(12)].map((_, i) => (
                   <option key={i + 1} value={i + 1}>
-                    {new Date(0, i).toLocaleString("id-ID", { month: "long" })}
+                    {new Date(0, i).toLocaleString("id-ID", {
+                      month: "long",
+                    })}
                   </option>
                 ))}
               </select>
 
-              <select value={year} onChange={(e) => setYear(e.target.value)}>
+              {/* Tahun */}
+              <select
+                value={year}
+                onChange={(e) => {
+                  setYear(e.target.value);
+                  setCurrentPage(1);
+                }}
+              >
                 <option value="">Tahun</option>
                 {[2023, 2024, 2025].map((y) => (
                   <option key={y} value={y}>
@@ -151,7 +205,7 @@ const NewsList = () => {
             </div>
           </div>
 
-          {/* Daftar berita / skeleton */}
+          {/* 📰 Daftar Berita */}
           <div className="news-list">
             {loading ? (
               Array(6)
@@ -170,6 +224,7 @@ const NewsList = () => {
                   <div className="news-content">
                     <p className="news-category">{news.category}</p>
                     <h3 className="news-title">{news.title}</h3>
+
                     <div className="news-meta">
                       <p className="news-date">
                         {new Date(news.date).toLocaleDateString("id-ID", {
@@ -182,11 +237,13 @@ const NewsList = () => {
                         <i className="bi bi-eye"></i> {news.view || 0}
                       </span>
                     </div>
+
                     <p className="news-description">
                       {stripHTML(news.content).length > 150
                         ? stripHTML(news.content).substring(0, 150) + "..."
                         : stripHTML(news.content)}
                     </p>
+
                     <Link to={`/berita/${news.id}`} className="read-more">
                       Baca Selengkapnya →
                     </Link>
@@ -196,6 +253,7 @@ const NewsList = () => {
             )}
           </div>
 
+          {/* 📄 Pagination */}
           {!category && totalPages > 1 && (
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => (
@@ -213,7 +271,7 @@ const NewsList = () => {
           <NewsSection />
         </div>
 
-        {/* Kolom kanan: berita terkini & info */}
+        {/* ================= KANAN: Berita Terbaru & Info ================= */}
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
