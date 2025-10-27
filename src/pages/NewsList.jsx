@@ -63,11 +63,10 @@ const NewsList = () => {
       setNewsData(berita);
       setFilteredData(berita);
 
-      if (!category && data.total) {
-        setTotalPages(Math.ceil(data.total / itemsPerPage));
-      } else {
-        setTotalPages(1);
-      }
+      // ✅ Hitung total halaman dinamis (baik kategori maupun umum)
+      const totalCount = data.total || berita.length;
+      const pages = Math.ceil(totalCount / itemsPerPage);
+      setTotalPages(pages > 0 ? pages : 1);
     } catch (err) {
       console.error("Error:", err);
     } finally {
@@ -76,20 +75,20 @@ const NewsList = () => {
   };
 
   /* ============================================================
-     🚀 Refetch saat kondisi tertentu
+     🚀 Refetch otomatis dalam kondisi tertentu
   ============================================================ */
   useEffect(() => {
-    // 🟢 Fetch awal
+    // 🔹 Fetch awal
     fetchNews();
 
-    // 🟢 Jika user kembali dari halaman detail
+    // 🔹 Jika user kembali dari halaman detail berita
     const viewedId = localStorage.getItem("newsViewed");
     if (viewedId) {
       localStorage.removeItem("newsViewed");
       fetchNews(); // Refetch paksa
     }
 
-    // 🟢 Saat user klik tombol “Back” di browser
+    // 🔹 Saat user klik tombol “Back” di browser
     const handlePopState = () => {
       if (window.location.pathname === "/berita") {
         fetchNews();
@@ -97,7 +96,7 @@ const NewsList = () => {
     };
     window.addEventListener("popstate", handlePopState);
 
-    // 🟢 Saat tab browser kembali aktif
+    // 🔹 Saat tab browser kembali aktif
     const handleFocus = () => {
       if (window.location.pathname === "/berita") {
         fetchNews();
@@ -112,11 +111,11 @@ const NewsList = () => {
   }, [currentPage, category, month, year, location.pathname]);
 
   /* ============================================================
-     🔄 Reset Halaman saat Bulan / Tahun Berubah
+     🔄 Reset Halaman saat Filter Berubah
   ============================================================ */
   useEffect(() => {
     setCurrentPage(1);
-  }, [month, year]);
+  }, [category, month, year]);
 
   /* ============================================================
      ⬆️ Auto Scroll ke Atas tiap ganti halaman/filter
@@ -170,6 +169,7 @@ const NewsList = () => {
   return (
     <>
       <div className="row news-main news-list-container">
+        {/* ================= KIRI: Daftar Berita ================= */}
         <div className="col-md-8">
           <h2 className="section-title text-center">Daftar Berita</h2>
 
@@ -184,6 +184,7 @@ const NewsList = () => {
             />
 
             <div className="findBy">
+              {/* Kategori */}
               <select
                 value={category}
                 onChange={(e) => {
@@ -199,6 +200,7 @@ const NewsList = () => {
                 ))}
               </select>
 
+              {/* Bulan */}
               <select
                 value={month}
                 onChange={(e) => {
@@ -214,6 +216,7 @@ const NewsList = () => {
                 ))}
               </select>
 
+              {/* Tahun */}
               <select
                 value={year}
                 onChange={(e) => {
@@ -280,7 +283,7 @@ const NewsList = () => {
           </div>
 
           {/* 📄 Pagination */}
-          {!category && totalPages > 1 && (
+          {totalPages > 1 && (
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
@@ -297,6 +300,7 @@ const NewsList = () => {
           <NewsSection />
         </div>
 
+        {/* ================= KANAN: Berita Terbaru & Info ================= */}
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
