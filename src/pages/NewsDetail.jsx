@@ -5,9 +5,8 @@ import { API_URL, API_UPLOADS } from "../config";
 import Footer from "../components/Footer";
 import NewsSection from "../components/NewsSection";
 import NewsLatest from "../components/NewsLatest";
-import NewsPage from "../components/NewsPage";
 import InfoBoard from "../components/InfoBoard";
-
+import { FaEye } from "react-icons/fa";
 
 const NewsDetail = () => {
   const { id } = useParams();
@@ -17,16 +16,23 @@ const NewsDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${API_URL}/berita/${id}`);
+        // 🔹 Ambil detail berita (backend otomatis naikkan view)
+        const res = await fetch(`${API_URL}/berita/${id}`, {
+          cache: "no-store",
+        });
         if (!res.ok) throw new Error("Gagal mengambil data");
         const data = await res.json();
         setItem(data);
+
+        // 🔹 Tandai berita sudah dilihat (untuk trigger refresh di NewsList)
+        localStorage.setItem("newsViewed", id);
       } catch (error) {
         console.error("Error:", error);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, [id]);
 
@@ -40,7 +46,7 @@ const NewsDetail = () => {
 
   return (
     <>
-      <div className="row news-detail-card ">
+      <div className="row news-detail-card">
         <div className="col-md-8">
           <article className="news-detail-container">
             <img
@@ -54,19 +60,25 @@ const NewsDetail = () => {
 
               {/* ✅ Kategori berita */}
               {item.category && (
-                <span className="news-category-badge">
-                  {item.category}
-                </span>
-              )
-              }
+                <span className="news-category-badge">{item.category}</span>
+              )}
 
-              <p className="news-detail-date">
-                <i class="bi bi-calendar"></i>{" "}
-                {new Date(item.date).toLocaleDateString("id-ID", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
+              <p className="news-detail-date d-flex align-items-center gap-3 text-muted">
+                <span className="d-flex align-items-center gap-1">
+                  <i className="bi bi-calendar"></i>
+                  {new Date(item.date).toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </span>
+
+                <span className="separator">•</span>
+
+                <span className="d-flex align-items-center gap-1">
+                  <FaEye />
+                  {item.view || 0}
+                </span>
               </p>
 
               <div
@@ -83,11 +95,13 @@ const NewsDetail = () => {
           </article>
           <NewsSection />
         </div>
+
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
         </div>
-      </div>{" "}
+      </div>
+
       <Footer />
     </>
   );

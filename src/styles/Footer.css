@@ -98,6 +98,17 @@
 
 }
 
+.footer-table td {
+  padding: 2px 8px;
+  color: #f8f9fa;
+  background-color:#136a2b;
+}
+
+.footer-table {
+  width: 100%;
+  border: none;
+}
+
 /* ============ RESPONSIVE BREAKPOINTS ============ */
 
 /* 📱 HP (max 768px) */

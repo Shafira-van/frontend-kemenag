@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/NewsList.css";
 import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
@@ -29,6 +29,7 @@ const NewsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   const itemsPerPage = 6;
 
@@ -44,40 +45,71 @@ const NewsList = () => {
   /* ============================================================
      📡 Fetch Data Berita dari API
   ============================================================ */
+  const fetchNews = async () => {
+    try {
+      setLoading(true);
+
+      let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
+      if (category) {
+        url = `${API_URL}/berita/category/${category.toLowerCase()}?page=${currentPage}&limit=${itemsPerPage}`;
+      }
+      if (month) url += `&month=${month}`;
+      if (year) url += `&year=${year}`;
+
+      const res = await fetch(url, { cache: "no-store" });
+      const data = await res.json();
+
+      const berita = Array.isArray(data) ? data : data.data || [];
+      setNewsData(berita);
+      setFilteredData(berita);
+
+      if (!category && data.total) {
+        setTotalPages(Math.ceil(data.total / itemsPerPage));
+      } else {
+        setTotalPages(1);
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ============================================================
+     🚀 Refetch saat kondisi tertentu
+  ============================================================ */
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        setLoading(true);
+    // 🟢 Fetch awal
+    fetchNews();
 
-        let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
-        if (category) {
-          url = `${API_URL}/berita/category/${category.toLowerCase()}?page=${currentPage}&limit=${itemsPerPage}`;
-        }
-        if (month) url += `&month=${month}`;
-        if (year) url += `&year=${year}`;
+    // 🟢 Jika user kembali dari halaman detail
+    const viewedId = localStorage.getItem("newsViewed");
+    if (viewedId) {
+      localStorage.removeItem("newsViewed");
+      fetchNews(); // Refetch paksa
+    }
 
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Gagal mengambil data berita");
-        const data = await res.json();
-
-        const berita = Array.isArray(data) ? data : data.data || [];
-        setNewsData(berita);
-        setFilteredData(berita);
-
-        if (!category && data.total) {
-          setTotalPages(Math.ceil(data.total / itemsPerPage));
-        } else {
-          setTotalPages(1);
-        }
-      } catch (err) {
-        console.error("Error:", err);
-      } finally {
-        setLoading(false);
+    // 🟢 Saat user klik tombol “Back” di browser
+    const handlePopState = () => {
+      if (window.location.pathname === "/berita") {
+        fetchNews();
       }
     };
+    window.addEventListener("popstate", handlePopState);
 
-    fetchNews();
-  }, [currentPage, category, month, year]); // 🟢 tambahkan month dan year di sini
+    // 🟢 Saat tab browser kembali aktif
+    const handleFocus = () => {
+      if (window.location.pathname === "/berita") {
+        fetchNews();
+      }
+    };
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [currentPage, category, month, year, location.pathname]);
 
   /* ============================================================
      🔄 Reset Halaman saat Bulan / Tahun Berubah
@@ -118,7 +150,7 @@ const NewsList = () => {
   }, [searchTerm, month, year, newsData]);
 
   /* ============================================================
-     💀 Skeleton Loader (Saat Data Belum Muncul)
+     💀 Skeleton Loader
   ============================================================ */
   const NewsSkeleton = () => (
     <div className="news-card skeleton-card">
@@ -138,7 +170,6 @@ const NewsList = () => {
   return (
     <>
       <div className="row news-main news-list-container">
-        {/* ================= KIRI: Daftar Berita ================= */}
         <div className="col-md-8">
           <h2 className="section-title text-center">Daftar Berita</h2>
 
@@ -153,7 +184,6 @@ const NewsList = () => {
             />
 
             <div className="findBy">
-              {/* Kategori */}
               <select
                 value={category}
                 onChange={(e) => {
@@ -169,7 +199,6 @@ const NewsList = () => {
                 ))}
               </select>
 
-              {/* Bulan */}
               <select
                 value={month}
                 onChange={(e) => {
@@ -180,14 +209,11 @@ const NewsList = () => {
                 <option value="">Bulan</option>
                 {[...Array(12)].map((_, i) => (
                   <option key={i + 1} value={i + 1}>
-                    {new Date(0, i).toLocaleString("id-ID", {
-                      month: "long",
-                    })}
+                    {new Date(0, i).toLocaleString("id-ID", { month: "long" })}
                   </option>
                 ))}
               </select>
 
-              {/* Tahun */}
               <select
                 value={year}
                 onChange={(e) => {
@@ -271,7 +297,6 @@ const NewsList = () => {
           <NewsSection />
         </div>
 
-        {/* ================= KANAN: Berita Terbaru & Info ================= */}
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />

@@ -15,64 +15,78 @@ function Footer() {
       <div className="footer-top container">
         <div className="row align-items-start gy-4">
           {/* Kolom 1 - Info Singkat */}
-          <div className="col-md-4 mb-3 footer-info">
+          <div className="col-md-4 mb-1 footer-info">
             <h5>Jam Pelayanan</h5>
-            <table>
-              <tr>
-                <td>Senin</td>
-                <td>07.30 - 16.00</td>
-              </tr>
-              <tr>
-                <td>Selasa</td>
-                <td>07.30 - 16.00</td>
-              </tr>
-              <tr>
-                <td>Rabu</td>
-                <td>07.30 - 16.00</td>
-              </tr>
-              <tr>
-                <td>Kamis</td>
-                <td>07.30 - 16.00</td>
-              </tr>
-              <tr>
-                <td>Jumat</td>
-                <td>07.30 - 16.30</td>
-              </tr>
+            <table className="table table-borderless footer-table">
+              <tbody>
+                <tr>
+                  <td>Senin</td>
+                  <td>07.30 - 16.00</td>
+                </tr>
+                <tr>
+                  <td>Selasa</td>
+                  <td>07.30 - 16.00</td>
+                </tr>
+                <tr>
+                  <td>Rabu</td>
+                  <td>07.30 - 16.00</td>
+                </tr>
+                <tr>
+                  <td>Kamis</td>
+                  <td>07.30 - 16.00</td>
+                </tr>
+                <tr>
+                  <td>Jumat</td>
+                  <td>07.30 - 16.30</td>
+                </tr>
+              </tbody>
             </table>
           </div>
 
           {/* Kolom 2 - Kontak */}
-          <div className="col-md-4 footer-contact">
+          <div className="col-md-4 mb-4 footer-contact">
             <h5>Kontak Kami</h5>
-            <ul>
+            <ul className="list-unstyled footer-contact-list">
               <li>
-                <FaPhone /> +62 851-2303-2236
+                <FaPhone /> <span>+62 851-2303-2236</span>
               </li>
               <li>
-                <FaEnvelope /> kotapematangsiantar@kemenag.go.id
+                <FaEnvelope /> <span>kotapematangsiantar@kemenag.go.id</span>
               </li>
               <li>
-                <FaMapMarkerAlt /> Jl. Rajamin Purba No.119, Bukit Sofa, Kec.
-                Siantar Sitalasari
+                <FaMapMarkerAlt />{" "}
+                <span>
+                  Jl. Rajamin Purba No.119, Bukit Sofa, Kec. Siantar Sitalasari
+                </span>
               </li>
-              <div className="social-icons">
-                <a
-                  href="https://m.facebook.com/kemenagsiantar/"
-                  aria-label="Facebook"
-                >
-                  <FaFacebook />
-                </a>
-                <a
-                  href="https://www.instagram.com/kemenag_pematangsiantar/"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </a>
-                <a href="https://wa.me/+6285123032236" aria-label="WhatsApp">
-                  <FaWhatsapp />
-                </a>
-              </div>
             </ul>
+
+            <div className="social-icons">
+              <a
+                href="https://m.facebook.com/kemenagsiantar/"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://www.instagram.com/kemenag_pematangsiantar/"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://wa.me/+6285123032236"
+                aria-label="WhatsApp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp />
+              </a>
+            </div>
           </div>
 
           {/* Kolom 3 - Peta Lokasi */}
