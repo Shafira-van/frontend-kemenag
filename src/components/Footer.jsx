@@ -79,7 +79,7 @@ function Footer() {
                 <FaInstagram />
               </a>
               <a
-                href="https://wa.me/+6285123032236"
+                href="https://wa.me/+62851230322"
                 aria-label="WhatsApp"
                 target="_blank"
                 rel="noopener noreferrer"
