@@ -106,6 +106,40 @@ function Navbar() {
               </a>
             </li>
 
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/profil"
+                id="profilDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                PPID
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="profilDropdown">
+                <li>
+                  <a className="dropdown-item" href="/">
+                    Profil PPID
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/">
+                    Struktur Organisasi PPID
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/">
+                    Tugas dan Fungsi PPID
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/">
+                    Visi, Misi, dan Motto PPID
+                  </a>
+                </li>
+              </ul>
+            </li>
             {/* Satuan Kerja (Dari API) */}
             <li className="nav-item dropdown">
               <a

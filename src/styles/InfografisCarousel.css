@@ -1,6 +1,5 @@
 .infografis-highlight-section {
   width: 100%;
-  max-width: 1100px;
   padding: 40px 20px;
   margin: 0 auto;
   background: transparent;
@@ -17,8 +16,6 @@
   font-weight: 700;
   color: #103b27;
   margin-bottom: 20px;
-  /* padding-left: 10px; */
-
 }
 
 /* Slide container */
@@ -39,12 +36,12 @@
   border-radius: 20px;
   overflow: hidden;
   background: #fff;
-  width: 1rem;
-  height: 22rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: all 0.6s ease;
   transform: perspective(800px) rotateY(0deg) scale(0.9);
   opacity: 0.6;
+  height: 24rem !important;
+  width: 18rem !important;
 }
 
 /* Gambar */

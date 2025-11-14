@@ -5,13 +5,13 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  height: 340px;
+  height: 24rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .news-page {
   display: flex;
-  width: 56vw;
+  width: 46rem;
   align-items: center;
 }
 
@@ -87,7 +87,7 @@
 
 @media (max-width: 767px) {
   .news-page {
-    width: 86vw;
+    width: 25rem;
   }
 
   .main-news {
