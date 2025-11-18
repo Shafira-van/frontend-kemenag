@@ -41,7 +41,7 @@ const NewsSection = ({ categoryFilter }) => {
           const res = await fetch(`${API_URL}/berita/popular/list`);
           const data = await res.json();
           const berita = Array.isArray(data) ? data : data.data || [];
-          setNewsData(berita.slice(0, 12));
+          setNewsData(berita);
           return;
         }
 
@@ -64,7 +64,7 @@ const NewsSection = ({ categoryFilter }) => {
 
         // 🔹 Urutkan berdasarkan view
         const sorted = [...data].sort((a, b) => b.view - a.view);
-        setNewsData(sorted.slice(0, 12));
+        setNewsData(sorted);
       } catch (error) {
         console.error("Error memuat berita:", error);
       }

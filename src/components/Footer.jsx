@@ -48,7 +48,7 @@ function Footer() {
             <h5>Kontak Kami</h5>
             <ul className="list-unstyled footer-contact-list">
               <li>
-                <FaPhone /> <span>+62 851-2303-2236</span>
+                <FaPhone /> <span></span>
               </li>
               <li>
                 <FaEnvelope /> <span>kotapematangsiantar@kemenag.go.id</span>
