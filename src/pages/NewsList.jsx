@@ -8,7 +8,7 @@ import { API_URL, API_UPLOADS } from "../config";
 import NewsSection from "../components/NewsSection";
 
 /* ============================================================
-   🧹 Utility Function: Hapus tag HTML dari string
+   🧹 Utility: Hapus tag HTML
 ============================================================ */
 const stripHTML = (html) => {
   const div = document.createElement("div");
@@ -17,42 +17,46 @@ const stripHTML = (html) => {
 };
 
 const NewsList = () => {
-  /* ============================================================
-     🧩 State Management
-  ============================================================ */
   const [newsData, setNewsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [satkerList, setSatkerList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [category, setCategory] = useState("");
+  const [selectedSatker, setSelectedSatker] = useState(""); // id_satker yang dipilih
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalData, setTotalData] = useState(0);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   const itemsPerPage = 6;
-
-  const categories = [
-    "Bimas Islam",
-    "Sekretariat Jenderal",
-    "Bimas Kristen",
-    "Pendidikan",
-    "Penyelenggara Katolik",
-    "Penyelenggara Buddha",
-  ];
+  const totalPages = Math.ceil(totalData / itemsPerPage) || 1;
 
   /* ============================================================
-     📡 Fetch Data Berita dari API
+     📡 Fetch semua satker + KUA untuk dropdown kategori
   ============================================================ */
-  const fetchNews = async () => {
+  useEffect(() => {
+    const fetchSatker = async () => {
+      try {
+        const res = await fetch(`${API_URL}/satuankerja/satker/all`);
+        const data = await res.json();
+        setSatkerList(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error fetching satker:", err);
+      }
+    };
+    fetchSatker();
+  }, []);
+
+  /* ============================================================
+     📡 Fetch berita dari API
+  ============================================================ */
+  const fetchNews = async (page = currentPage) => {
     try {
       setLoading(true);
 
-      let url = `${API_URL}/berita?page=${currentPage}&limit=${itemsPerPage}`;
-      if (category) {
-        url = `${API_URL}/berita/category/${category.toLowerCase()}?page=${currentPage}&limit=${itemsPerPage}`;
-      }
+      let url = `${API_URL}/berita?page=${page}&limit=${itemsPerPage}`;
+      if (selectedSatker) url += `&id_satker=${selectedSatker}`;
       if (month) url += `&month=${month}`;
       if (year) url += `&year=${year}`;
 
@@ -62,11 +66,7 @@ const NewsList = () => {
       const berita = Array.isArray(data) ? data : data.data || [];
       setNewsData(berita);
       setFilteredData(berita);
-
-      // ✅ Hitung total halaman dinamis (baik kategori maupun umum)
-      const totalCount = data.total || berita.length;
-      const pages = Math.ceil(totalCount / itemsPerPage);
-      setTotalPages(pages > 0 ? pages : 1);
+      setTotalData(data.total || berita.length);
     } catch (err) {
       console.error("Error:", err);
     } finally {
@@ -75,78 +75,78 @@ const NewsList = () => {
   };
 
   /* ============================================================
-     🚀 Refetch otomatis dalam kondisi tertentu
+     🚀 Fetch saat page / filter berubah
   ============================================================ */
   useEffect(() => {
-    // 🔹 Fetch awal
-    fetchNews();
+    fetchNews(currentPage);
 
-    // 🔹 Jika user kembali dari halaman detail berita
     const viewedId = localStorage.getItem("newsViewed");
     if (viewedId) {
       localStorage.removeItem("newsViewed");
-      fetchNews(); // Refetch paksa
+      fetchNews(currentPage);
     }
 
-    // 🔹 Saat user klik tombol “Back” di browser
     const handlePopState = () => {
-      if (window.location.pathname === "/berita") {
-        fetchNews();
-      }
+      if (window.location.pathname === "/berita") fetchNews(currentPage);
     };
-    window.addEventListener("popstate", handlePopState);
-
-    // 🔹 Saat tab browser kembali aktif
     const handleFocus = () => {
-      if (window.location.pathname === "/berita") {
-        fetchNews();
-      }
+      if (window.location.pathname === "/berita") fetchNews(currentPage);
     };
-    window.addEventListener("focus", handleFocus);
 
+    window.addEventListener("popstate", handlePopState);
+    window.addEventListener("focus", handleFocus);
     return () => {
-      window.removeEventListener("focus", handleFocus);
       window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("focus", handleFocus);
     };
-  }, [currentPage, category, month, year, location.pathname]);
+  }, [currentPage, selectedSatker, month, year, location.pathname]);
 
   /* ============================================================
-     🔄 Reset Halaman saat Filter Berubah
+     🔄 Reset halaman saat filter berubah
   ============================================================ */
   useEffect(() => {
     setCurrentPage(1);
-  }, [category, month, year]);
+  }, [selectedSatker, month, year]);
 
   /* ============================================================
-     ⬆️ Auto Scroll ke Atas tiap ganti halaman/filter
+     ⬆️ Auto scroll ke atas tiap ganti halaman/filter
   ============================================================ */
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage, category, month, year]);
+  }, [currentPage, selectedSatker, month, year]);
 
   /* ============================================================
-     🔍 Filter Berita berdasarkan Pencarian, Bulan, Tahun
+     🔍 Filter lokal berdasarkan search term saja
+     (month & year sudah di-handle di API)
   ============================================================ */
   useEffect(() => {
-    let filtered = [...newsData];
+    if (!searchTerm.trim()) {
+      setFilteredData(newsData);
+      return;
+    }
+    const keyword = searchTerm.toLowerCase();
+    setFilteredData(
+      newsData.filter((n) => n.title.toLowerCase().includes(keyword)),
+    );
+  }, [searchTerm, newsData]);
 
-    if (searchTerm)
-      filtered = filtered.filter((n) =>
-        n.title.toLowerCase().includes(searchTerm.toLowerCase()),
-      );
-
-    if (month)
-      filtered = filtered.filter(
-        (n) => new Date(n.date).getMonth() + 1 === parseInt(month),
-      );
-
-    if (year)
-      filtered = filtered.filter(
-        (n) => new Date(n.date).getFullYear() === parseInt(year),
-      );
-
-    setFilteredData(filtered);
-  }, [searchTerm, month, year, newsData]);
+  /* ============================================================
+     📄 Generate nomor halaman dengan ellipsis
+  ============================================================ */
+  const getPageNumbers = () => {
+    return Array.from({ length: totalPages }, (_, i) => i + 1)
+      .filter(
+        (page) =>
+          page === 1 ||
+          page === totalPages ||
+          (page >= currentPage - 1 && page <= currentPage + 1),
+      )
+      .reduce((acc, page, idx, arr) => {
+        if (idx > 0 && page - arr[idx - 1] > 1) acc.push("...");
+        acc.push(page);
+        return acc;
+      }, []);
+  };
 
   /* ============================================================
      💀 Skeleton Loader
@@ -164,7 +164,7 @@ const NewsList = () => {
   );
 
   /* ============================================================
-     📰 Tampilan Utama Daftar Berita
+     🧩 Render
   ============================================================ */
   return (
     <>
@@ -184,18 +184,18 @@ const NewsList = () => {
             />
 
             <div className="findBy">
-              {/* Kategori */}
+              {/* Kategori / Satuan Kerja */}
               <select
-                value={category}
+                value={selectedSatker}
                 onChange={(e) => {
-                  setCategory(e.target.value);
+                  setSelectedSatker(e.target.value);
                   setCurrentPage(1);
                 }}
               >
                 <option value="">Semua Kategori</option>
-                {categories.map((cat, i) => (
-                  <option key={i} value={cat}>
-                    {cat}
+                {satkerList.map((s) => (
+                  <option key={s.id_satker} value={s.id_satker}>
+                    {s.name}
                   </option>
                 ))}
               </select>
@@ -225,7 +225,7 @@ const NewsList = () => {
                 }}
               >
                 <option value="">Tahun</option>
-                {[2023, 2024, 2025].map((y) => (
+                {[2023, 2024, 2025, 2026].map((y) => (
                   <option key={y} value={y}>
                     {y}
                   </option>
@@ -285,16 +285,52 @@ const NewsList = () => {
           {/* 📄 Pagination */}
           {totalPages > 1 && (
             <div className="pagination">
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i}
-                  className={currentPage === i + 1 ? "active" : ""}
-                  onClick={() => setCurrentPage(i + 1)}
-                >
-                  {i + 1}
-                </button>
-              ))}
+              {/* Prev */}
+              <button
+                className="page-btn"
+                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                &laquo;
+              </button>
+
+              {/* Nomor halaman dengan ellipsis */}
+              {getPageNumbers().map((item, idx) =>
+                item === "..." ? (
+                  <span key={`ellipsis-${idx}`} className="page-ellipsis">
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    className={`page-btn ${currentPage === item ? "active" : ""}`}
+                    onClick={() => setCurrentPage(item)}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
+
+              {/* Next */}
+              <button
+                className="page-btn"
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(p + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+              >
+                &raquo;
+              </button>
             </div>
+          )}
+
+          {/* Info total */}
+          {!loading && totalData > 0 && (
+            <p className="pagination-info text-center">
+              Menampilkan {(currentPage - 1) * itemsPerPage + 1}–
+              {Math.min(currentPage * itemsPerPage, totalData)} dari {totalData}{" "}
+              berita
+            </p>
           )}
 
           <NewsSection />
