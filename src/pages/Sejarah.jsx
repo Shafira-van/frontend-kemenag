@@ -1,42 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Sejarah.css";
 import Footer from "../components/Footer";
-import sejarahImg from "../assets/sejarah.png"; // ganti dengan gambar asli
-import { API_URL } from "../config";
-import NewsLatest from "../components/NewsLatest";
-import InfoBoard from "../components/InfoBoard";
+import sejarahImg from "../assets/sejarah.png";
 
 const Sejarah = () => {
-  const [timelineData, setTimelineData] = useState([]);
-
-  // Ambil data dari API
-  useEffect(() => {
-    fetch(`${API_URL}/profilKetua`)
-      .then((res) => res.json())
-      .then((data) => setTimelineData(data))
-      .catch((err) => console.error("Gagal ambil data:", err));
-  }, []);
-  console.log(timelineData);
-
-  // Efek animasi muncul saat scroll
-  useEffect(() => {
-    const items = document.querySelectorAll(".timeline-item");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
-
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, [timelineData]);
-
   return (
     <>
       <div className="sejarah container py-5">
@@ -135,45 +102,6 @@ const Sejarah = () => {
             lainnya, dalam rangka memperkuat pelayanan dan pembinaan kehidupan
             beragama di wilayah Kota Pematangsiantar.
           </p>
-        </div>
-        <div className="row">
-          <div className="col-md-8">
-            {/* Timeline dari API */}
-            <h2 className="section-title text-black text-center m-0">
-              Urutan Periode Pejabat Kepala Kantor
-            </h2>
-            <div className="timeline-wrapper d-flex justify-content-center">
-              <div className="timeline position-relative">
-                <div className="timeline-line"></div>
-
-                {timelineData.length > 0 ? (
-                  timelineData.map((item, index) => (
-                    <div
-                      key={item.id}
-                      className={`timeline-item mb-1 ${
-                        index % 2 === 0 ? "left" : "right"
-                      }`}
-                    >
-                      <div className="timeline-dot"></div>
-                      <div className="timeline-content shadow-sm p-2 rounded bg-white">
-                        {/* Sesuaikan field sesuai struktur API */}
-                        <h5>{item.name}</h5>
-                        <p>{item.year}</p>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center text-muted">
-                    Memuat data timeline...
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <NewsLatest limit={6} />
-            <InfoBoard />
-          </div>
         </div>
       </div>
       <Footer />

@@ -1,0 +1,525 @@
+.kepalaKantor-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+
+.kepalaKantor-title {
+  text-align: center;
+  font-weight: 700;
+  color: #14783c;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.kepalaKantor-content {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* 🌄 Gambar di sisi kiri dan teks melingkari */
+.kepalaKantor-content img {
+  float: left;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  /* max-width: 480px; */
+  margin: 0 25px 20px 0;
+  /* border-radius: 12px; */
+  border: 5px solid #14783c;
+  background-color: #ecf0f1;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 🧩 List spacing */
+.kepalaKantor-content ul {
+  margin: 0px 0px 10px 0px;
+}
+
+.timeline {
+  position: relative;
+  margin: 2rem 2rem;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: #198754;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 100%;
+  padding: 1rem 2rem;
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.timeline-item.left {
+  left: -183px;
+  text-align: right;
+  transform: translateX(-50px);
+}
+
+.timeline-item.left h5,
+p {
+  padding-right: 1vw;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+  transform: translateX(50px);
+}
+
+.timeline-item.right h5,
+p {
+  padding-left: 1vw;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-content {
+  background: #fff;
+  border: 1px solid #ddd;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  padding: 1rem 0rem;
+  border-radius: 0.5rem;
+}
+
+/* Titik bulat */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #198754;
+  border: 3px solid #fff;
+  z-index: 2;
+}
+
+.timeline-item.left::before {
+  right: -9px;
+}
+
+.timeline-item.right::before {
+  left: -9px;
+}
+
+/*Pendidikan dan Tempat dan Tanggal Lahir*/
+
+.kepalaKantor-content .kepala-name {
+  /* color: #454747; */
+  font-size: 160%;
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  /* text-align:start; */
+  margin-left: 21rem;
+  text-transform: uppercase;
+}
+
+.kepalaKantor-content .info-card {
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 100%;
+  background: transparent;
+  /* hilangkan background */
+  border: none;
+  /* hilangkan border */
+  box-shadow: none;
+  /* hilangkan shadow */
+}
+
+.kepalaKantor-content .info-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 50%;
+  background: #198754;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+}
+
+/* HAPUS HOVER */
+.kepalaKantor-content .info-card:hover {
+  transform: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.kepalaKantor .info-content h5 {
+  color: #198754;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.kepalaKantor .info-content p {
+  margin-bottom: 0;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.kepalaKantor .education-item {
+  margin-bottom: 18px;
+}
+
+.kepalaKantor .education-item:last-child {
+  margin-bottom: 0;
+}
+
+.kepalaKantor .education-item strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.kepalaKantor .education-item span {
+  font-size: 0.95rem;
+}
+
+/*Riwayat Jabatan*/
+/* =========================
+   WRAPPER
+========================= */
+
+.kepalaKantor .profil-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+/* =========================
+   RIWAYAT JABATAN
+========================= */
+
+.kepalaKantor .jabatan-box {
+  flex: 2;
+  padding: 10px;
+}
+
+/* TITLE */
+.kepalaKantor .title-box {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.kepalaKantor .title-box h2 {
+  display: inline-block;
+  background: linear-gradient(135deg, #0d6b39, #14783c);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* GRID */
+.kepalaKantor .jabatan-timeline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.kepalaKantor .jabatan-card {
+  width: 100%;
+  height: 120px;
+  border-radius: 22px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.kepalaKantor .jabatan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.kepalaKantor .jabatan-card span {
+  display: inline-block;
+  color: #14783c;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.kepalaKantor .jabatan-card h5 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   ORGANISASI
+========================= */
+
+.kepalaKantor .organisasi-box {
+  flex: 1;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+/* TITLE */
+.kepalaKantor .title-organisasi {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.kepalaKantor .title-organisasi h2 {
+  color: #0d6b39;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ITEM */
+.kepalaKantor .organisasi-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.kepalaKantor .organisasi-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* ICON */
+.kepalaKantor .organisasi-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d6b39, #14783c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 15px rgba(13, 107, 57, 0.2);
+}
+
+/* CONTENT */
+.kepalaKantor .organisasi-content span {
+  display: inline-block;
+  background: #14783c;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.kepalaKantor .organisasi-content h5 {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #222;
+  margin: 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  .kepalaKantor .profil-wrapper {
+    flex-direction: column;
+  }
+
+  .kepalaKantor .jabatan-box,
+  .kepalaKantor .organisasi-box {
+    width: 100%;
+  }
+
+  .kepalaKantor .jabatan-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .kepalaKantor .jabatan-box,
+  .kepalaKantor .organisasi-box {
+    padding: 22px;
+  }
+
+  .kepalaKantor .title-box h2,
+  .kepalaKantor .title-organisasi h2 {
+    font-size: 22px;
+    padding: 12px 30px;
+  }
+
+  .kepalaKantor .jabatan-card {
+    padding: 20px;
+  }
+
+  .kepalaKantor .jabatan-card h5,
+  .kepalaKantor .organisasi-content h5 {
+    font-size: 15px;
+  }
+
+  .kepalaKantor .jabatan-card p {
+    font-size: 14px;
+  }
+
+  .kepalaKantor .organisasi-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    font-size: 20px;
+  }
+}
+
+/* 📱 Responsif: layar kecil */
+@media (max-width: 768px) {
+
+  .kepalaKantor {
+    margin-top: 0vw;
+  }
+
+  .kepalaKantor-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kepalaKantor h2 {
+    font-size: 24px;
+    margin-top: 0px;
+  }
+
+  .kepalaKantor-content img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .kepala-jawatan li {
+    margin-left: 0%;
+  }
+
+  .timeline-content {
+    width: 60vw;
+  }
+
+  .timeline-item h5 {
+    font-size: 16px;
+  }
+
+  .timeline-item p {
+    font-size: 14px;
+  }
+
+  .kepalaKantor .col-md-8 {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .kepalaKantor {
+    margin-top: 0vw;
+  }
+
+  .kepalaKantor h2 {
+    font-size: 24px;
+    margin-top: 0px;
+  }
+
+  .kepalaKantor-content img {
+    margin: 0 25px 5px 0;
+  }
+
+  .kepala-jawatan li {
+    margin-left: 0%;
+  }
+
+  .timeline::before {
+    left: 20px;
+    /* garis pindah ke kiri */
+    transform: none;
+  }
+
+  .timeline-item.left p {
+    text-align: left
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    /* kasih jarak biar teks rapi */
+    text-align: left !important;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    transform: translateX(0);
+  }
+
+  .timeline-item.right::before {
+    left: 12px;
+  }
+
+  /* Titik sejajar dengan garis */
+  .timeline-item::before {
+    left: 12px;
+    /* pas di garis */
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1046px) {
+  .kepala-jawatan li {
+    margin-left: 44%;
+  }
+
+  .timeline-content {
+    width: 280px;
+  }
+
+  .timeline-item.left {
+    left: -173px;
+  }
+
+  .timeline-item h5 {
+    font-size: 18px;
+  }
+
+  .timeline-item p {
+    font-size: 16px;
+  }
+
+}

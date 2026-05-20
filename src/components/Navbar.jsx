@@ -72,7 +72,12 @@ function Navbar() {
               <ul className="dropdown-menu" aria-labelledby="profilDropdown">
                 <li>
                   <a className="dropdown-item" href="/sejarah">
-                    Sejarah
+                    Sejarah Kantor
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/kepala-kantor">
+                    Kepala Kantor
                   </a>
                 </li>
                 <li>
@@ -100,10 +105,37 @@ function Navbar() {
               </a>
             </li>
 
-            <li className="nav-item">
-              <a className="nav-link" href="/informasi">
-                Informasi
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/profil"
+                id="profilDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Informasi Publik
               </a>
+              <ul className="dropdown-menu" aria-labelledby="profilDropdown">
+                <li>
+                  <a className="dropdown-item" href="/informasi/Berkala">
+                    Informasi Berkala
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/informasi/Serta%20Merta">
+                    Informasi Serta Merta
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item"
+                    href="/informasi/Setiap%20Saat"
+                  >
+                    Informasi Tersedia Setiap Saat
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li className="nav-item dropdown">
@@ -119,22 +151,22 @@ function Navbar() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="profilDropdown">
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/profilppid">
                     Profil PPID
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/strukturorganisasippid">
                     Struktur Organisasi PPID
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/tugasfungsippid">
                     Tugas dan Fungsi PPID
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/visimisippid">
                     Visi, Misi, dan Motto PPID
                   </a>
                 </li>

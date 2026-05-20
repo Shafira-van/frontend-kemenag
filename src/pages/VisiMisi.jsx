@@ -13,74 +13,71 @@ const VisiMisi = () => {
           <div className="visi">
             <h3>Visi</h3>
             <p>
-              “Terwujudnya Masyarakat Kota Pematangsiantar yang taat beragama,
-              maju, sejahtera dan cerdas serta saling menghormati antar sesame
-              pemeluk agama dalam kehidupan bermasyarakat, berbangsa dan
-              bernegara dalam wadah Negara Kesatuan Republik Indonesia.”
+              Kementerian Agama Yang Profesional Dan Andal Dalam Membangun
+              Masyarakat Yang Soleh, Moderat, Cerdas Dan Unggul. Untuk
+              Mewujudkan Indonesia Maju Yang Berdaulat, Mandiri Dan
+              Berkepribadian Berdasarkan Gotong Royong
             </p>
           </div>
 
           <div className="misi">
             <h3>Misi</h3>
             <ul>
+              <li>Meningkatkan kualitas kesalehan umat beragama.</li>
+              <li>Memperkuat moderasi beragama & kerukunan umat beragama.</li>
+              <li>Meningkatkan layanan keagamaan yang adil, mudah & merata.</li>
+              <li>Meningkatkan layanan pendidikan yang merata dan bermutu.</li>
+              <li>Meningkatkan produktivitas dan daya saing pendidikan.</li>
               <li>
-                Meningkatkan kualitas bimbingan , pemahaman, pengamalan, dan
-                pelayanan kehidupan beragama.
+                Memantapkan tata kelola pemerintahan yang baik{" "}
+                <i>(good governance)</i>.
               </li>
-              <li>Meningkatkan penghayatan moral dan etika keagamaan.</li>
-              <li>Meningkatkan kualiutas Pendidikan umat beragama.</li>
-              <li>Meningkatkan kualitas penyelenggaraan haji.</li>
-              <li>Memberdayakan umat beragama dan lembaga keagamaan.</li>
-              <li>Memperkokoh kerukunan umat beragama.</li>
             </ul>
           </div>
 
           <div className="tugas-pokok">
-            <h3>Tugas Pokok</h3>
+            <h3>Tugas dan Fungsi</h3>
             <p>
               Eksistensi Kementrian Agama bertugas untuk menyelenggarakan
               sebagian tugas umum pemerintahan dan Pembangunan di bidang agama.
-              Dalam hal ini, Kantor Wilayah Kementrian Agama Provinsi Sumatera
-              Utara. Kemudian untuk menyelenggarakan tugas dimaksud, Kantor
-              Kementrian Agama Kota Pematangsiantar mempuunyai fungsi yang
-              disesuaikan dan berpijak pada KMA Nomor 373 Bab II Pasal 38.
+              Kantor Kementrian Agama Kota Pematangsiantar mempunyai fungsi yang
+              disesuaikan dan berpijak pada Peraturan Menteri Agama RI Nomor 19
+              Tahun 2019 dan Peraturan Menteri Agama RI Nomor 42 Tahun 2016.
             </p>
             <ul>
               <li>
-                Merumuskan visi, misi serta kebijakan teknis dibidang pelayanan
-                dan bimbingan kehidupan beragama di Kota Pematangsiantar;
+                Perumusan dan penetapan visi, misi, dan kebijakan teknis
+                dibidang pelayanan dan bimbingan kehidupan beragama kepada
+                masyarakat.
+              </li>
+              <li>Pelayanan, bimbingan, dan pembinaan kehidupan beragama.</li>
+              <li>
+                Pelayanan, bimbingan, dan pembinaan haji dan umrah, serta zakat
+                dan wakaf.
+              </li>
+              <li>Pelayanan, bimbingan, dan pembinaan kehidupan beragama</li>
+              <li>Pembinaan kerukunan umat beragama.</li>
+              <li>
+                Perumusan kebijakan teknis di bidang pengelolaan administrasi
+                dan informasi.
               </li>
               <li>
-                Melaksanakan kebijakan teknis dibidang penngelolaan administrasi
-                dan informasi keagamaan;
+                Pengoordinasian perencanaan, pengendalian program, pengawasan.
               </li>
               <li>
-                Pembinaan, pelayanan dan bimbingan dibidang Masyarakat Islam
-                pelayanan Haji dan Umrah, pengembangan Zakat dan Wakaf ,
-                Pendidikan agama islam pada Masyarakat dan pemberdayaan masjid,
-                urusan agama, bimbingan Masyarakat Kristen, Katolik, Hindu dan
-                Buddha;
-              </li>
-              <li>Pelayanan dan bimbingan krukunan umat beragama;</li>
-              <li>
-                Mengkoordinasikan perencanaan, pengendalian, dan pengawasan
-                program;
-              </li>
-              <li>
-                Melaksanakan hubungan dengan pemerintah daerah, instansi terkait
-                dan lembaga Masyarakat dalam rangka pelaksanaan tugas Kementrian
-                Agama Kota Pematangsiantar.
+                Pelaksanaan hubungan dengan pemerintah daerah, instansi terkait,
+                dan lembaga masyarakat dalam rangka pelaksanaan tugas
+                Kementerian Agama.
               </li>
             </ul>
           </div>
         </div>
         <div className="col-md-4">
           <NewsLatest />
-          <InfoBoard/>
+          <InfoBoard />
         </div>
       </div>
-        <Footer />
-      
+      <Footer />
     </>
   );
 };

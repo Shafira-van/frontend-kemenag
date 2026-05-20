@@ -35,88 +35,6 @@
   margin: 0px 0px 10px 0px;
 }
 
-.timeline {
-  position: relative;
-  margin: 2rem 2rem;
-  padding: 2rem 0;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #198754;
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  position: relative;
-  width: 100%;
-  padding: 1rem 2rem;
-  opacity: 0;
-  transition: all 0.8s ease-out;
-}
-
-.timeline-item.left {
-  left: -183px;
-  text-align: right;
-  transform: translateX(-50px);
-}
-
-.timeline-item.left h5,
-p {
-  padding-right: 1vw;
-}
-
-.timeline-item.right {
-  left: 50%;
-  text-align: left;
-  transform: translateX(50px);
-}
-
-.timeline-item.right h5,
-p {
-  padding-left: 1vw;
-}
-
-.timeline-item.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.timeline-content {
-  background: #fff;
-  border: 1px solid #ddd;
-  position: relative;
-  display: inline-block;
-  width: 300px;
-  padding: 1rem 0rem;
-  border-radius: 0.5rem;
-}
-
-/* Titik bulat */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #198754;
-  border: 3px solid #fff;
-  z-index: 2;
-}
-
-.timeline-item.left::before {
-  right: -9px;
-}
-
-.timeline-item.right::before {
-  left: -9px;
-}
 
 /* 📱 Responsif: layar kecil */
 @media (max-width: 768px) {
@@ -145,21 +63,6 @@ p {
     margin-left: 0%;
   }
 
-  .timeline-content {
-    width: 60vw;
-  }
-
-  .timeline-item h5 {
-    font-size: 16px;
-  }
-
-  .timeline-item p {
-    font-size: 14px;
-  }
-
-
-
-
   .sejarah .col-md-8 {
     width: 100vw;
   }
@@ -184,38 +87,7 @@ p {
     margin-left: 0%;
   }
 
-  .timeline::before {
-    left: 20px;
-    /* garis pindah ke kiri */
-    transform: none;
-  }
-
-  .timeline-item.left p {
-    text-align: left
-  }
-
-  .timeline-item {
-    width: 100%;
-    padding-left: 60px;
-    /* kasih jarak biar teks rapi */
-    text-align: left !important;
-  }
-
-  .timeline-item.left,
-  .timeline-item.right {
-    left: 0;
-    transform: translateX(0);
-  }
-
-  .timeline-item.right::before {
-    left: 12px;
-  }
-
-  /* Titik sejajar dengan garis */
-  .timeline-item::before {
-    left: 12px;
-    /* pas di garis */
-  }
+  
 }
 
 @media (min-width: 993px) and (max-width: 1046px) {
@@ -223,20 +95,5 @@ p {
     margin-left: 44%;
   }
 
-  .timeline-content {
-    width: 280px;
-  }
-
-  .timeline-item.left {
-    left: -173px;
-  }
-
-  .timeline-item h5 {
-    font-size: 18px;
-  }
-
-  .timeline-item p {
-    font-size: 16px;
-  }
-
+  
 }
