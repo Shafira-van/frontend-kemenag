@@ -9,6 +9,7 @@ import InfoBoard from "../components/InfoBoard";
 import InfografisCarousel from "../components/InfografisCarousel";
 import { API_URL } from "../config";
 import KuaSection from "../components/KuaSection";
+import SurveyBoard from "../components/SurveyBoard";
 
 function AboutSatker() {
   const { id } = useParams();
@@ -101,6 +102,7 @@ function AboutSatker() {
           <div className="news-section-container">
             <NewsLatest />
             <InfoBoard />
+            <SurveyBoard/>
           </div>
         </div>
       </div>

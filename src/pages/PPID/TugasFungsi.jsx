@@ -3,6 +3,7 @@ import "../../styles/PPID/ProfilPPID.css";
 import Footer from "../../components/Footer";
 import InfoBoard from "../../components/InfoBoard";
 import NewsLatest from "../../components/NewsLatest";
+import SurveyBoard from "../../components/SurveyBoard";
 
 const TugasFungsi = () => {
   return (
@@ -74,6 +75,7 @@ const TugasFungsi = () => {
         </div>
         <div className="col-md-4">
           <NewsLatest />
+          <SurveyBoard/>
         </div>
       </div>
     </>

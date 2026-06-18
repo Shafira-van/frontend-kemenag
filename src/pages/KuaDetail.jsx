@@ -6,6 +6,7 @@ import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
 import Footer from "../components/Footer";
 import NewsSection from "../components/NewsSection";
+import SurveyBoard from "../components/SurveyBoard";
 
 const KuaDetail = () => {
   const { id } = useParams();
@@ -148,6 +149,7 @@ const KuaDetail = () => {
         <div className="col-md-4">
           <NewsLatest />
           <InfoBoard />
+          <SurveyBoard/>
         </div>
       </div>
 

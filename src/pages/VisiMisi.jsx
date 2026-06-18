@@ -3,6 +3,7 @@ import "../styles/VisiMisi.css";
 import Footer from "../components/Footer";
 import InfoBoard from "../components/InfoBoard";
 import NewsLatest from "../components/NewsLatest";
+import SurveyBoard from "../components/SurveyBoard";
 
 const VisiMisi = () => {
   return (
@@ -75,6 +76,7 @@ const VisiMisi = () => {
         <div className="col-md-4">
           <NewsLatest />
           <InfoBoard />
+          <SurveyBoard/>
         </div>
       </div>
       <Footer />

@@ -3,6 +3,7 @@ import "../../styles/PPID/ProfilPPID.css";
 import Footer from "../../components/Footer";
 import InfoBoard from "../../components/InfoBoard";
 import NewsLatest from "../../components/NewsLatest";
+import SurveyBoard from "../../components/SurveyBoard";
 
 const ProfilPPID = () => {
   return (
@@ -53,6 +54,7 @@ const ProfilPPID = () => {
           <NewsLatest />
         </div>
       </div>
+      <SurveyBoard/>
       <Footer />
     </>
   );

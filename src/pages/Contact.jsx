@@ -4,6 +4,7 @@ import SocialMedia from "../components/JadwalSholat";
 import Footer from "../components/Footer";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsLatest from "../components/NewsLatest";
+import SurveyBoard from "../components/SurveyBoard";
 
 const Contact = () => {
   const [nama, setNama] = useState("");
@@ -94,6 +95,7 @@ const Contact = () => {
           {/* Info Kontak */}
           <div className="col-md-4">
             <NewsLatest />
+            <SurveyBoard/>
           </div>
         </div>
       </div>

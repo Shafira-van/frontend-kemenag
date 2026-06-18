@@ -6,6 +6,7 @@ import InfoBoard from "../components/InfoBoard";
 import Footer from "../components/Footer";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsSection from "../components/NewsSection";
+import SurveyBoard from "../components/SurveyBoard";
 
 /* ============================================================
    🧹 Utility: Hapus tag HTML
@@ -340,6 +341,7 @@ const NewsList = () => {
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
+          <SurveyBoard/>
         </div>
       </div>
 

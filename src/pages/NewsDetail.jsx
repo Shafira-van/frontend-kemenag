@@ -7,6 +7,7 @@ import NewsSection from "../components/NewsSection";
 import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
 import { FaEye } from "react-icons/fa";
+import SurveyBoard from "../components/SurveyBoard";
 
 const NewsDetail = () => {
   const { id } = useParams();
@@ -99,6 +100,7 @@ const NewsDetail = () => {
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
+          <SurveyBoard/>
         </div>
       </div>
 

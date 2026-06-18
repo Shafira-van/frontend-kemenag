@@ -10,6 +10,7 @@ import NewsSection from "../components/NewsSection";
 import NewsLatest from "../components/NewsLatest";
 
 import { useParams } from "react-router-dom";
+import SurveyBoard from "../components/SurveyBoard";
 
 const InformationList = () => {
   const [infoList, setInfoList] = useState([]);
@@ -150,6 +151,7 @@ const InformationList = () => {
         {/* RIGHT SIDEBAR */}
         <div className="col-md-4">
           <NewsLatest />
+          <SurveyBoard/>
         </div>
       </div>
 

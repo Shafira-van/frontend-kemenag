@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Layanan.css";
 import Footer from "../components/Footer";
 import { API_URL } from "../config";
+import SurveyBoard from "../components/SurveyBoard";
 
 const Layanan = () => {
   const [layananData, setLayananData] = useState([]);
@@ -108,6 +109,7 @@ const Layanan = () => {
           </div>
         </div>
       </section>
+      <SurveyBoard/>
 
       <Footer />
     </>

@@ -5,6 +5,7 @@ import KepalaKantorImg from "../assets/kepalakantor.png"; // ganti dengan gambar
 import { API_URL } from "../config";
 import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
+import SurveyBoard from "../components/SurveyBoard";
 
 const KepalaKantor = () => {
   const [timelineData, setTimelineData] = useState([]);
@@ -252,6 +253,7 @@ const KepalaKantor = () => {
           <div className="col-md-4">
             <NewsLatest limit={6} />
             <InfoBoard />
+            <SurveyBoard/>
           </div>
         </div>
       </div>

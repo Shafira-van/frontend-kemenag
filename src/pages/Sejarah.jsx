@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Sejarah.css";
 import Footer from "../components/Footer";
 import sejarahImg from "../assets/sejarah.png";
+import SurveyBoard from "../components/SurveyBoard";
 
 const Sejarah = () => {
   return (
@@ -104,6 +105,7 @@ const Sejarah = () => {
           </p>
         </div>
       </div>
+      <SurveyBoard />
       <Footer />
     </>
   );

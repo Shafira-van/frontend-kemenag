@@ -7,6 +7,7 @@ import imgStrukturOrganisasi from "../assets/strukturkankemenag.png";
 import imgStrukturPTSP from "../assets/strukturptsp.png";
 import imgStrukturHaji from "../assets/strukturhaji.png";
 import InfoBoard from "../components/InfoBoard";
+import SurveyBoard from "../components/SurveyBoard";
 
 const StrukturOrganisasi = () => {
   return (
@@ -49,7 +50,8 @@ const StrukturOrganisasi = () => {
             {/* === Sidebar: Berita Terbaru === */}
             <div className="col-md-4 sidebar">
               <NewsLatest limit={8}/>
-              <InfoBoard/>
+          <InfoBoard />
+          <SurveyBoard/>
             </div>
       </div>
 
