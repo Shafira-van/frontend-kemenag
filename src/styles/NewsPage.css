@@ -88,12 +88,6 @@
 @media (max-width: 767px) {
   .news-page {
     width: 22rem;
-    margin: 0px;
-  }
-
-  .col-md-8{
-    margin: 0px;
-    padding: 0px;
   }
 
   .main-news {
