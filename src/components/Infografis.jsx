@@ -27,7 +27,7 @@ export default function InfografisASN() {
     labels: ["Islam", "Kristen", "Katolik", "Buddha"],
     datasets: [
       {
-        data: [267, 81, 15, 3],
+        data: [275, 82, 16, 3],
         backgroundColor: ["#2e7d32", "#81c784"],
         borderWidth: 1,
       },
@@ -35,7 +35,7 @@ export default function InfografisASN() {
   };
 
   const golonganData = {
-    labels: [ "Gol II", "Gol III", "Gol IV"],
+    labels: ["Gol II", "Gol III", "Gol IV"],
     datasets: [
       {
         label: "Jumlah ASN",
@@ -47,11 +47,11 @@ export default function InfografisASN() {
   };
 
   const umurData = {
-    labels: ["<30", "31–40", "41–50", ">50"],
+    labels: ["21-29", "30–39", "40–49", "50-60"],
     datasets: [
       {
         label: "Jumlah ASN",
-        data: [29, 90, 123, 124],
+        data: [22, 92, 115, 146],
         backgroundColor: ["#2e7d32", "#66bb6a", "#a5d6a7", "#c8e6c9"],
         borderWidth: 1,
       },

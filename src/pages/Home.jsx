@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 // Gambar ketua organisasi
 import ketua from "../assets/ketua.png";
+import SurveyBoard from "../components/SurveyBoard";
 
 function Home() {
   useEffect(() => {
@@ -31,8 +32,8 @@ function Home() {
               Wujudkan Umat yang Taat dan Berakhlak Mulia
             </h1>
             <p className="animate-fade">
-              Pelayanan yang cepat, transparan, serta terpercaya di lingkungan Kementerian
-              Agama Kota Pematangsiantar.
+              Pelayanan yang cepat, transparan, serta terpercaya di lingkungan
+              Kementerian Agama Kota Pematangsiantar.
             </p>
             <Link to="/sejarah">
               <button className="btn btn-success btn-lg animate-fade">
@@ -44,9 +45,9 @@ function Home() {
           <div className="col-lg-5 hero-image animate-zoom">
             <img src={ketua} alt="Ketua Kementerian Agama" />
             <div className="hero-label text-muted">
-            <p>Dr. H. Al Ahyu, M.A.</p>
-            <p>Kepala Kantor</p></div>
-            
+              <p>Dr. H. Al Ahyu, M.A.</p>
+              <p>Kepala Kantor</p>
+            </div>
           </div>
         </div>
       </section>
@@ -62,6 +63,7 @@ function Home() {
         <div className="col-md-4">
           <NewsLatest limit={11} />
           <InfoBoard />
+          <SurveyBoard />
         </div>
       </div>
 

@@ -9,9 +9,10 @@
   justify-content: space-around;
 }
 
-.navbar .container{
+.navbar .container {
   margin: 0rem;
 }
+
 .logo {
   max-height: 40px;
   margin-right: 10px;
@@ -38,28 +39,113 @@
 .nav-link:hover,
 .dropdown-item:hover {
   color: #198754 !important;
-  /* hijau bootstrap */
 }
 
-/* Dropdown */
 .dropdown-menu {
   font-size: 16px;
 }
 
-/* Mobile Styling */
+#ppidDropdown+.dropdown-menu {
+  margin-left: -140px;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+  display: none;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu>a::after {
+  display: inline-block;
+  margin-left: auto;
+  float: right;
+  margin-top: 5px;
+  border-top: 0.3em solid transparent;
+  border-right: 0;
+  border-bottom: 0.3em solid transparent;
+  border-left: 0.3em solid;
+  content: "";
+}
+
+/* Pastikan dropdown PPID tidak terpotong */
+.dropdown-menu .dropdown-menu {
+  min-width: 200px;
+}
+
+.info-arrow {
+  font-size: 10px;
+  color: #1a1a1a;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+
+@media (min-width: 992px) {
+
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+  }
+
+  .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
 @media (max-width: 992px) {
+
+  .mobile-arrow {
+    display: inline-block;
+    font-size: 8px;
+  }
+
   .nav-link {
-    margin-left: 0;
+    font-size: 16px;
+    margin-left: 15px;
     padding: 8px 0;
   }
 
-    .nav-link {
-      font-size: 16px;
-      margin-left: 15px;
-    }
+  .navbar-nav {
+    margin-top: 2vw;
+  }
 
-    .navbar-nav{
-      margin-top: 2vw;
-    }
+  #ppidDropdown+.dropdown-menu {
+    margin-left: 0;
+  }
 
+  .dropdown-submenu .dropdown-menu {
+    position: static !important;
+    width: calc(100% - 15px);
+    margin-left: 15px;
+    margin-top: 5px;
+    border: none;
+    box-shadow: none;
+    transform: none !important;
+
+    display: none !important;
+  }
+
+  .dropdown-submenu .dropdown-menu.submenu-open {
+    display: block !important;
+  }
 }
