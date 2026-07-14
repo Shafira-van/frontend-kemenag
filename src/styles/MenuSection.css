@@ -8,6 +8,11 @@
   margin-top: 0 !important;
 }
 
+.menu-section .row {
+  justify-content: center;
+  margin: 0;
+}
+
 .menu-card {
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -98,7 +103,12 @@
     margin-top: 0.8rem;
     align-items: center;
   }
-
+        .menu-section .container {
+          margin-top: 0;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        
   .menu-section .row {
     justify-content: center;
     margin: 0;

@@ -219,6 +219,7 @@ p {
 .kepalaKantor .jabatan-box {
   flex: 2;
   padding: 10px;
+  padding-bottom: 30px;
 }
 
 /* TITLE */
@@ -370,40 +371,6 @@ p {
   }
 }
 
-@media (max-width: 768px) {
-
-  .kepalaKantor .jabatan-box,
-  .kepalaKantor .organisasi-box {
-    padding: 22px;
-  }
-
-  .kepalaKantor .title-box h2,
-  .kepalaKantor .title-organisasi h2 {
-    font-size: 22px;
-    padding: 12px 30px;
-  }
-
-  .kepalaKantor .jabatan-card {
-    padding: 20px;
-  }
-
-  .kepalaKantor .jabatan-card h5,
-  .kepalaKantor .organisasi-content h5 {
-    font-size: 15px;
-  }
-
-  .kepalaKantor .jabatan-card p {
-    font-size: 14px;
-  }
-
-  .kepalaKantor .organisasi-icon {
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
-    font-size: 20px;
-  }
-}
-
 /* 📱 Responsif: layar kecil */
 @media (max-width: 768px) {
 
@@ -414,12 +381,64 @@ p {
   .kepalaKantor-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .kepalaKantor-content img {
+    width: 200px !important;
+    height: auto !important;
+
   }
 
   .kepalaKantor h2 {
     font-size: 24px;
     margin-top: 0px;
   }
+
+  .kepalaKantor-content .kepala-name {
+    font-size: 160%;
+    font-weight: 800;
+    margin-bottom: 15px;
+    height: auto;
+    padding-top: 20px;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .kepalaKantor-content img {
+    margin: 0 25px 5px 0;
+  }
+
+  .kepalaKantor .info-content h5 {
+    text-align: start;
+    font-size: 16px;
+  }
+
+  .kepalaKantor .info-content span,
+  div {
+    text-align: start;
+    font-size: 14px;
+  }
+
+  .kepalaKantor .profil-wrapper {
+    margin-top: 0;
+  }
+
+  .kepalaKantor .profil-wrapper .title-box {
+
+    margin-bottom: 1rem;
+  }
+
+  .kepalaKantor .profil-wrapper .title-box h2 {
+    font-size: 16px;
+  }
+
+  .kepalaKantor .jabatan-card {
+    height: auto;
+  }
+
+
 
   .kepalaKantor-content img {
     width: 100%;
@@ -454,14 +473,6 @@ p {
     margin-top: 0vw;
   }
 
-  .kepalaKantor h2 {
-    font-size: 24px;
-    margin-top: 0px;
-  }
-
-  .kepalaKantor-content img {
-    margin: 0 25px 5px 0;
-  }
 
   .kepala-jawatan li {
     margin-left: 0%;

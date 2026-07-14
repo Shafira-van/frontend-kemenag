@@ -66,7 +66,7 @@ const KepalaKantor = () => {
               </div>
             </div>
 
-            <div class="col-md-6 mb-4">
+            <div class="col-md-6 mb-2">
               <div class="info-card">
                 <div class="info-icon">
                   <i class="bi bi-mortarboard"></i>
@@ -91,7 +91,7 @@ const KepalaKantor = () => {
           </div>
           <div class="profil-wrapper">
             {/*RIWAYAT JABATAN*/}
-            <div class="jabatan-box">
+            <div class="jabatan-box pt-0">
               <div class="title-box">
                 <h2>RIWAYAT JABATAN</h2>
               </div>
