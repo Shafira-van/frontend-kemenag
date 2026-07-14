@@ -48,7 +48,7 @@ const KepalaKantor = () => {
         {/* Sejarah Singkat */}
         <div className="kepalaKantor-content">
           <img src={KepalaKantorImg} alt="Kepala Kantor Kemenag" />
-          <h1 class="kepala-name">DR. H. AL AHYU, M. A</h1>
+          <h1 class="kepala-name">H. TARMUJI SE., M.AP.</h1>
           <div class="row mt-4">
             <div class="col-md-6 mb-4">
               <div class="info-card">
@@ -58,8 +58,9 @@ const KepalaKantor = () => {
                 <div class="info-content">
                   <h5>Tempat & Tanggal Lahir</h5>
                   <span>
-                    Teluk Pulai Luar <br />
-                    12 April 1971
+                    Tumpatan Nibung
+                    <br />
+                    21 Januari 1970
                   </span>
                 </div>
               </div>
@@ -70,18 +71,19 @@ const KepalaKantor = () => {
                 <div class="info-icon">
                   <i class="bi bi-mortarboard"></i>
                 </div>
-
                 <div class="info-content">
                   <h5>Pendidikan</h5>
-
                   <div class="education-item">
-                    <strong>S2 - IAIN Medan</strong>
-                    <span>Pengkajian Islam</span>
+                    <strong>S2 - Universitas Medan Area</strong>
+                    <span>Manajemen Administrasi Publik</span>
                   </div>
-
                   <div class="education-item">
-                    <strong>S1 - IAIN Sumut</strong>
-                    <span>Aqidah Filsafat</span>
+                    <strong>S1 - Universitas Al Hikmah</strong>
+                    <span>Manajemen</span>
+                  </div>
+                  <div class="education-item">
+                    <strong>DIII - Universitas Budi Luhur</strong>
+                    <span>Manajemen Informatika</span>
                   </div>
                 </div>
               </div>
@@ -99,65 +101,18 @@ const KepalaKantor = () => {
                   <div class="timeline-dot"></div>
 
                   <div class="jabatan-card">
-                    <span>2007 - 2009</span>
+                    <span>2019 - Sekarang</span>
 
-                    <h5>Kepala KUA Kec. Hamparan Perak Kab. Deli Serdang Prov. Sumut</h5>
-                  </div>
-                </div>
-
-                <div class="jabatan-item right">
-                  <div class="timeline-dot"></div>
-
-                  <div class="jabatan-card">
-                    <span>2018 - 2019</span>
-
-                    <h5>Kakan Kemenag Kota Medan</h5>
-                  </div>
-                </div>
-
-                <div class="jabatan-item left">
-                  <div class="timeline-dot"></div>
-
-                  <div class="jabatan-card">
-                    <span>2009</span>
-
-                    <h5>Ka Sub Bag Tata Usaha Kemenag Kota Medan</h5>
-                  </div>
-                </div>
-
-                <div class="jabatan-item right">
-                  <div class="timeline-dot"></div>
-
-                  <div class="jabatan-card">
-                    <span>2019 - 2024</span>
-
-                    <h5>Kakan Kemenag Kota Tanjung Balai</h5>
-                  </div>
-                </div>
-
-                <div class="jabatan-item left">
-                  <div class="timeline-dot"></div>
-
-                  <div class="jabatan-card">
-                    <span>2009 - 2012</span>
-
-                    <h5>Ka Sub Bag Tata Usaha Kemenag Kab. Deli Serdang</h5>
-                  </div>
-                </div>
-
-                <div class="jabatan-item right">
-                  <div class="timeline-dot"></div>
-
-                  <div class="jabatan-card">
-                    <span>2024 - Sekarang</span>
-
-                    <h5>Kakan Kemenag Kota Pematangsiantar</h5>
+                    <h5>
+                      Kepala Sub Bagian Organisasi, Tata Laksana, dan Kepegawaian Bagian Tata
+                      Usaha Kanwil Kementerian Agama Provinsi Sumatera Utara.
+                    </h5>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="organisasi-box">
+            {/* <div class="organisasi-box">
               <div class="title-organisasi">
                 <h2>ORGANISASI</h2>
               </div>
@@ -211,10 +166,8 @@ const KepalaKantor = () => {
                   <h5>Wakil Bendahara Nahdlatul Ulama (NU) PC Medan</h5>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
-          
-          
         </div>
         <div className="row">
           <div className="col-md-8">
@@ -253,7 +206,7 @@ const KepalaKantor = () => {
           <div className="col-md-4">
             <NewsLatest limit={6} />
             <InfoBoard />
-            <SurveyBoard/>
+            <SurveyBoard />
           </div>
         </div>
       </div>

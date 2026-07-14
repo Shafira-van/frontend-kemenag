@@ -12,7 +12,7 @@ import InfografisASN from "../components/Infografis";
 import { Link } from "react-router-dom";
 
 // Gambar ketua organisasi
-import ketua from "../assets/ketua.png";
+import ketua from "../assets/kepalakantor.png";
 import SurveyBoard from "../components/SurveyBoard";
 
 function Home() {
@@ -45,8 +45,8 @@ function Home() {
           <div className="col-lg-5 hero-image animate-zoom">
             <img src={ketua} alt="Ketua Kementerian Agama" />
             <div className="hero-label text-muted">
-              <p>Dr. H. Al Ahyu, M.A.</p>
-              <p>Kepala Kantor</p>
+              <p>H. Tarmuji, S.E, M.A.P.</p>
+              <p>Plt. Kepala Kantor</p>
             </div>
           </div>
         </div>
