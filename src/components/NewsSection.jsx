@@ -5,6 +5,7 @@ import { FaEye } from "react-icons/fa";
 
 const NewsSection = ({ categoryFilter }) => {
   const [newsData, setNewsData] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [newsPerPage, setNewsPerPage] = useState(4);
   const [fade, setFade] = useState(false);
@@ -16,54 +17,50 @@ const NewsSection = ({ categoryFilter }) => {
       else if (window.innerWidth < 992) setNewsPerPage(2);
       else setNewsPerPage(3);
     };
+
     updateNewsPerPage();
     window.addEventListener("resize", updateNewsPerPage);
+
     return () => window.removeEventListener("resize", updateNewsPerPage);
   }, []);
 
-  // 🧭 Pemetaan singkatan → nama panjang
-  const mapCategoryName = (filter) => {
-    if (!filter) return "";
-    const map = {
-      Sekjend: "Sekretariat Jenderal",
-      PAKIS: "Bidang Pendidikan Agama dan Keagamaan Islam",
-    };
-    return map[filter] || filter;
-  };
-
-  // 🔹 Fetch berita berdasarkan kategori (singkatan/nama)
+  // 🔹 Fetch berita
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        let filter = mapCategoryName(categoryFilter?.trim());
-        if (!filter) {
-          // Jika tidak ada filter → berita populer
+        // Tidak ada filter -> berita populer
+        if (!categoryFilter) {
           const res = await fetch(`${API_URL}/berita/popular/list`);
-          const data = await res.json();
-          const berita = Array.isArray(data) ? data : data.data || [];
-          setNewsData(berita);
+          const result = await res.json();
+
+          const data = Array.isArray(result) ? result : result.data || [];
+
+          setCategoryName("Berita Terpopuler");
+          setNewsData([...data].sort((a, b) => b.view - a.view));
           return;
         }
 
-        // 🔹 Coba fetch berita berdasarkan nama kategori
-        const url = `${API_URL}/berita/category/${encodeURIComponent(filter)}?page=1&limit=12`;
+        // Berdasarkan id_satker
+        const url = `${API_URL}/berita/satker/${encodeURIComponent(
+          categoryFilter,
+        )}?page=1&limit=12`;
+
+        console.log("Request :", url);
 
         const res = await fetch(url);
         const result = await res.json();
 
-        let data = Array.isArray(result) ? result : result.data || [];
+        const data = Array.isArray(result) ? result : result.data || [];
 
-        // 🔸 Jika tidak ada hasil, coba fallback ke singkatan
-        if (data.length === 0 && filter !== categoryFilter) {
-          console.log("🔄 Coba fallback ke:", categoryFilter);
-          const altUrl = `${API_URL}/berita/category/${encodeURIComponent(categoryFilter)}?page=1&limit=12`;
-          const altRes = await fetch(altUrl);
-          const altResult = await altRes.json();
-          data = Array.isArray(altResult) ? altResult : altResult.data || [];
+        const sorted = [...data].sort((a, b) => b.view - a.view);
+
+        // Ambil nama kategori dari backend
+        if (sorted.length > 0) {
+          setCategoryName(sorted[0].category);
+        } else {
+          setCategoryName("");
         }
 
-        // 🔹 Urutkan berdasarkan view
-        const sorted = [...data].sort((a, b) => b.view - a.view);
         setNewsData(sorted);
       } catch (error) {
         console.error("Error memuat berita:", error);
@@ -73,15 +70,17 @@ const NewsSection = ({ categoryFilter }) => {
     fetchNews();
   }, [categoryFilter]);
 
-  // 🚫 Jika belum ada berita, jangan tampilkan apa pun
+  // Tidak ada berita
   if (!newsData || newsData.length === 0) {
     return null;
   }
 
-  // 🔹 Pagination
+  // Pagination
   const totalPages = Math.ceil(newsData.length / newsPerPage);
+
   const changePage = (next) => {
     setFade(true);
+
     setTimeout(() => {
       setCurrentPage((prev) =>
         next
@@ -92,6 +91,7 @@ const NewsSection = ({ categoryFilter }) => {
             ? totalPages - 1
             : prev - 1,
       );
+
       setFade(false);
     }, 300);
   };
@@ -104,8 +104,9 @@ const NewsSection = ({ categoryFilter }) => {
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="section-title text-dark fw-bold mb-0">
-          {mapCategoryName(categoryFilter) || "Berita Terpopuler"}
+          {categoryName || "Berita Terpopuler"}
         </h2>
+
         <a
           href="/berita"
           className="text-success text-decoration-none fw-semibold"
@@ -119,7 +120,7 @@ const NewsSection = ({ categoryFilter }) => {
         className={`row g-4 fade-container ${fade ? "fade-out" : "fade-in"}`}
       >
         {currentNews.map((news) => (
-          <div className="col-sm-6 col-lg-4 col-md-6" key={news.id}>
+          <div className="col-sm-6 col-md-6 col-lg-4" key={news.id}>
             <a
               href={`/berita/${news.id}`}
               className="news-card-clean text-decoration-none text-dark"
@@ -141,11 +142,13 @@ const NewsSection = ({ categoryFilter }) => {
                       year: "numeric",
                     })}
                   </small>
+
                   <small className="text-muted d-flex align-items-center">
                     <FaEye className="me-1" />
                     {news.view || 0}
                   </small>
                 </div>
+
                 <h6 className="fw-semibold">{news.title}</h6>
               </div>
             </a>
@@ -159,9 +162,11 @@ const NewsSection = ({ categoryFilter }) => {
           <button className="btn-nav" onClick={() => changePage(false)}>
             <i className="bi bi-chevron-left"></i>
           </button>
+
           <div className="text-muted small">
             {currentPage + 1} / {totalPages}
           </div>
+
           <button className="btn-nav" onClick={() => changePage(true)}>
             <i className="bi bi-chevron-right"></i>
           </button>

@@ -94,7 +94,7 @@ function AboutSatker() {
 
           {satker.singkatan === "Bimas Islam" && <KuaSection />}
 
-          <NewsSection categoryFilter={satker.singkatan || satker.nama} />
+          <NewsSection categoryFilter={satker.id_satker} />
           <InfografisCarousel />
         </div>
 
@@ -102,7 +102,7 @@ function AboutSatker() {
           <div className="news-section-container">
             <NewsLatest />
             <InfoBoard />
-            <SurveyBoard/>
+            <SurveyBoard />
           </div>
         </div>
       </div>

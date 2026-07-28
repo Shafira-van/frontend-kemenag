@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/Contact.css";
-import SocialMedia from "../components/JadwalSholat";
 import Footer from "../components/Footer";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsLatest from "../components/NewsLatest";

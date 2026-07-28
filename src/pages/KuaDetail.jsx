@@ -1,3 +1,11 @@
+import {
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaClock,
+  FaMapMarkedAlt,
+  FaDirections,
+} from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/KuaDetail.css";
@@ -9,6 +17,7 @@ import NewsSection from "../components/NewsSection";
 import SurveyBoard from "../components/SurveyBoard";
 
 const KuaDetail = () => {
+  
   const { id } = useParams();
   const [kua, setKua] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -87,69 +96,113 @@ const KuaDetail = () => {
         <div className="container col-md-8 mt-10">
           <div className="card-kua shadow p-4">
             <h2 className="card-title mb-4">{kua.name}</h2>
-            {kua.img && (
-              <img
-                src={`${API_UPLOADS}/${kua.img}`}
-                alt={kua.name}
-                className="img-fluid mb-3 rounded shadow"
-              />
-            )}
+            <div className="kua-info-img">
+              {kua.img && (
+                <img
+                  src={`${API_UPLOADS}/${kua.img}`}
+                  alt={kua.name}
+                  className="img-fluid mb-3 rounded shadow"
+                />
+              )}
+            </div>
             <div dangerouslySetInnerHTML={{ __html: kua.desc }}></div>
-            <p>
-              <br />
-              <strong>Alamat:</strong> {kua.address}
-              <br />
-              <strong>Telepon:</strong> {kua.phone}
-            </p>
 
-            {kua.socialMedia && (
-              <div className="social-icons mt-3">
-                {kua.socialMedia.instagram && (
-                  <a
-                    href={kua.socialMedia.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="icon instagram"
-                    title="Instagram"
-                  >
-                    <i className="bi bi-instagram"></i>
-                  </a>
-                )}
-                {kua.socialMedia.facebook && (
-                  <a
-                    href={kua.socialMedia.facebook}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="icon facebook"
-                    title="Facebook"
-                  >
-                    <i className="bi bi-facebook"></i>
-                  </a>
-                )}
-                {kua.socialMedia.whatsapp && (
-                  <a
-                    href={kua.socialMedia.whatsapp}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="icon whatsapp"
-                    title="WhatsApp"
-                  >
-                    <i className="bi bi-whatsapp"></i>
-                  </a>
-                )}
+            <div className="kua-sosmed mt-4">
+              <h5>Hubungi Kami</h5>
+              <div className="kua-info-card">
+                {/* Telepon */}
+                <div className="kua-info-item">
+                  <div className="kua-info-icon">
+                    <FaPhoneAlt />
+                  </div>
+                  <div>
+                    <h6>Telepon</h6>
+                    <p>{kua.phone || "Belum tersedia"}</p>
+                  </div>
+                </div>
+
+                {/* Sosial Media */}
+                <div className="kua-info-item">
+                  <div className="kua-info-icon">
+                    <FaEnvelope />
+                  </div>
+
+                  <div>
+                    <h6>Sosial Media</h6>
+                    <div className="social-icons">
+                      {kua.socialMedia?.instagram && (
+                        <a
+                          href={kua.socialMedia.instagram}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="instagram"
+                        >
+                          <i className="bi bi-instagram"></i>
+                        </a>
+                      )}
+
+                      {kua.socialMedia?.facebook && (
+                        <a
+                          href={kua.socialMedia.facebook}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="facebook"
+                        >
+                          <i className="bi bi-facebook"></i>
+                        </a>
+                      )}
+
+                      {kua.socialMedia?.whatsapp && (
+                        <a
+                          href={kua.socialMedia.whatsapp}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="whatsapp"
+                        >
+                          <i className="bi bi-whatsapp"></i>
+                        </a>
+                      )}
+
+                      {!kua.socialMedia?.instagram &&
+                        !kua.socialMedia?.facebook &&
+                        !kua.socialMedia?.whatsapp && (
+                          <p className="mb-0 text-muted">Belum tersedia</p>
+                        )}
+                    </div>
+                  </div>
+                </div>
               </div>
-            )}
+            </div>
+            {kua?.address &&
+              kua.address.startsWith("https://www.google.com/maps/embed") && (
+                <div className="kua-map mt-4">
+                  <h5>Lokasi Kami</h5>
+
+                  <div className="map-container">
+                    <iframe
+                      title="Lokasi KUA"
+                      src={kua.address}
+                      width="100%"
+                      height="160"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                </div>
+              )}
           </div>
 
           {/* Berita terkait */}
-          <NewsSection categoryFilter="Bimas Islam" />
+          <NewsSection categoryFilter={kua.id_satker} />
         </div>
 
         {/* Sidebar kanan */}
         <div className="col-md-4">
           <NewsLatest />
           <InfoBoard />
-          <SurveyBoard/>
+          <SurveyBoard />
         </div>
       </div>
 
