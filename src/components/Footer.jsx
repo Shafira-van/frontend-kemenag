@@ -5,6 +5,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaWhatsapp,
+  FaTiktok,
 } from "react-icons/fa";
 import "../styles/Footer.css";
 
@@ -71,6 +72,14 @@ function Footer() {
                 <FaFacebook />
               </a>
               <a
+                href="https://www.tiktok.com/@kemenag.pematangsiantar"
+                aria-label="WhatsApp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok />
+              </a>
+              <a
                 href="https://www.instagram.com/kemenag_pematangsiantar/"
                 aria-label="Instagram"
                 target="_blank"
@@ -78,6 +87,7 @@ function Footer() {
               >
                 <FaInstagram />
               </a>
+
               <a
                 href="https://wa.me/+628"
                 aria-label="WhatsApp"

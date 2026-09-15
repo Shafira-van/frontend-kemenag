@@ -43,7 +43,7 @@ const NewsSection = ({ categoryFilter }) => {
         // Berdasarkan id_satker
         const url = `${API_URL}/berita/satker/${encodeURIComponent(
           categoryFilter,
-        )}?page=1&limit=12`;
+        )}?page=1&limit=0`;
 
         console.log("Request :", url);
 
@@ -52,16 +52,13 @@ const NewsSection = ({ categoryFilter }) => {
 
         const data = Array.isArray(result) ? result : result.data || [];
 
-        const sorted = [...data].sort((a, b) => b.view - a.view);
-
-        // Ambil nama kategori dari backend
-        if (sorted.length > 0) {
-          setCategoryName(sorted[0].category);
+        if (data.length > 0) {
+          setCategoryName(data[0].category);
         } else {
           setCategoryName("");
         }
 
-        setNewsData(sorted);
+        setNewsData(data);
       } catch (error) {
         console.error("Error memuat berita:", error);
       }

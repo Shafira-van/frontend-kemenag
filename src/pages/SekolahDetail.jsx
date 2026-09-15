@@ -8,18 +8,18 @@ import {
 } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/KuaDetail.css";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsLatest from "../components/NewsLatest";
 import InfoBoard from "../components/InfoBoard";
 import Footer from "../components/Footer";
 import NewsSection from "../components/NewsSection";
 import SurveyBoard from "../components/SurveyBoard";
+import "../styles/SekolahDetail.css";
 
-const KuaDetail = () => {
+export default function SekolahDetail() { 
   
   const { id } = useParams();
-  const [kua, setKua] = useState(null);
+  const [sekolah, setSekolah] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,33 +27,35 @@ const KuaDetail = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${API_URL}/kua/${id}`);
+        const res = await fetch(`${API_URL}/sekolah/${id}`);
         if (!res.ok) throw new Error("Gagal mengambil data");
         const data = await res.json();
 
-        if (data.socialMedia && typeof data.socialMedia === "string") {
+        if (data.sosMed && typeof data.sosMed === "string") {
           try {
-            data.socialMedia = JSON.parse(data.socialMedia);
+            data.sosMed = JSON.parse(data.sosMed);
           } catch {
-            data.socialMedia = null;
+            data.sosMed= null;
           }
         }
 
-        setKua(data);
+        setSekolah(data);
+        console.log(data);
       } catch (error) {
         console.error("Error:", error);
         setError(error.message);
       } finally {
         setLoading(false);
       }
+      console.log(id)
     };
 
     fetchData();
   }, [id]);
 
   // 🦴 Skeleton shimmer mengikuti struktur card
-  const KuaSkeleton = () => (
-    <div className="card-kua skeleton-card p-4">
+  const SekolahSkeleton = () => (
+    <div className="card-sekolah skeleton-card p-4">
       <div className="skeleton skeleton-title"></div>
       <div className="skeleton skeleton-img"></div>
       <div className="skeleton skeleton-line"></div>
@@ -65,10 +67,10 @@ const KuaDetail = () => {
 
   if (loading) {
     return (
-      <div className="row kua">
+      <div className="row sekolah">
         {/* Kolom utama kiri */}
         <div className="container col-md-8 mt-10">
-          <KuaSkeleton />
+          <SekolahSkeleton />
         </div>
 
         {/* Sidebar kanan */}
@@ -83,56 +85,56 @@ const KuaDetail = () => {
   if (error)
     return <div className="container mt-5 text-danger">Error: {error}</div>;
 
-  if (!kua)
+  if (!sekolah)
     return (
       <div className="container mt-5 text-center">
-        <h4>Data KUA tidak ditemukan</h4>
+        <h4>Data sekolah tidak ditemukan</h4>
       </div>
     );
 
   return (
     <>
-      <div className="row kua">
+      <div className="row sekolah">
         <div className="container col-md-8 mt-10">
-          <div className="card-kua shadow p-4">
-            <h2 className="card-title mb-4">{kua.name}</h2>
-            <div className="kua-info-img">
-              {kua.img && (
+          <div className="card-sekolah shadow p-4">
+            <h2 className="card-title mb-4">{sekolah.nama}</h2>
+            <div className="sekolah-info-img">
+              {sekolah.gambar && (
                 <img
-                  src={`${API_UPLOADS}/${kua.img}`}
-                  alt={kua.name}
+                  src={`${API_UPLOADS}/${sekolah.gambar}`}
+                  alt={sekolah.nama}
                   className="img-fluid mb-3 rounded shadow"
                 />
               )}
             </div>
-            <div dangerouslySetInnerHTML={{ __html: kua.desc }}></div>
+            <div dangerouslySetInnerHTML={{ __html: sekolah.deskripsi }}></div>
 
-            <div className="kua-sosmed mt-4">
+            <div className="sekolah-sosmed mt-4">
               <h5>Hubungi Kami</h5>
-              <div className="kua-info-card">
+              <div className="sekolah-info-card">
                 {/* Telepon */}
-                <div className="kua-info-item">
-                  <div className="kua-info-icon">
+                <div className="sekolah-info-item">
+                  <div className="sekolah-info-icon">
                     <FaPhoneAlt />
                   </div>
                   <div>
                     <h6>Telepon</h6>
-                    <p>{kua.phone || "Belum tersedia"}</p>
+                    <p>{sekolah.telepon || "Belum tersedia"}</p>
                   </div>
                 </div>
 
                 {/* Sosial Media */}
-                <div className="kua-info-item">
-                  <div className="kua-info-icon">
+                <div className="sekolah-info-item">
+                  <div className="sekolah-info-icon">
                     <FaEnvelope />
                   </div>
 
                   <div>
                     <h6>Sosial Media</h6>
                     <div className="social-icons">
-                      {kua.socialMedia?.instagram && (
+                      {sekolah.sosMed?.instagram && (
                         <a
-                          href={kua.socialMedia.instagram}
+                          href={sekolah.sosMed.instagram}
                           target="_blank"
                           rel="noreferrer"
                           className="instagram"
@@ -141,9 +143,9 @@ const KuaDetail = () => {
                         </a>
                       )}
 
-                      {kua.socialMedia?.facebook && (
+                      {sekolah.sosMed?.facebook && (
                         <a
-                          href={kua.socialMedia.facebook}
+                          href={sekolah.sosMed.facebook}
                           target="_blank"
                           rel="noreferrer"
                           className="facebook"
@@ -152,9 +154,9 @@ const KuaDetail = () => {
                         </a>
                       )}
 
-                      {kua.socialMedia?.whatsapp && (
+                      {sekolah.sosMed?.whatsapp && (
                         <a
-                          href={kua.socialMedia.whatsapp}
+                          href={sekolah.sosMed.whatsapp}
                           target="_blank"
                           rel="noreferrer"
                           className="whatsapp"
@@ -163,9 +165,9 @@ const KuaDetail = () => {
                         </a>
                       )}
 
-                      {!kua.socialMedia?.instagram &&
-                        !kua.socialMedia?.facebook &&
-                        !kua.socialMedia?.whatsapp && (
+                      {!sekolah.sosMed?.instagram &&
+                        !sekolah.sosMed?.facebook &&
+                        !sekolah.sosMed?.whatsapp && (
                           <p className="mb-0 text-muted">Belum tersedia</p>
                         )}
                     </div>
@@ -173,15 +175,15 @@ const KuaDetail = () => {
                 </div>
               </div>
             </div>
-            {kua?.map &&
-              kua.map.startsWith("https://www.google.com/maps/embed") && (
-                <div className="kua-map mt-4">
+            {sekolah?.map &&
+              sekolah.map.startsWith("https://www.google.com/maps/embed") && (
+                <div className="sekolah-map mt-4">
                   <h5>Lokasi Kami</h5>
 
                   <div className="map-container">
                     <iframe
                       title="Lokasi KUA"
-                      src={kua.map}
+                      src={sekolah.map}
                       width="100%"
                       height="160"
                       style={{ border: 0 }}
@@ -195,7 +197,7 @@ const KuaDetail = () => {
           </div>
 
           {/* Berita terkait */}
-          <NewsSection categoryFilter={kua.id_satker} />
+          <NewsSection categoryFilter={sekolah.id_satker} />
         </div>
 
         {/* Sidebar kanan */}
@@ -210,5 +212,3 @@ const KuaDetail = () => {
     </>
   );
 };
-
-export default KuaDetail;

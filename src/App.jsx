@@ -12,6 +12,7 @@ import NewsList from "./pages/NewsList";
 import NewsDetail from "./pages/NewsDetail";
 import InformationList from "./pages/InformationList";
 import KuaDetail from "./pages/KuaDetail";
+import SekolahDetail from "./pages/SekolahDetail";
 import AboutSatker from "./pages/AboutSatker";
 import PPIDProfil from "./pages/PPID/ProfilPPID";
 import PPIDTugasFungsi from "./pages/PPID/TugasFungsi";
@@ -33,6 +34,10 @@ function App() {
         <Route path="/berita" element={<NewsList />} />
         <Route path="/berita/:id" element={<NewsDetail />} />
         <Route path="/bimas-islam/kua/:id" element={<KuaDetail />} />
+        <Route
+          path="/pendidikan-madrasah/madrasah/:id"
+          element={<SekolahDetail />}
+        />
         <Route path="/informasi" element={<InformationList />} />
         <Route path="/informasi/:type" element={<InformationList />} />
         <Route path="/satuankerja/:id" element={<AboutSatker />} />

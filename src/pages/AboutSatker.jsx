@@ -10,6 +10,7 @@ import InfografisCarousel from "../components/InfografisCarousel";
 import { API_URL } from "../config";
 import KuaSection from "../components/KuaSection";
 import SurveyBoard from "../components/SurveyBoard";
+import SekolahSection from "../components/SekolahSection";
 
 function AboutSatker() {
   const { id } = useParams();
@@ -93,6 +94,7 @@ function AboutSatker() {
             satker.nama === "Sekretariat Jenderal") && <InfografisASN />}
 
           {satker.singkatan === "Bimas Islam" && <KuaSection />}
+          {satker.singkatan === "Penmad" && <SekolahSection />}
 
           <NewsSection categoryFilter={satker.id_satker} />
           <InfografisCarousel />

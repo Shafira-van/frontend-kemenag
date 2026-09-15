@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { API_URL, API_UPLOADS } from "../config";
 import NewsLatest from "../components/NewsLatest";
 import SurveyBoard from "../components/SurveyBoard";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const [nama, setNama] = useState("");
@@ -13,28 +14,100 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!nama || !email || !pesan) {
-      alert("Semua field wajib diisi");
+
+    // Validasi field
+    if (!nama.trim() || !email.trim() || !pesan.trim()) {
+      Swal.fire({
+        icon: "warning",
+        title: "Data Belum Lengkap",
+        text: "Semua field wajib diisi.",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#0b8043",
+      });
       return;
     }
 
+    // Konfirmasi sebelum kirim
+    const result = await Swal.fire({
+      title: "Kirim Pengaduan?",
+      text: "Pastikan data dan pesan yang Anda masukkan sudah benar.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Kirim",
+      cancelButtonText: "Batal",
+      reverseButtons: true,
+      confirmButtonColor: "#0b8043",
+      cancelButtonColor: "#6c757d",
+    });
+
+    if (!result.isConfirmed) return;
+
     setLoading(true);
+
+    // Popup loading
+    Swal.fire({
+      title: "Mengirim Pengaduan...",
+      text: "Mohon tunggu sebentar.",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
     try {
       const res = await fetch(`${API_URL}/pengaduan`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nama, email, pesan }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nama: nama.trim(),
+          email: email.trim(),
+          pesan: pesan.trim(),
+        }),
       });
 
-      if (!res.ok) throw new Error("Gagal mengirim pengaduan");
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || "Gagal mengirim pengaduan.");
+      }
 
-      alert("Pengaduan berhasil dikirim!");
+      // Reset form
       setNama("");
       setEmail("");
       setPesan("");
+
+      // Popup berhasil
+      await Swal.fire({
+        icon: "success",
+        title: "Berhasil!",
+        text: "Pengaduan Anda berhasil dikirim.",
+        html: `
+    <p>Terima kasih atas pengaduan yang telah disampaikan.</p>
+    <p>
+      Kami akan menindaklanjuti pengaduan dan menghubungi Anda
+      melalui email yang telah didaftarkan.
+    <strong>Mohon untuk memeriksa email secara berkala.</strong>
+    </p>
+  `,
+        confirmButtonText: "OK",
+        confirmButtonColor: "#0b8043",
+        timer: 2500,
+        timerProgressBar: true,
+      });
     } catch (err) {
-      alert(err.message);
+      console.error("Error submit pengaduan:", err);
+
+      Swal.fire({
+        icon: "error",
+        title: "Gagal Mengirim",
+        text:
+          err.message ||
+          "Terjadi kesalahan saat mengirim pengaduan. Silakan coba lagi.",
+        confirmButtonText: "Tutup",
+        confirmButtonColor: "#d33",
+      });
     } finally {
       setLoading(false);
     }
@@ -94,7 +167,7 @@ const Contact = () => {
           {/* Info Kontak */}
           <div className="col-md-4">
             <NewsLatest />
-            <SurveyBoard/>
+            <SurveyBoard />
           </div>
         </div>
       </div>

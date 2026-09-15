@@ -52,63 +52,99 @@ const NewsList = () => {
   /* ============================================================
      📡 Fetch berita dari API
   ============================================================ */
-  const fetchNews = async (page = currentPage) => {
-    try {
-      setLoading(true);
+ const fetchNews = async (page = currentPage) => {
+   try {
+     setLoading(true);
 
-      let url = `${API_URL}/berita?page=${page}&limit=${itemsPerPage}`;
-      if (selectedSatker) url += `&id_satker=${selectedSatker}`;
-      if (month) url += `&month=${month}`;
-      if (year) url += `&year=${year}`;
+     const params = new URLSearchParams();
 
-      const res = await fetch(url, { cache: "no-store" });
-      const data = await res.json();
+     params.append("page", page);
+     params.append("limit", itemsPerPage);
 
-      const berita = Array.isArray(data) ? data : data.data || [];
-      setNewsData(berita);
-      setFilteredData(berita);
-      setTotalData(data.total || berita.length);
-    } catch (err) {
-      console.error("Error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+     // 🔍 Search judul berita
+     if (searchTerm.trim()) {
+       params.append("search", searchTerm.trim());
+     }
+
+     // 🏢 Filter satuan kerja
+     if (selectedSatker) {
+       params.append("id_satker", selectedSatker);
+     }
+
+     // 📅 Filter bulan
+     if (month) {
+       params.append("month", month);
+     }
+
+     // 📅 Filter tahun
+     if (year) {
+       params.append("year", year);
+     }
+
+     const url = `${API_URL}/berita?${params.toString()}`;
+
+     console.log("Request berita:", url);
+
+     const res = await fetch(url, {
+       cache: "no-store",
+     });
+
+     const data = await res.json();
+
+     const berita = Array.isArray(data) ? data : data.data || [];
+
+     setNewsData(berita);
+
+     // Tidak perlu filter lagi di frontend
+     setFilteredData(berita);
+
+     setTotalData(typeof data.total === "number" ? data.total : berita.length);
+   } catch (err) {
+     console.error("Error:", err);
+   } finally {
+     setLoading(false);
+   }
+ };
 
   /* ============================================================
      🚀 Fetch saat page / filter berubah
   ============================================================ */
-  useEffect(() => {
-    fetchNews(currentPage);
+useEffect(() => {
+  fetchNews(currentPage);
 
-    const viewedId = localStorage.getItem("newsViewed");
-    if (viewedId) {
-      localStorage.removeItem("newsViewed");
+  const viewedId = localStorage.getItem("newsViewed");
+
+  if (viewedId) {
+    localStorage.removeItem("newsViewed");
+    fetchNews(currentPage);
+  }
+
+  const handlePopState = () => {
+    if (window.location.pathname === "/berita") {
       fetchNews(currentPage);
     }
+  };
 
-    const handlePopState = () => {
-      if (window.location.pathname === "/berita") fetchNews(currentPage);
-    };
-    const handleFocus = () => {
-      if (window.location.pathname === "/berita") fetchNews(currentPage);
-    };
+  const handleFocus = () => {
+    if (window.location.pathname === "/berita") {
+      fetchNews(currentPage);
+    }
+  };
 
-    window.addEventListener("popstate", handlePopState);
-    window.addEventListener("focus", handleFocus);
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-      window.removeEventListener("focus", handleFocus);
-    };
-  }, [currentPage, selectedSatker, month, year, location.pathname]);
+  window.addEventListener("popstate", handlePopState);
+  window.addEventListener("focus", handleFocus);
 
+  return () => {
+    window.removeEventListener("popstate", handlePopState);
+    window.removeEventListener("focus", handleFocus);
+  };
+}, [currentPage, selectedSatker, month, year, searchTerm, location.pathname]);
   /* ============================================================
      🔄 Reset halaman saat filter berubah
   ============================================================ */
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedSatker, month, year]);
-
+useEffect(() => {
+  setCurrentPage(1);
+}, [selectedSatker, month, year, searchTerm]);
   /* ============================================================
      ⬆️ Auto scroll ke atas tiap ganti halaman/filter
   ============================================================ */
@@ -116,21 +152,15 @@ const NewsList = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage, selectedSatker, month, year]);
 
-  /* ============================================================
-     🔍 Filter lokal berdasarkan search term saja
-     (month & year sudah di-handle di API)
-  ============================================================ */
-  useEffect(() => {
-    if (!searchTerm.trim()) {
-      setFilteredData(newsData);
-      return;
-    }
-    const keyword = searchTerm.toLowerCase();
-    setFilteredData(
-      newsData.filter((n) => n.title.toLowerCase().includes(keyword)),
-    );
-  }, [searchTerm, newsData]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCurrentPage(1);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+  
   /* ============================================================
      📄 Generate nomor halaman dengan ellipsis
   ============================================================ */
