@@ -111,6 +111,41 @@
   /* versi lebih gelap saat hover */
 }
 
+
+/* Grid sekolah */
+.sekolah-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* 4 kolom untuk laptop / desktop */
+.sekolah-grid.four-cols {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* 3 kolom untuk sisa KUA */
+.sekolah-grid.three-cols {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.sekolah-card {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.sekolah-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+
 /* ===========================
    🌿 SKELETON LOADING
 =========================== */
