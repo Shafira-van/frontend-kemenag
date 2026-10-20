@@ -17,7 +17,7 @@ const KepalaKantor = () => {
       .then((data) => setTimelineData(data))
       .catch((err) => console.error("Gagal ambil data:", err));
   }, []);
-  console.log(timelineData);
+
 
   // Efek animasi muncul saat scroll
   useEffect(() => {
@@ -48,14 +48,14 @@ const KepalaKantor = () => {
         {/* Sejarah Singkat */}
         <div className="kepalaKantor-content">
           <img src={KepalaKantorImg} alt="Kepala Kantor Kemenag" />
-          <h1 class="kepala-name">H. TARMUJI SE., M.AP.</h1>
-          <div class="row mt-4">
-            <div class="col-md-6 mb-4">
-              <div class="info-card">
-                <div class="info-icon">
-                  <i class="bi bi-calendar-event"></i>
+          <h1 className="kepala-name">H. TARMUJI SE., M.AP.</h1>
+          <div className="row mt-4">
+            <div className="col-md-6 mb-4">
+              <div className="info-card">
+                <div className="info-icon">
+                  <i className="bi bi-calendar-event"></i>
                 </div>
-                <div class="info-content">
+                <div className="info-content">
                   <h5>Tempat & Tanggal Lahir</h5>
                   <span>
                     Tumpatan Nibung
@@ -66,22 +66,22 @@ const KepalaKantor = () => {
               </div>
             </div>
 
-            <div class="col-md-6 mb-2">
-              <div class="info-card">
-                <div class="info-icon">
-                  <i class="bi bi-mortarboard"></i>
+            <div className="col-md-6 mb-2">
+              <div className="info-card">
+                <div className="info-icon">
+                  <i className="bi bi-mortarboard"></i>
                 </div>
-                <div class="info-content">
+                <div className="info-content">
                   <h5>Pendidikan</h5>
-                  <div class="education-item">
+                  <div className="education-item">
                     <strong>S2 - Universitas Medan Area</strong>
                     <span>Manajemen Administrasi Publik</span>
                   </div>
-                  <div class="education-item">
+                  <div className="education-item">
                     <strong>S1 - Universitas Al Hikmah</strong>
                     <span>Manajemen</span>
                   </div>
-                  <div class="education-item">
+                  <div className="education-item">
                     <strong>DIII - Universitas Budi Luhur</strong>
                     <span>Manajemen Informatika</span>
                   </div>
@@ -89,18 +89,18 @@ const KepalaKantor = () => {
               </div>
             </div>
           </div>
-          <div class="profil-wrapper">
+          <div className="profil-wrapper">
             {/*RIWAYAT JABATAN*/}
-            <div class="jabatan-box pt-0">
-              <div class="title-box">
+            <div className="jabatan-box pt-0">
+              <div className="title-box">
                 <h2>RIWAYAT JABATAN</h2>
               </div>
 
-              <div class="jabatan-timeline">
-                <div class="jabatan-item left">
-                  <div class="timeline-dot"></div>
+              <div className="jabatan-timeline">
+                <div className="jabatan-item left">
+                  <div className="timeline-dot"></div>
 
-                  <div class="jabatan-card">
+                  <div className="jabatan-card">
                     <span>2019 - Sekarang</span>
 
                     <h5>
@@ -112,29 +112,29 @@ const KepalaKantor = () => {
               </div>
             </div>
 
-            {/* <div class="organisasi-box">
-              <div class="title-organisasi">
+            {/* <div className="organisasi-box">
+              <div className="title-organisasi">
                 <h2>ORGANISASI</h2>
               </div>
 
-              <div class="organisasi-item">
-                <div class="organisasi-icon">
-                  <i class="bi bi-people-fill"></i>
+              <div className="organisasi-item">
+                <div className="organisasi-icon">
+                  <i className="bi bi-people-fill"></i>
                 </div>
 
-                <div class="organisasi-content">
+                <div className="organisasi-content">
                   <span>1995</span>
 
                   <h5>Wakil Ketua Abang PMII Cab. Medan</h5>
                 </div>
               </div>
 
-              <div class="organisasi-item">
-                <div class="organisasi-icon">
-                  <i class="bi bi-person-fill"></i>
+              <div className="organisasi-item">
+                <div className="organisasi-icon">
+                  <i className="bi bi-person-fill"></i>
                 </div>
 
-                <div class="organisasi-content">
+                <div className="organisasi-content">
                   <span>1993</span>
 
                   <h5>
@@ -143,24 +143,24 @@ const KepalaKantor = () => {
                 </div>
               </div>
 
-              <div class="organisasi-item">
-                <div class="organisasi-icon">
-                  <i class="bi bi-flag-fill"></i>
+              <div className="organisasi-item">
+                <div className="organisasi-icon">
+                  <i className="bi bi-flag-fill"></i>
                 </div>
 
-                <div class="organisasi-content">
+                <div className="organisasi-content">
                   <span>1990</span>
 
                   <h5>Ketua Komisariat PMII Fakultas Ushuluddin IAIN SU</h5>
                 </div>
               </div>
 
-              <div class="organisasi-item">
-                <div class="organisasi-icon">
-                  <i class="bi bi-bank"></i>
+              <div className="organisasi-item">
+                <div className="organisasi-icon">
+                  <i className="bi bi-bank"></i>
                 </div>
 
-                <div class="organisasi-content">
+                <div className="organisasi-content">
                   <span>2002</span>
 
                   <h5>Wakil Bendahara Nahdlatul Ulama (NU) PC Medan</h5>

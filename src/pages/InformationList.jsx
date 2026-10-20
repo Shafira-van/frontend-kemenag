@@ -33,8 +33,6 @@ const InformationList = () => {
           ? `${API_URL}/informasi/type/${encodeURIComponent(type)}`
           : `${API_URL}/informasi`;
 
-        console.log("FETCH:", endpoint);
-
         const res = await fetch(endpoint);
 
         if (!res.ok) {
@@ -43,7 +41,6 @@ const InformationList = () => {
 
         const data = await res.json();
 
-        console.log("DATA:", data);
 
         setInfoList(Array.isArray(data) ? data : []);
       } catch (err) {

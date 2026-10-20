@@ -1,169 +1,224 @@
+
+/* =========================================================
+   PROFIL PPID
+========================================================= */
+
 .profilPPID {
-  padding: 60px 20px;
-  margin: 0vw 2vw;
+  width: 100%;
+  padding: 40px 10px;
+  margin: 0;
+  background: #ffffff;
 }
 
-.profilPPID-container {
-  max-width: 100vw;
-  margin: 0 auto;
-  padding: 40px 20px;
+
+/* =========================================================
+   KONTEN UTAMA
+========================================================= */
+
+.profilPPID-main {
+  padding: 0 25px;
 }
 
-.profilPPID-title {
-  text-align: center;
+/* =========================================================
+   BOX KONTEN
+========================================================= */
+
+.tugas-pokok {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 25px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.tugas-pokok h3 {
+  margin: 0 0 18px;
+  color: #0b8043;
+  font-size: 1.45rem;
   font-weight: 700;
-  color: #14783c;
-  margin-bottom: 30px;
-  font-size: 1.8rem;
+  line-height: 1.4;
 }
 
-.profilPPID-content {
-  font-size: 16px;
+/* =========================================================
+   PARAGRAPH
+========================================================= */
+
+.tugas-pokok p {
+  margin: 0 0 16px;
+  color: #444444;
+  font-size: 1.05rem;
   line-height: 1.8;
   text-align: justify;
 }
 
-/* 🌄 Gambar di sisi kiri dan teks melingkari */
-.profilPPID-content img {
-  float: left;
-  width: 40%;
-  height: 280px;
-  max-width: 480px;
-  margin: 0 25px 20px 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.tugas-pokok p:last-child {
+  margin-bottom: 0;
 }
 
-/* 🧩 List spacing */
-.profilPPID-content ul {
-  margin: 0px 0px 10px 0px;
-}
+/* =========================================================
+   LIST
+========================================================= */
 
-.profilPPID-content  {
-  padding: 60px 20px;
-  margin: 0vw 2vw;
-}
-
-.profilPPID h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  /* margin-bottom: 40px; */
-  color: #0b8043;
-  text-align: center;
-  position: relative;
-}
-
-
-.profilPPID-content  .profil,
-.profil-ppid {
-  background: #fff;
-  border-radius: 10px;
-  padding: 25px 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.profilPPID-content h3,
-
-.tugas-pokok h3 {
-  font-size: 1.5rem;
-  color: #0b8043;
-  margin-bottom: 15px;
-}
-
-.profilPPID-content  p {
-  text-align: justify;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-.profilPPID-content  ul,
 .tugas-pokok ul {
-  padding-left: 20px;
+  margin: 5px 0 20px;
+  padding-left: 25px;
+
+  color: #444444;
 }
 
-.profilPPID-content  li,
-.tugas-pokok li,
-.tugas-pokok p {
-  margin-bottom: 12px;
+.tugas-pokok li {
+  margin-bottom: 10px;
+
   font-size: 1.05rem;
-  line-height: 1.6;
-  color: #444;
+  line-height: 1.7;
+
+  text-align: justify;
 }
 
-/* Responsif */
-@media screen and (max-width: 768px) {
-  .profilPPID-content  .section-title {
-    font-size: 1.6rem;
+.tugas-pokok li:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.profilPPID-sidebar {
+  padding: 0 20px;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+  .profilPPID {
+    padding: 45px 15px;
   }
 
-  .profilPPID-content  .visi h3,
-  .misi h3,
+  .profilPPID-container {
+    padding: 0 10px;
+  }
+
+  .profilPPID-main {
+    padding: 0 15px;
+  }
+
+  .profilPPID-sidebar {
+    padding: 0 15px;
+    margin-top: 35px;
+  }
+
+  .profilPPID .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .tugas-pokok {
+    padding: 25px 28px;
+  }
+
   .tugas-pokok h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
   }
 
-  .profilPPID-content  .visi p,
-  .misi li,
-  .tugas-pokok p li {
+  .tugas-pokok p,
+  .tugas-pokok li {
     font-size: 1rem;
   }
 }
 
-/* 📱 Responsif: layar kecil */
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
 @media (max-width: 768px) {
-
-  .profilPPID-content .profilPPID {
-    margin-top: 0vw;
-  }
-
-  .profilPPID-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .profilPPID h2 {
-    font-size: 24px;
-    margin-top: 0px;
-  }
-
-  .profilPPID-content img {
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-
-
-  .profilPPID .col-md-8 {
-    width: 100vw;
-  }
-}
-
-
-
-@media (max-width: 992px) {
-
   .profilPPID {
-    margin-top: 0vw;
+    padding: 35px 10px;
   }
 
-  .profilPPID h2 {
-    font-size: 24px;
-    margin-top: 0px;
+  .profilPPID-container {
+    padding: 0;
   }
 
-  .profilPPID-content img {
-    margin: 0 25px 5px 0;
+  .profilPPID-main {
+    width: 100%;
+    padding: 0 10px;
   }
 
+  .profilPPID-sidebar {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 30px;
+  }
 
-  
+  .profilPPID .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+
+  .profilPPID .section-title::after {
+    width: 50px;
+    height: 3px;
+    margin-top: 10px;
+  }
+
+  .tugas-pokok {
+    padding: 22px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .tugas-pokok h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .tugas-pokok p,
+  .tugas-pokok li {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .tugas-pokok ul {
+    padding-left: 22px;
+  }
 }
 
-@media (min-width: 993px) and (max-width: 1046px) {
+/* =========================================================
+   MOBILE KECIL
+========================================================= */
 
+@media (max-width: 480px) {
+  .profilPPID {
+    padding: 30px 8px;
+  }
 
-  
+  .profilPPID-main,
+  .profilPPID-sidebar {
+    padding: 0 6px;
+  }
+
+  .profilPPID .section-title {
+    font-size: 1.45rem;
+  }
+
+  .tugas-pokok {
+    padding: 20px 17px;
+  }
+
+  .tugas-pokok h3 {
+    font-size: 1.15rem;
+  }
+
+  .tugas-pokok p,
+  .tugas-pokok li {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
 }

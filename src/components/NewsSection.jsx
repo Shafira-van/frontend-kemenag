@@ -45,8 +45,6 @@ const NewsSection = ({ categoryFilter }) => {
           categoryFilter,
         )}?page=1&limit=0`;
 
-        console.log("Request :", url);
-
         const res = await fetch(url);
         const result = await res.json();
 

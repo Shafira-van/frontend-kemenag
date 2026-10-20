@@ -83,7 +83,6 @@ const NewsList = () => {
 
      const url = `${API_URL}/berita?${params.toString()}`;
 
-     console.log("Request berita:", url);
 
      const res = await fetch(url, {
        cache: "no-store",

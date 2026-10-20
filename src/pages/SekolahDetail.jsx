@@ -146,7 +146,7 @@ export default function SekolahDetail() {
 
         setSekolah(data);
 
-        console.log(data);
+
       } catch (error) {
         console.error("Error:", error);
         setError(error.message);
@@ -154,7 +154,6 @@ export default function SekolahDetail() {
         setLoading(false);
       }
 
-      console.log(id);
     };
 
     fetchData();
