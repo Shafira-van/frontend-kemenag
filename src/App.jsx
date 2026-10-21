@@ -18,6 +18,8 @@ import PPIDProfil from "./pages/PPID/ProfilPPID";
 import PPIDTugasFungsi from "./pages/PPID/TugasFungsi";
 import PPIDVisiMisi from "./pages/PPID/VisiMisi";
 import DaftarInformasiPublik from "./pages/PPID/DaftarInformasiPublik";
+import PPIDBiayaLayanan from "./pages/PPID/BiayaLayanan";
+import PPIDJadwalLayanan from "./pages/PPID/JadwalLayanan";
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
         <Route path="/profilppid" element={<PPIDProfil />} />
         <Route path="/tugasfungsippid" element={<PPIDTugasFungsi />} />
         <Route path="/visimisippid" element={<PPIDVisiMisi />} />
+        <Route path="/biayalayananppid" element={<PPIDBiayaLayanan />} />
+        <Route path="/jadwallayananppid" element={<PPIDJadwalLayanan/>}/>
       </Routes>
     </Router>
   );

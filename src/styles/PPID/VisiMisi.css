@@ -1,0 +1,417 @@
+
+/* =========================================================
+   VISI MISI PPID
+========================================================= */
+
+.visiMisi {
+  --visi-green: #087443;
+  --visi-dark: #064c2e;
+  --visi-gold: #d7b45a;
+  --visi-text: #26382c;
+  --visi-muted: #748178;
+
+  width: 100%;
+  margin: 0;
+  background: #fff;
+}
+
+/* =========================================================
+   BACKGROUND — SENADA BIAYA LAYANAN
+========================================================= */
+
+.visi-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 55px 20px 70px;
+  background:
+    radial-gradient(circle at 90% 12%,
+      rgba(215, 180, 90, 0.15),
+      transparent 25%),
+    radial-gradient(circle at 5% 85%,
+      rgba(8, 116, 67, 0.08),
+      transparent 28%),
+    linear-gradient(135deg,
+      #f0f8f2 0%,
+      #ffffff 52%,
+      #edf6ef 100%);
+}
+
+.visi-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.visi-heading {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.visi-heading h1 {
+  margin: 0 0 15px;
+  color: var(--visi-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.visi-heading h1 span {
+  color: var(--visi-green);
+}
+
+.visi-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--visi-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.visi-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.visi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.visi-sidebar {
+  min-width: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   KARTU VISI DAN MISI
+========================================================= */
+
+.visi-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid #e0eae2;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 30px rgba(15, 70, 35, 0.055);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+
+
+
+/* =========================================================
+   HEADER KARTU
+========================================================= */
+
+.visi-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.visi-icon {
+  display: flex;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #e8f5eb;
+  color: var(--visi-green);
+}
+
+.visi-icon-gold {
+  background: #fbf4df;
+  color: #9b7620;
+}
+
+.visi-card-heading span {
+  display: block;
+  margin-bottom: 4px;
+  color: #87948a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.visi-card-heading h2 {
+  margin: 0;
+  color: var(--visi-text);
+  font-size: 1.4rem;
+  font-weight: 850;
+}
+
+/* =========================================================
+   PEMISAH
+========================================================= */
+
+.visi-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: #e2ebe3;
+}
+
+/* =========================================================
+   PERNYATAAN VISI
+========================================================= */
+
+.visi-statement {
+  position: relative;
+  margin: 0;
+  padding: 5px 0 5px 18px;
+  border-left: 3px solid var(--visi-green);
+  color: var(--visi-dark);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 750;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   DAFTAR MISI
+========================================================= */
+
+.misi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.misi-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #46554a;
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.misi-list li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--visi-green);
+}
+
+/* =========================================================
+   KOMITMEN
+========================================================= */
+
+.visi-komitmen {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  border: 1px solid #d9e9dd;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.visi-komitmen-icon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--visi-green);
+  color: #fff;
+}
+
+.visi-komitmen strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--visi-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.visi-komitmen p {
+  margin: 0;
+  color: var(--visi-muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   IDENTITAS PPID
+========================================================= */
+
+.visi-identitas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #e0eae2;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.visi-identitas-icon {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #e8f5eb;
+  color: var(--visi-green);
+}
+
+.visi-identitas strong,
+.visi-identitas span {
+  display: block;
+}
+
+.visi-identitas strong {
+  margin-bottom: 4px;
+  color: var(--visi-dark);
+  font-size: 0.9rem;
+}
+
+.visi-identitas span {
+  color: var(--visi-muted);
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .visi-hero {
+    padding: 45px 18px 55px;
+  }
+
+  .visi-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+  }
+
+  .visi-card {
+    padding: 23px;
+  }
+
+  .visi-komitmen {
+    padding: 19px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .visi-hero {
+    padding: 35px 15px 45px;
+  }
+
+  .visi-heading {
+    margin-bottom: 28px;
+  }
+
+  .visi-heading h1 {
+    font-size: 2rem;
+  }
+
+  .visi-heading p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .visi-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .visi-content {
+    gap: 18px;
+  }
+
+  .visi-card {
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+
+  .visi-card-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .visi-statement {
+    font-size: 1.15rem;
+  }
+
+  .misi-list {
+    gap: 15px;
+  }
+
+  .misi-list li {
+    font-size: 0.91rem;
+    line-height: 1.75;
+  }
+
+  .visi-komitmen {
+    padding: 18px;
+  }
+
+  .visi-identitas {
+    margin-top: 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE KECIL
+========================================================= */
+
+@media (max-width: 380px) {
+  .visi-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .visi-card {
+    padding: 19px 16px;
+  }
+
+  .visi-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .visi-card-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .visi-komitmen {
+    gap: 11px;
+    padding: 15px;
+  }
+
+  .visi-komitmen p {
+    font-size: 0.8rem;
+  }
+}
+

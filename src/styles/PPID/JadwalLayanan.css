@@ -1,0 +1,312 @@
+
+/* =========================================================
+   JADWAL LAYANAN
+   Background mengikuti BiayaLayanan
+========================================================= */
+
+.jadwalLayanan {
+  --jadwal-green: #087443;
+  --jadwal-dark: #064c2e;
+  --jadwal-gold: #d7b45a;
+  --jadwal-text: #26382c;
+  --jadwal-muted: #748178;
+
+  width: 100%;
+  margin: 0;
+  background: #ffffff;
+}
+
+/* BACKGROUND HERO */
+
+.jadwal-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 65px 20px 75px;
+  background:
+    radial-gradient(circle at 90% 15%,
+      rgba(215, 180, 90, 0.15),
+      transparent 25%),
+    radial-gradient(circle at 5% 85%,
+      rgba(8, 116, 67, 0.08),
+      transparent 28%),
+    linear-gradient(135deg,
+      #f0f8f2 0%,
+      #ffffff 52%,
+      #edf6ef 100%);
+}
+
+.jadwal-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* JUDUL */
+
+.jadwal-heading {
+  max-width: 700px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.jadwal-heading h1 {
+  margin: 0 0 15px;
+  color: var(--jadwal-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.jadwal-heading h1 span {
+  color: var(--jadwal-green);
+}
+
+.jadwal-heading p {
+  margin: 0;
+  color: var(--jadwal-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* KARTU */
+
+.jadwal-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.jadwal-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid #e0eae2;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 35px rgba(15, 70, 35, 0.07);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* HEADER KARTU */
+
+.jadwal-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.jadwal-icon {
+  display: flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #e8f5eb;
+  color: var(--jadwal-green);
+}
+
+.jadwal-icon-gold {
+  background: #fbf4df;
+  color: #9b7620;
+}
+
+.jadwal-card-header>div:last-child {
+  min-width: 0;
+}
+
+.jadwal-card-header span {
+  display: block;
+  margin-bottom: 5px;
+  color: #87948a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.jadwal-card-header h2 {
+  margin: 0;
+  color: var(--jadwal-text);
+  font-size: 1.4rem;
+  font-weight: 850;
+}
+
+/* GARIS PEMISAH */
+
+.jadwal-divider {
+  height: 1px;
+  margin: 23px 0 8px;
+  background: #e2ebe3;
+}
+
+/* INFORMASI JAM */
+
+.jadwal-time {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  color: var(--jadwal-green);
+}
+
+.jadwal-time+.jadwal-time {
+  border-top: 1px dashed #dce7de;
+}
+
+.jadwal-time>svg {
+  flex-shrink: 0;
+}
+
+.jadwal-time>div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.jadwal-time span {
+  color: var(--jadwal-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.jadwal-time strong {
+  color: var(--jadwal-green);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+.jadwal-card-jumat .jadwal-time strong {
+  color: #765b1b;
+}
+
+/* FOOTER KARTU */
+
+.jadwal-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 9px;
+  padding: 13px;
+  border-radius: 9px;
+  background: #f1f7f2;
+  color: #617367;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.jadwal-footer svg {
+  flex-shrink: 0;
+  color: var(--jadwal-green);
+}
+
+.jadwal-card-jumat .jadwal-footer {
+  background: #faf7ed;
+}
+
+.jadwal-card-jumat .jadwal-footer svg {
+  color: #987524;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .jadwal-hero {
+    padding: 50px 18px 60px;
+  }
+
+  .jadwal-cards {
+    gap: 18px;
+  }
+
+  .jadwal-card {
+    padding: 23px;
+  }
+
+  .jadwal-card-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .jadwal-time strong {
+    font-size: 1.12rem;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .jadwal-hero {
+    padding: 38px 15px 45px;
+  }
+
+  .jadwal-heading {
+    margin-bottom: 27px;
+  }
+
+  .jadwal-heading h1 {
+    font-size: 2rem;
+  }
+
+  .jadwal-heading p {
+    font-size: 0.9rem;
+  }
+
+  .jadwal-cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .jadwal-card {
+    padding: 22px 19px;
+    border-radius: 15px;
+  }
+
+  .jadwal-card-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .jadwal-time {
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .jadwal-time strong {
+    font-size: 1.2rem;
+  }
+
+  .jadwal-footer {
+    font-size: 0.73rem;
+  }
+}
+
+/* MOBILE KECIL */
+
+@media (max-width: 380px) {
+  .jadwal-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .jadwal-card {
+    padding: 19px 15px;
+  }
+
+  .jadwal-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .jadwal-card-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .jadwal-time strong {
+    font-size: 1.05rem;
+  }
+}

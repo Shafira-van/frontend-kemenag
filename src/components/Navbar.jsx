@@ -98,7 +98,7 @@ function Navbar() {
                   </li>
                   <li>
                     <a className="dropdown-item" href="/visi-misi">
-                      Visi &amp; Misi
+                      Visi dan Misi
                     </a>
                   </li>
                   <li>
@@ -154,6 +154,16 @@ function Navbar() {
                   <li>
                     <a className="dropdown-item" href="/visimisippid">
                       Visi, Misi, dan Motto PPID
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="/jadwallayananppid">
+                      Jadwal Layanan
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="/biayalayananppid">
+                      Biaya/Tarif Layanan
                     </a>
                   </li>
 

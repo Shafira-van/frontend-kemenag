@@ -1,0 +1,692 @@
+
+/* =========================================================
+   BIAYA LAYANAN — TARIF RP0
+========================================================= */
+
+.biayaLayanan {
+  --biaya-green: #087443;
+  --biaya-dark: #064c2e;
+  --biaya-gold: #e3bd62;
+  --biaya-text: #20382a;
+  --biaya-muted: #66766b;
+  --biaya-border: #dce9df;
+}
+
+.biaya-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 40px;
+  background:
+    radial-gradient(circle at 82% 30%,
+      rgba(227, 189, 98, 0.17),
+      transparent 25%),
+    linear-gradient(120deg, #f0f8f2, #ffffff 55%, #e9f5ed);
+}
+
+.biaya-hero-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.biaya-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 23px;
+  color: var(--biaya-green);
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.biaya-free-badge {
+  display: table;
+  padding: 9px 13px;
+  margin-bottom: 18px;
+  border: 1px solid #cce4d2;
+  border-radius: 7px;
+  background: #e5f5e9;
+  color: var(--biaya-green);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.biaya-free-badge svg {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.biaya-hero-content h1 {
+  margin: 0 0 23px;
+  color: #183b29;
+  font-size: clamp(2.2rem, 4vw, 3.45rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -1.3px;
+}
+
+.biaya-hero-content .biaya-highlight {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--biaya-green);
+}
+
+.biaya-description {
+  max-width: 550px;
+  margin: 0;
+  color: var(--biaya-muted);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.biaya-description strong {
+  color: var(--biaya-green);
+  font-weight: 800;
+}
+
+/* HIGHLIGHT RP0 DI SISI KIRI */
+
+.biaya-zero-banner {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  max-width: 450px;
+  margin-top: 27px;
+  padding: 17px 21px;
+  border: 1px solid #d4e7d8;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(8, 116, 67, 0.07);
+}
+
+.biaya-zero-icon {
+  display: flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--biaya-green);
+  color: #fff;
+}
+
+.biaya-zero-text {
+  flex: 1;
+}
+
+.biaya-zero-text span {
+  display: block;
+  margin-bottom: 3px;
+  color: #7b8b7f;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.biaya-zero-text strong {
+  display: block;
+  color: var(--biaya-green);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.biaya-zero-check {
+  display: flex;
+  color: var(--biaya-green);
+}
+
+.biaya-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px 18px;
+  margin-top: 25px;
+}
+
+.biaya-points span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #4e6254;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.biaya-points svg {
+  flex-shrink: 0;
+  color: var(--biaya-green);
+}
+
+/* =========================================================
+   VISUAL RP0
+========================================================= */
+
+.biaya-hero-visual {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 450px;
+  align-items: center;
+  justify-content: center;
+}
+
+.biaya-visual-glow {
+  position: absolute;
+  width: 370px;
+  height: 370px;
+  border-radius: 50%;
+  background: rgba(8, 116, 67, 0.08);
+}
+
+.biaya-zero-visual {
+  position: relative;
+  z-index: 1;
+  width: 365px;
+  max-width: 86%;
+  padding: 26px;
+  border: 1px solid #dce9df;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 25px 65px rgba(6, 76, 46, 0.15);
+}
+
+.biaya-visual-top {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.biaya-visual-logo {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #e7f5eb;
+  color: var(--biaya-green);
+}
+
+.biaya-visual-top strong,
+.biaya-visual-top span {
+  display: block;
+}
+
+.biaya-visual-top strong {
+  color: #233b2c;
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.biaya-visual-top span {
+  margin-top: 4px;
+  color: #829087;
+  font-size: 0.72rem;
+}
+
+.biaya-verified {
+  display: flex;
+  margin-left: auto;
+  color: var(--biaya-green);
+}
+
+.biaya-visual-divider {
+  height: 1px;
+  margin: 21px 0;
+  background: #e7eee8;
+}
+
+.biaya-visual-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.biaya-visual-label>span {
+  color: #77877b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.biaya-visual-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--biaya-green);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.biaya-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 13px 0 4px;
+  color: var(--biaya-green);
+}
+
+.biaya-price span {
+  align-self: flex-start;
+  padding-top: 16px;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.biaya-price strong {
+  font-size: clamp(6rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -7px;
+}
+
+.biaya-gratis-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 8px;
+  border-radius: 9px;
+  background: var(--biaya-green);
+  color: #fff;
+  font-size: 0.77rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.biaya-gratis-label svg {
+  color: var(--biaya-gold);
+}
+
+.biaya-visual-description {
+  margin: 15px 0 17px;
+  color: #748278;
+  font-size: 0.79rem;
+  text-align: center;
+}
+
+.biaya-visual-features {
+  display: grid;
+  gap: 12px;
+}
+
+.biaya-visual-features>div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #526357;
+  font-size: 0.78rem;
+}
+
+.biaya-visual-features svg {
+  flex-shrink: 0;
+  color: var(--biaya-green);
+}
+
+.biaya-visual-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e8efe9;
+  color: #78877c;
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
+.biaya-visual-footer svg {
+  flex-shrink: 0;
+  color: var(--biaya-green);
+}
+
+/* FLOATING CARDS */
+
+.biaya-floating-card {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid #e0eae2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(27, 76, 45, 0.12);
+}
+
+.biaya-floating-one {
+  top: 28px;
+  right: -3px;
+}
+
+.biaya-floating-icon {
+  display: flex;
+  color: var(--biaya-green);
+}
+
+.biaya-floating-one strong,
+.biaya-floating-one span {
+  display: block;
+}
+
+.biaya-floating-one strong {
+  color: var(--biaya-green);
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.biaya-floating-one span {
+  margin-top: 2px;
+  color: #77867b;
+  font-size: 0.68rem;
+}
+
+.biaya-floating-two {
+  bottom: 25px;
+  left: -8px;
+}
+
+.biaya-floating-check {
+  display: flex;
+  color: var(--biaya-green);
+}
+
+.biaya-floating-two>span {
+  color: #435a49;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .biaya-hero-container {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 22px;
+  }
+
+  .biaya-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .biaya-hero-visual {
+    min-height: 420px;
+  }
+
+  .biaya-zero-visual {
+    padding: 20px;
+  }
+
+  .biaya-floating-one {
+    right: -5px;
+  }
+
+  .biaya-info-card {
+    gap: 17px;
+    padding: 24px;
+  }
+
+  .biaya-info-price {
+    min-width: 110px;
+    padding-left: 15px;
+  }
+
+  .biaya-info-price strong {
+    font-size: 2.2rem;
+  }
+
+  .biaya-benefits {
+    gap: 13px;
+  }
+
+  .biaya-benefit {
+    padding: 16px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .biaya-hero {
+    padding: 45px 0 55px;
+  }
+
+  .biaya-hero-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .biaya-eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .biaya-hero-content h1 {
+    font-size: clamp(2rem, 7vw, 2.65rem);
+    letter-spacing: -0.8px;
+  }
+
+  .biaya-description {
+    font-size: 0.93rem;
+  }
+
+  .biaya-zero-banner {
+    padding: 15px 17px;
+  }
+
+  .biaya-hero-visual {
+    min-height: 430px;
+    margin-top: 0;
+  }
+
+  .biaya-zero-visual {
+    width: 350px;
+    max-width: 84%;
+  }
+
+  .biaya-price strong {
+    font-size: 7rem;
+  }
+
+  .biaya-floating-one {
+    top: 13px;
+    right: 0;
+  }
+
+  .biaya-floating-two {
+    bottom: 12px;
+    left: 0;
+  }
+
+  .biaya-info-section {
+    padding: 45px 0 55px;
+  }
+
+  .biaya-info-container {
+    padding: 0 18px;
+  }
+
+  .biaya-info-card {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 22px;
+  }
+
+  .biaya-info-icon {
+    width: 51px;
+    height: 51px;
+  }
+
+  .biaya-info-content {
+    flex-basis: calc(100% - 70px);
+  }
+
+  .biaya-info-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .biaya-info-content p {
+    font-size: 0.83rem;
+  }
+
+  .biaya-info-price {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0 0;
+    border-top: 1px solid #d7e5da;
+    border-left: 0;
+    text-align: left;
+  }
+
+  .biaya-info-price strong {
+    font-size: 1.9rem;
+  }
+
+  .biaya-info-price span {
+    margin: 0;
+  }
+
+  .biaya-benefits {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .biaya-benefit {
+    padding: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE KECIL
+========================================================= */
+
+@media (max-width: 480px) {
+  .biaya-hero {
+    padding-top: 35px;
+  }
+
+  .biaya-free-badge {
+    font-size: 0.67rem;
+  }
+
+  .biaya-hero-content h1 {
+    font-size: 1.95rem;
+  }
+
+  .biaya-zero-banner {
+    gap: 12px;
+  }
+
+  .biaya-zero-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .biaya-zero-text strong {
+    font-size: 1.8rem;
+  }
+
+  .biaya-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .biaya-points span {
+    font-size: 0.73rem;
+  }
+
+  .biaya-hero-visual {
+    min-height: 390px;
+  }
+
+  .biaya-zero-visual {
+    max-width: 88%;
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .biaya-visual-top strong {
+    font-size: 0.84rem;
+  }
+
+  .biaya-visual-top span {
+    font-size: 0.66rem;
+  }
+
+  .biaya-visual-label>span {
+    font-size: 0.56rem;
+  }
+
+  .biaya-visual-check {
+    font-size: 0.54rem;
+  }
+
+  .biaya-price strong {
+    font-size: 6rem;
+  }
+
+  .biaya-price span {
+    padding-top: 11px;
+    font-size: 1.35rem;
+  }
+
+  .biaya-gratis-label {
+    font-size: 0.65rem;
+  }
+
+  .biaya-visual-features>div {
+    font-size: 0.7rem;
+  }
+
+  .biaya-floating-card {
+    gap: 7px;
+    padding: 10px;
+  }
+
+  .biaya-floating-one strong {
+    font-size: 1rem;
+  }
+
+  .biaya-floating-one span,
+  .biaya-floating-two>span {
+    font-size: 0.61rem;
+  }
+
+  .biaya-floating-two {
+    left: -3px;
+  }
+
+  .biaya-info-container {
+    padding: 0 15px;
+  }
+
+  .biaya-info-card {
+    padding: 18px;
+  }
+
+  .biaya-info-content h2 {
+    font-size: 1.05rem;
+  }
+
+  .biaya-benefit h3 {
+    font-size: 0.9rem;
+  }
+}

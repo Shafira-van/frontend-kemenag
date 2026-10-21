@@ -1,43 +1,115 @@
+
 import React from "react";
 import "../../styles/PPID/VisiMisi.css";
 import Footer from "../../components/Footer";
-import InfoBoard from "../../components/InfoBoard";
 import NewsLatest from "../../components/NewsLatest";
 import SurveyBoard from "../../components/SurveyBoard";
+
+import {
+  Eye,
+  Target,
+  CheckCircle2,
+  Landmark,
+  ShieldCheck,
+} from "lucide-react";
 
 const VisiMisi = () => {
   return (
     <>
-      <div className="row visi-misi">
-        <div className="col-md-8 ">
-          <h2 className="section-title ">Visi & Misi</h2>
-          <div className="visi">
-            <h3>Visi</h3>
-            <p>Terwujudnya pelayanan informasi yang akuntabel</p>
-          </div>
+      <main className="visiMisi">
+        <section className="visi-hero">
+          <div className="visi-container">
+            {/* HEADER */}
+            <div className="visi-heading">
+              <h1>
+                Visi & <span>Misi</span>
+              </h1>
 
-          <div className="misi">
-            <h3>Misi</h3>
-            <ul>
-              <li>
-                Meningkatkan layanan informasi yang cepat, tepat, dan
-                transparan.
-              </li>
-              <li>Meningkatkan kompetensi SDM pelayan informasi.</li>
-              <li>Penguatan koordinasi antar PPID lintas sektoral.</li>
-            </ul>
-          </div>
+              <p>
+                Komitmen PPID Kementerian Agama Kota Pematangsiantar
+                dalam mewujudkan pelayanan informasi publik yang
+                transparan dan akuntabel.
+              </p>
+            </div>
 
-          <div className="motto"></div>
-        </div>
-        <div className="col-md-4">
-          <NewsLatest />
-        </div>
-      </div>
-      <SurveyBoard/>
+            {/* KONTEN */}
+            <div className="visi-layout">
+              <div className="visi-content">
+                {/* VISI */}
+                <article className="visi-card">
+                  <div className="visi-card-heading">
+                    <div className="visi-icon">
+                      <Eye size={25} />
+                    </div>
+
+                    <div>
+                      <span>ARAH DAN HARAPAN</span>
+                      <h2>Visi</h2>
+                    </div>
+                  </div>
+
+                  <div className="visi-divider" />
+
+                  <p className="visi-statement">
+                    Terwujudnya pelayanan informasi yang akuntabel
+                  </p>
+                </article>
+
+                {/* MISI */}
+                <article className="visi-card misi-card">
+                  <div className="visi-card-heading">
+                    <div className="visi-icon visi-icon-gold">
+                      <Target size={25} />
+                    </div>
+
+                    <div>
+                      <span>LANGKAH PENCAPAIAN</span>
+                      <h2>Misi</h2>
+                    </div>
+                  </div>
+
+                  <div className="visi-divider" />
+
+                  <ul className="misi-list">
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>
+                        Meningkatkan layanan informasi yang cepat,
+                        tepat, dan transparan.
+                      </span>
+                    </li>
+
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>
+                        Meningkatkan kompetensi SDM pelayan informasi.
+                      </span>
+                    </li>
+
+                    <li>
+                      <CheckCircle2 size={20} />
+                      <span>
+                        Penguatan koordinasi antar PPID lintas sektoral.
+                      </span>
+                    </li>
+                  </ul>
+                </article>
+              </div>
+
+              {/* SIDEBAR */}
+              <aside className="visi-sidebar">
+                <NewsLatest />
+              </aside>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SurveyBoard />
       <Footer />
     </>
   );
 };
 
 export default VisiMisi;
+

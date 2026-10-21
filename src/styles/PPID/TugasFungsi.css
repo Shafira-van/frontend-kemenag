@@ -1,0 +1,456 @@
+
+/* =========================================================
+   TUGAS DAN FUNGSI PPID
+========================================================= */
+
+.tugasFungsi {
+  --tugas-green: #087443;
+  --tugas-dark: #064c2e;
+  --tugas-gold: #d7b45a;
+  --tugas-text: #26382c;
+  --tugas-muted: #748178;
+
+  width: 100%;
+  margin: 0;
+  background: #fff;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.tugas-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 55px 20px 70px;
+  background:
+    radial-gradient(circle at 90% 12%,
+      rgba(215, 180, 90, 0.15),
+      transparent 25%),
+    radial-gradient(circle at 5% 85%,
+      rgba(8, 116, 67, 0.08),
+      transparent 28%),
+    linear-gradient(135deg,
+      #f0f8f2 0%,
+      #ffffff 52%,
+      #edf6ef 100%);
+}
+
+.tugas-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.tugas-heading {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.tugas-heading h1 {
+  margin: 0 0 15px;
+  color: var(--tugas-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.tugas-heading h1 span {
+  color: var(--tugas-green);
+}
+
+.tugas-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--tugas-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.tugas-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.tugas-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.tugas-sidebar {
+  min-width: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   KARTU
+========================================================= */
+
+.tugas-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid #e0eae2;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 30px rgba(15, 70, 35, 0.055);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.tugas-card:hover {
+  box-shadow: 0 14px 35px rgba(15, 70, 35, 0.08);
+}
+
+/* =========================================================
+   HEADER KARTU
+========================================================= */
+
+.tugas-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tugas-icon {
+  display: flex;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #e8f5eb;
+  color: var(--tugas-green);
+}
+
+.tugas-icon-gold {
+  background: #fbf4df;
+  color: #9b7620;
+}
+
+.tugas-card-heading span {
+  display: block;
+  margin-bottom: 4px;
+  color: #87948a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.tugas-card-heading h2 {
+  margin: 0;
+  color: var(--tugas-text);
+  font-size: 1.4rem;
+  font-weight: 850;
+}
+
+/* =========================================================
+   PEMISAH DAN DESKRIPSI
+========================================================= */
+
+.tugas-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: #e2ebe3;
+}
+
+.tugas-intro {
+  margin: 0 0 18px;
+  color: var(--tugas-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   DAFTAR TUGAS
+========================================================= */
+
+.tugas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tugas-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 17px 0;
+  border-bottom: 1px solid #e9f0ea;
+}
+
+.tugas-list li:first-child {
+  padding-top: 5px;
+}
+
+.tugas-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.tugas-number {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #e8f5eb;
+  color: var(--tugas-green);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.tugas-item-text {
+  padding-top: 5px;
+  color: #46554a;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   FUNGSI PPID
+========================================================= */
+
+.fungsi-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fungsi-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.fungsi-icon {
+  display: flex;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #e8f5eb;
+  color: var(--tugas-green);
+}
+
+.fungsi-item:nth-child(even) .fungsi-icon {
+  background: #fbf4df;
+  color: #9b7620;
+}
+
+.fungsi-item h3 {
+  margin: 2px 0 6px;
+  color: var(--tugas-text);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.fungsi-item p {
+  margin: 0;
+  color: #69786e;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   KOMITMEN
+========================================================= */
+
+.tugas-komitmen {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  border: 1px solid #d9e9dd;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.tugas-komitmen-icon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--tugas-green);
+  color: #fff;
+}
+
+.tugas-komitmen strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--tugas-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.tugas-komitmen p {
+  margin: 0;
+  color: var(--tugas-muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .tugas-hero {
+    padding: 45px 18px 55px;
+  }
+
+  .tugas-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+  }
+
+  .tugas-card {
+    padding: 23px;
+  }
+
+  .tugas-komitmen {
+    padding: 19px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .tugas-hero {
+    padding: 35px 15px 45px;
+  }
+
+  .tugas-heading {
+    margin-bottom: 28px;
+  }
+
+  .tugas-heading h1 {
+    font-size: 2rem;
+  }
+
+  .tugas-heading p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .tugas-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .tugas-content {
+    gap: 18px;
+  }
+
+  .tugas-card {
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+
+  .tugas-card-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .tugas-list li {
+    gap: 11px;
+    padding: 15px 0;
+  }
+
+  .tugas-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    font-size: 0.72rem;
+  }
+
+  .tugas-item-text {
+    padding-top: 3px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .fungsi-grid {
+    gap: 19px;
+  }
+
+  .fungsi-item {
+    gap: 12px;
+  }
+
+  .fungsi-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fungsi-item h3 {
+    font-size: 0.95rem;
+  }
+
+  .fungsi-item p {
+    font-size: 0.86rem;
+  }
+
+  .tugas-komitmen {
+    gap: 11px;
+    padding: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE KECIL
+========================================================= */
+
+@media (max-width: 380px) {
+  .tugas-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .tugas-card {
+    padding: 19px 16px;
+  }
+
+  .tugas-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .tugas-card-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .tugas-komitmen {
+    padding: 15px;
+  }
+
+  .tugas-komitmen p {
+    font-size: 0.8rem;
+  }
+}
