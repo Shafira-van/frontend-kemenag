@@ -1,0 +1,458 @@
+/* =========================================
+   STRUKTUR ORGANISASI - PPID
+========================================= */
+
+.strukturOrganisasi {
+  --so-green: #087443;
+  --so-dark: #064c2e;
+  --so-gold: #d7b45a;
+  --so-text: #26382c;
+  --so-muted: #748178;
+  --so-border: #e0eae2;
+
+  width: 100%;
+  margin: 0;
+  color: var(--so-text);
+  background: #fff;
+  font-family: inherit;
+}
+
+/* =========================================
+   HERO BACKGROUND
+========================================= */
+
+.struktur-organisasi-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 55px 20px 70px;
+  background:
+    radial-gradient(circle at 90% 12%,
+      rgba(215, 180, 90, 0.15),
+      transparent 25%),
+    radial-gradient(circle at 5% 85%,
+      rgba(8, 116, 67, 0.08),
+      transparent 28%),
+    linear-gradient(135deg,
+      #f0f8f2 0%,
+      #fff 52%,
+      #edf6ef 100%);
+}
+
+.struktur-organisasi-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER - SAMA DENGAN VISI & MISI
+========================================= */
+
+.struktur-organisasi-heading {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.struktur-organisasi-heading h1 {
+  margin: 0 0 15px;
+  color: var(--so-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+.struktur-organisasi-heading h1 span {
+  color: var(--so-green);
+}
+
+.struktur-organisasi-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--so-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.struktur-organisasi-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.struktur-organisasi-content,
+.struktur-organisasi-sidebar {
+  min-width: 0;
+}
+
+.struktur-organisasi-sidebar {
+  width: 100%;
+}
+
+.struktur-organisasi-sidebar>* {
+  max-width: 100%;
+}
+
+.struktur-organisasi-sidebar img {
+  max-width: 100%;
+}
+
+/* =========================================
+   DOCUMENT CARD
+========================================= */
+
+.struktur-organisasi-card {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid var(--so-border);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 30px rgba(15, 70, 35, 0.055);
+  transition: box-shadow 0.25s ease;
+}
+
+.struktur-organisasi-card:hover {
+  box-shadow: 0 14px 35px rgba(15, 70, 35, 0.09);
+}
+
+/* =========================================
+   DOCUMENT CARD HEADER
+========================================= */
+
+.struktur-organisasi-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.struktur-organisasi-icon {
+  display: flex;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  color: var(--so-green);
+  background: #e8f5eb;
+}
+
+.struktur-organisasi-eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: #87948a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.struktur-organisasi-card-heading h2 {
+  margin: 0 0 5px;
+  color: var(--so-text);
+  font-size: 1.35rem;
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.struktur-organisasi-card-heading p {
+  margin: 0;
+  color: var(--so-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.struktur-organisasi-divider {
+  height: 1px;
+  margin: 24px 0;
+  background: var(--so-border);
+}
+
+/* =========================================
+   DOCUMENT DESCRIPTION
+========================================= */
+
+.struktur-organisasi-description {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 28px;
+  padding: 18px;
+  border: 1px solid #d9e9dd;
+  border-radius: 13px;
+  background: #f5faf6;
+}
+
+.struktur-organisasi-info-icon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--so-green);
+}
+
+.struktur-organisasi-description p {
+  margin: 0;
+  color: #526157;
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+/* =========================================
+   PDF VIEWER HEADING
+========================================= */
+
+.struktur-organisasi-pdf-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.struktur-organisasi-pdf-heading svg {
+  flex-shrink: 0;
+  color: var(--so-green);
+}
+
+.struktur-organisasi-pdf-heading h3 {
+  margin: 0;
+  color: var(--so-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* =========================================
+   PDF FRAME
+========================================= */
+
+.struktur-organisasi-pdf-frame {
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #dce7de;
+  border-radius: 12px;
+  background: #f3f5f3;
+}
+
+.struktur-organisasi-iframe {
+  display: block;
+  width: 100%;
+  height: 680px;
+  border: 0;
+  background: #f3f5f3;
+}
+
+.struktur-organisasi-caption {
+  margin: 15px 0 20px;
+  color: var(--so-muted);
+  font-size: 0.84rem;
+  line-height: 1.8;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.struktur-organisasi-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.struktur-organisasi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.struktur-organisasi-btn svg {
+  flex-shrink: 0;
+}
+
+.struktur-organisasi-btn-primary {
+  color: #fff;
+  background: var(--so-green);
+  box-shadow: 0 5px 14px rgba(8, 116, 67, 0.15);
+}
+
+.struktur-organisasi-btn-primary:hover {
+  color: #fff;
+  background: var(--so-dark);
+  box-shadow: 0 8px 20px rgba(8, 116, 67, 0.2);
+}
+
+.struktur-organisasi-btn-secondary {
+  color: var(--so-dark);
+  background: #fff;
+  border-color: #cbded0;
+}
+
+.struktur-organisasi-btn-secondary:hover {
+  color: var(--so-dark);
+  background: #eaf5ed;
+  border-color: var(--so-green);
+}
+
+.struktur-organisasi-btn:focus-visible {
+  outline: 3px solid rgba(215, 180, 90, 0.7);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+  .struktur-organisasi-hero {
+    padding: 45px 18px 55px;
+  }
+
+  .struktur-organisasi-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+  }
+
+  .struktur-organisasi-card {
+    padding: 23px;
+  }
+
+  .struktur-organisasi-iframe {
+    height: 580px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .struktur-organisasi-hero {
+    padding: 35px 15px 45px;
+  }
+
+  .struktur-organisasi-heading {
+    margin-bottom: 28px;
+  }
+
+  .struktur-organisasi-heading h1 {
+    font-size: 2rem;
+  }
+
+  .struktur-organisasi-heading p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .struktur-organisasi-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .struktur-organisasi-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .struktur-organisasi-card-heading {
+    gap: 12px;
+  }
+
+  .struktur-organisasi-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .struktur-organisasi-card-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .struktur-organisasi-description {
+    padding: 15px;
+  }
+
+  .struktur-organisasi-iframe {
+    height: 520px;
+  }
+
+  .struktur-organisasi-actions {
+    flex-direction: column;
+  }
+
+  .struktur-organisasi-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .struktur-organisasi-hero {
+    padding: 30px 12px 40px;
+  }
+
+  .struktur-organisasi-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .struktur-organisasi-card {
+    padding: 16px;
+  }
+
+  .struktur-organisasi-card-heading h2 {
+    font-size: 1.05rem;
+  }
+
+  .struktur-organisasi-description p {
+    font-size: 0.82rem;
+  }
+
+  .struktur-organisasi-iframe {
+    height: 420px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .struktur-organisasi-card,
+  .struktur-organisasi-btn {
+    transition: none;
+  }
+}

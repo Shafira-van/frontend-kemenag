@@ -20,6 +20,8 @@ import PPIDVisiMisi from "./pages/PPID/VisiMisi";
 import DaftarInformasiPublik from "./pages/PPID/DaftarInformasiPublik";
 import PPIDBiayaLayanan from "./pages/PPID/BiayaLayanan";
 import PPIDJadwalLayanan from "./pages/PPID/JadwalLayanan";
+import PPIDInformasiDikecualikan from "./pages/PPID/InformasiDikecualikan"
+import PPIDStrukturOrganisasi from "./pages/PPID/StrukturOrganisasi";
 
 function App() {
   return (
@@ -40,18 +42,23 @@ function App() {
           path="/pendidikan-madrasah/madrasah/:id"
           element={<SekolahDetail />}
         />
-        <Route path="/informasi" element={<InformationList />} />
-        <Route path="/informasi/:type" element={<InformationList />} />
+        <Route path="/informasi" element={<DaftarInformasiPublik />} />
+        <Route path="/informasi/:type" element={<DaftarInformasiPublik />} />
         <Route path="/satuankerja/:id" element={<AboutSatker />} />
         <Route
           path="/daftarinformasipublik"
           element={<DaftarInformasiPublik />}
         />
+        <Route
+          path="/informasi/Dikecualikan"
+          element={<PPIDInformasiDikecualikan />}
+        />
         <Route path="/profilppid" element={<PPIDProfil />} />
         <Route path="/tugasfungsippid" element={<PPIDTugasFungsi />} />
         <Route path="/visimisippid" element={<PPIDVisiMisi />} />
         <Route path="/biayalayananppid" element={<PPIDBiayaLayanan />} />
-        <Route path="/jadwallayananppid" element={<PPIDJadwalLayanan/>}/>
+        <Route path="/jadwallayananppid" element={<PPIDJadwalLayanan />} />
+        <Route path="/strukturorganisasippid" element={<PPIDStrukturOrganisasi/>} />
       </Routes>
     </Router>
   );

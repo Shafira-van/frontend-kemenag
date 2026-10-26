@@ -33,8 +33,8 @@
   gap: 12px;
   margin-bottom: 14px;
   transition: background 0.3s ease;
-  padding: 4px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .popular-item:hover {

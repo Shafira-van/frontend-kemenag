@@ -1,0 +1,308 @@
+
+/* =========================================
+   INFORMASI DIKECUALIKAN - PPID
+   Header disamakan dengan Visi & Misi
+========================================= */
+
+.informasiDikecualikan {
+  --info-primary: #087443;
+  --info-primary-dark: #064c2e;
+  --info-gold: #d7b45a;
+  --info-text: #26382c;
+  --info-muted: #748178;
+
+  width: 100%;
+  margin: 0;
+  color: var(--info-text);
+  background: #fff;
+  font-family: inherit;
+}
+
+/* HERO: sama dengan Visi & Misi */
+
+.informasi-dikecualikan-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 55px 20px 70px;
+  background:
+    radial-gradient(circle at 90% 12%,
+      rgba(215, 180, 90, 0.15),
+      transparent 25%),
+    radial-gradient(circle at 5% 85%,
+      rgba(8, 116, 67, 0.08),
+      transparent 28%),
+    linear-gradient(135deg,
+      #f0f8f2 0%,
+      #ffffff 52%,
+      #edf6ef 100%);
+}
+
+.informasi-dikecualikan-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* HEADER: ukuran dan warna mengikuti Visi & Misi */
+
+.informasi-dikecualikan-heading {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.informasi-dikecualikan-heading h1 {
+  margin: 0 0 15px;
+  color: var(--info-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+.informasi-dikecualikan-heading h1 span {
+  color: var(--info-primary);
+}
+
+.informasi-dikecualikan-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--info-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* LAYOUT: konten dan sidebar */
+
+.informasi-dikecualikan-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.informasi-dikecualikan-content,
+.informasi-dikecualikan-sidebar {
+  min-width: 0;
+}
+
+/* KARTU DOKUMEN */
+
+.informasi-dikecualikan-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #e0eae2;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 30px rgba(15, 70, 35, 0.055);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.informasi-dikecualikan-card:hover {
+  box-shadow: 0 14px 35px rgba(15, 70, 35, 0.09);
+}
+
+.informasi-dikecualikan-pdf-viewer {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.informasi-dikecualikan-pdf-viewer-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--info-text);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.informasi-dikecualikan-pdf-viewer-heading svg {
+  flex-shrink: 0;
+  color: var(--info-primary);
+}
+
+.informasi-dikecualikan-iframe {
+  display: block;
+  width: 100%;
+  height: 680px;
+  border: 1px solid #e0eae2;
+  border-radius: 12px;
+  background: #f3f5f3;
+}
+
+.informasi-dikecualikan-pdf-caption {
+  margin: 16px 0 20px;
+  color: var(--info-muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* TOMBOL PDF */
+
+.informasi-dikecualikan-pdf-button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.informasi-dikecualikan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.informasi-dikecualikan-btn svg {
+  flex-shrink: 0;
+}
+
+.informasi-dikecualikan-btn-primary {
+  color: #fff;
+  background: var(--info-primary);
+  box-shadow: 0 5px 14px rgba(8, 116, 67, 0.15);
+}
+
+.informasi-dikecualikan-btn-primary:hover {
+  color: #fff;
+  background: var(--info-primary-dark);
+  box-shadow: 0 8px 20px rgba(8, 116, 67, 0.2);
+}
+
+.informasi-dikecualikan-btn-secondary {
+  color: var(--info-primary-dark);
+  background: #fff;
+  border-color: #cbded0;
+}
+
+.informasi-dikecualikan-btn-secondary:hover {
+  color: var(--info-primary-dark);
+  background: #eaf5ed;
+  border-color: var(--info-primary);
+}
+
+.informasi-dikecualikan-btn:focus-visible {
+  outline: 3px solid rgba(215, 180, 90, 0.65);
+  outline-offset: 3px;
+}
+
+/* SIDEBAR */
+
+.informasi-dikecualikan-sidebar>* {
+  max-width: 100%;
+}
+
+.informasi-dikecualikan-sidebar img {
+  max-width: 100%;
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+  .informasi-dikecualikan-hero {
+    padding: 45px 18px 55px;
+  }
+
+  .informasi-dikecualikan-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+  }
+
+  .informasi-dikecualikan-card {
+    padding: 23px;
+  }
+
+  .informasi-dikecualikan-iframe {
+    height: 580px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .informasi-dikecualikan-hero {
+    padding: 35px 15px 45px;
+  }
+
+  .informasi-dikecualikan-heading {
+    margin-bottom: 28px;
+  }
+
+  .informasi-dikecualikan-heading h1 {
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .informasi-dikecualikan-heading p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .informasi-dikecualikan-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .informasi-dikecualikan-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .informasi-dikecualikan-iframe {
+    height: 520px;
+  }
+
+  .informasi-dikecualikan-pdf-button {
+    flex-direction: column;
+  }
+
+  .informasi-dikecualikan-btn {
+    width: 100%;
+  }
+}
+
+/* MOBILE KECIL */
+
+@media (max-width: 380px) {
+  .informasi-dikecualikan-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .informasi-dikecualikan-card {
+    padding: 16px;
+  }
+
+  .informasi-dikecualikan-iframe {
+    height: 420px;
+  }
+}
+
+/* AKSESIBILITAS */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .informasi-dikecualikan-card,
+  .informasi-dikecualikan-btn {
+    transition: none;
+  }
+}

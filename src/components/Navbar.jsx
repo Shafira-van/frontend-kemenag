@@ -220,6 +220,14 @@ function Navbar() {
                           Informasi Tersedia Setiap Saat
                         </a>
                       </li>
+                      <li>
+                        <a
+                          className="dropdown-item"
+                          href="/informasi/Dikecualikan"
+                        >
+                          Informasi Dikecualikan
+                        </a>
+                      </li>
                     </ul>
                   </li>
                 </ul>
